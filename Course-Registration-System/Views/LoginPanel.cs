@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace Course_Registration_System
 {
-    public partial class Form1 : Form
+    public partial class LoginPanel : Form
     {
-        public Form1()
+        public LoginPanel()
         {
             InitializeComponent();
+        }
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }
