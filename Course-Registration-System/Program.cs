@@ -17,6 +17,7 @@ namespace Course_Registration_System
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginPanel());
+            Console.WriteLine("deneme");
             
         }
     }
