@@ -18,7 +18,8 @@ namespace Course_Registration_System
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginPanel());
             SQLCommands sQLCommands = new SQLCommands();
-            Console.WriteLine("Furkan");
+            
+            
             
         }
     }
