@@ -20,6 +20,7 @@ namespace Course_Registration_System
             SQLCommands sQLCommands = new SQLCommands();
             Console.WriteLine("denemedneememe");
             Console.WriteLine("deneme1234");
+            Console.WriteLine("deneme 1233")
             
             
             
