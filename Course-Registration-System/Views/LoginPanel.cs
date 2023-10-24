@@ -20,5 +20,20 @@ namespace Course_Registration_System
         {
           
         }
+
+        private void LoginPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
