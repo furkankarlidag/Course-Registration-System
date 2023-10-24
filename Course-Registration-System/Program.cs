@@ -19,6 +19,7 @@ namespace Course_Registration_System
             Application.Run(new LoginPanel());
             SQLCommands sQLCommands = new SQLCommands();
             Console.WriteLine("denemedneememe");
+            Console.WriteLine("deneme1234");
             
             
             
