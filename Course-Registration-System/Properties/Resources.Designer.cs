@@ -59,5 +59,15 @@ namespace Course_Registration_System.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _20231016_30744_bannerkou1_47c {
+            get {
+                object obj = ResourceManager.GetObject("20231016_30744_bannerkou1-47c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

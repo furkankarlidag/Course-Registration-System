@@ -16,7 +16,7 @@ namespace Course_Registration_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginPanel());
+            Application.Run(new AdministratorPanel());
             SQLCommands sQLCommands = new SQLCommands();
             Console.WriteLine("denemedneememe");
             Console.WriteLine("deneme1234");
