@@ -18,7 +18,33 @@ namespace Course_Registration_System
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-          
+            string password = this.passwordTextBox.Text;
+            int sicilID = int.Parse(this.usernameTextBox.Text);
+            studentpanel studentPanel = new studentpanel();
+            AdministratorPanel adminPanel = new AdministratorPanel();
+            teacherpanel teacherPanel = new teacherpanel();
+            SQLCommands sQLCommands = new SQLCommands();
+            if (sQLCommands.control(sicilID, password) == "student")
+            {
+                studentPanel.Visible = true;
+
+            }
+
+            else if (sQLCommands.control(sicilID, password) == "teacher")
+            {
+                teacherPanel.Visible = true;
+            }
+
+            else if (sQLCommands.control(sicilID, password) == "admin")
+            {
+                adminPanel.Visible = true;
+            }
+
+            else
+            {
+                MessageBox.Show("Sicil no veya sifre yanlis!!!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
 
         private void LoginPanel_Load(object sender, EventArgs e)

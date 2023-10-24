@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministratorPanel));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -198,10 +199,10 @@
             // 
             // studentPanel
             // 
-            //this.studentPanel.Location = new System.Drawing.Point(0, 0);
-            //this.studentPanel.Name = "studentPanel";
-            //this.studentPanel.Size = new System.Drawing.Size(200, 100);
-            //this.studentPanel.TabIndex = 1;
+            this.studentPanel.Location = new System.Drawing.Point(0, 0);
+            this.studentPanel.Name = "studentPanel";
+            this.studentPanel.Size = new System.Drawing.Size(200, 100);
+            this.studentPanel.TabIndex = 1;
             // 
             // npgsqlDataAdapter1
             // 
@@ -212,10 +213,10 @@
             // 
             // teacherPanel
             // 
-            //this.teacherPanel.Location = new System.Drawing.Point(0, 0);
-            //this.teacherPanel.Name = "teacherPanel";
-            //this.teacherPanel.Size = new System.Drawing.Size(200, 100);
-            //this.teacherPanel.TabIndex = 0;
+            this.teacherPanel.Location = new System.Drawing.Point(0, 0);
+            this.teacherPanel.Name = "teacherPanel";
+            this.teacherPanel.Size = new System.Drawing.Size(200, 100);
+            this.teacherPanel.TabIndex = 0;
             // 
             // AdministratorPanel
             // 
@@ -236,6 +237,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdministratorPanel";
             this.Text = "AdministratorPanel";
             this.ResumeLayout(false);

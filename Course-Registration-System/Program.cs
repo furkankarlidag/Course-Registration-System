@@ -16,11 +16,9 @@ namespace Course_Registration_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdministratorPanel());
+            Application.Run(new LoginPanel());
             SQLCommands sQLCommands = new SQLCommands();
-            Console.WriteLine("denemedneememe");
-            Console.WriteLine("deneme1234");
-            Console.WriteLine("murat agalama");
+            // murat veritabaninda elinle bir admin olustur ona giris yaparsin su an sayfa gecisleri acik
             
             
             
