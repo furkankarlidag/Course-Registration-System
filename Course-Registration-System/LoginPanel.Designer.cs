@@ -131,11 +131,14 @@ namespace Course_Registration_System
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(884, 561);
+            this.MinimizeBox = false;
             this.Name = "LoginPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kullanıcı Girişi";
+            this.Text = "Kocaeli Universitesi Proje Ders Secimi";
             this.Load += new System.EventHandler(this.LoginPanel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

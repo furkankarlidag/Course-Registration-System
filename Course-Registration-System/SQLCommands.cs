@@ -10,7 +10,7 @@ namespace Course_Registration_System
 {
     public class SQLCommands
     {
-        NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=yazlab_deneme; user ID=postgres; password=furkan1158");
+        NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345");
         public List<String> showCloumn(string column, string table)
         {
             List<String> data = new List<String>();
@@ -68,6 +68,36 @@ namespace Course_Registration_System
             cmd.Parameters.AddWithValue("p2", change_value);
             cmd.ExecuteNonQuery();
             connection.Close();
+
+        }
+
+        public string control(int id, string password)
+        {
+            connection.Open();
+            string query = "SELECT * FROM users WHERE sicilno=@p1 AND password=@p2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@p1", id);
+            cmd.Parameters.AddWithValue("@p2", password);
+
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                string userType = row["type"].ToString();
+                connection.Close();
+                return userType;
+            }
+            else
+            {
+                connection.Close();
+                return "false";
+            }
+            
 
         }
 
