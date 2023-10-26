@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Course_Registration_System
 {
@@ -387,12 +388,32 @@ namespace Course_Registration_System
             this.dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
             this.dataGridView1.Columns["gpa"].HeaderText = "GPA";
             this.dataGridView1.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
 
             this.studentPanel.ResumeLayout(false);
             this.studentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 
             ShowPanel(studentPanel);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                nameUpdateTextBox.Text = selectedRow.Cells["name"].Value.ToString();
+                surnameUpdateTextBox.Text = selectedRow.Cells["surname"].Value.ToString();
+                gpaUpdateTextBox.Text = selectedRow.Cells["gpa"].Value.ToString();
+                numberlessonUpdateTextBox.Text = selectedRow.Cells["numberoflesson"].Value.ToString();
+
+                string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '"+selectedRow.Cells["name"].Value.ToString() +"' AND Surname = '"+ selectedRow.Cells["surname"].Value.ToString()+"'");
+                passwordUpdateTextBox.Text = sQLCommands.getValue("password", "public.users", "sicilno="+stringSicil);
+
+                surnameRemoveTextBox.Text= selectedRow.Cells["surname"].Value.ToString();
+                nameRemoveTextBox.Text = selectedRow.Cells["name"].Value.ToString();
+            }
         }
 
         void TeacherPanelComponent() 

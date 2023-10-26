@@ -32,7 +32,28 @@ namespace Course_Registration_System
             connection.Close();
             return data;
         }
+        public string getValue(string column, string table, string where)
+        {
+            string value = null;
+            connection.Open();
 
+            string query = "SELECT " + column + " FROM " + table + " WHERE " + where;
+
+            using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
+            {
+                // ExecuteScalar ile sorguyu çalıştırın ve sonucu alın
+                object result = cmd.ExecuteScalar();
+
+                // Sonucu değerlendirin
+                if (result != null && result != DBNull.Value)
+                {
+                    value = result.ToString();
+                }
+            }
+
+            connection.Close();
+            return value;
+        }
         public DataTable showDataTable(string column, string table)
         {
             List<String> data = new List<String>();
