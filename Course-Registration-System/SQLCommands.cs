@@ -33,6 +33,21 @@ namespace Course_Registration_System
             return data;
         }
 
+        public DataTable showDataTable(string column, string table)
+        {
+            List<String> data = new List<String>();
+            connection.Open();
+            string query = "select " + column + " from " + table;
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+            
+            connection.Close();
+            return dataTable;
+        }
+
         public void addUser(string name, string surname, string password, string type)
         {
             connection.Open();

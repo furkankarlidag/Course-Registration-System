@@ -20,19 +20,19 @@ namespace Course_Registration_System
         {
             string password = this.passwordTextBox.Text;
             int sicilID = int.Parse(this.usernameTextBox.Text);
-            studentpanel studentPanel = new studentpanel();
+            //studentpanel studentPanel = new studentpanel();
             AdministratorPanel adminPanel = new AdministratorPanel();
-            teacherpanel teacherPanel = new teacherpanel();
+            //teacherpanel teacherPanel = new teacherpanel();
             SQLCommands sQLCommands = new SQLCommands();
             if (sQLCommands.control(sicilID, password) == "student")
             {
-                studentPanel.Visible = true;
+                //studentPanel.Visible = true;
 
             }
 
             else if (sQLCommands.control(sicilID, password) == "teacher")
             {
-                teacherPanel.Visible = true;
+                //teacherPanel.Visible = true;
             }
 
             else if (sQLCommands.control(sicilID, password) == "admin")

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministratorPanel));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,8 +39,38 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.studentPanel = new System.Windows.Forms.Panel();
+            this.StudentUpdateButton = new System.Windows.Forms.Button();
+            this.StudentAddButton = new System.Windows.Forms.Button();
+            this.numberlessonTextBox = new System.Windows.Forms.TextBox();
+            this.gpaTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.surnameTextBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.numberOfLessonAdd = new System.Windows.Forms.Label();
+            this.gpaAdd = new System.Windows.Forms.Label();
+            this.passwordAdd = new System.Windows.Forms.Label();
+            this.surnameAdd = new System.Windows.Forms.Label();
+            this.NameAdd = new System.Windows.Forms.Label();
             this.npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             this.teacherPanel = new System.Windows.Forms.Panel();
+            this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
+            this.numberlessonUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.gpaUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.passwordUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.surnameUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.nameUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.numberOfLessonUpdate = new System.Windows.Forms.Label();
+            this.gpaUpdate = new System.Windows.Forms.Label();
+            this.passwordUpdate = new System.Windows.Forms.Label();
+            this.surnameUpdate = new System.Windows.Forms.Label();
+            this.NameUpdate = new System.Windows.Forms.Label();
+            this.surnameRemoveTextBox = new System.Windows.Forms.TextBox();
+            this.nameRemoveTextBox = new System.Windows.Forms.TextBox();
+            this.surnameRemove = new System.Windows.Forms.Label();
+            this.NameRemove = new System.Windows.Forms.Label();
+            this.StudentRemoveButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.studentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -197,13 +226,6 @@
             this.button10.Text = "Ayarlar";
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // studentPanel
-            // 
-            this.studentPanel.Location = new System.Drawing.Point(0, 0);
-            this.studentPanel.Name = "studentPanel";
-            this.studentPanel.Size = new System.Drawing.Size(200, 100);
-            this.studentPanel.TabIndex = 1;
-            // 
             // npgsqlDataAdapter1
             // 
             this.npgsqlDataAdapter1.DeleteCommand = null;
@@ -218,6 +240,11 @@
             this.teacherPanel.Size = new System.Drawing.Size(200, 100);
             this.teacherPanel.TabIndex = 0;
             // 
+            // npgsqlCommandBuilder1
+            // 
+            this.npgsqlCommandBuilder1.QuotePrefix = "\"";
+            this.npgsqlCommandBuilder1.QuoteSuffix = "\"";
+            // 
             // AdministratorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,7 +252,6 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.teacherPanel);
             this.Controls.Add(this.studentPanel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -237,13 +263,15 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdministratorPanel";
             this.Text = "AdministratorPanel";
+            this.studentPanel.ResumeLayout(false);
+            this.studentPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
-
+        //BU amınakodumun windows formu yorum satırını silmiş
+        //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
         #endregion
 
         private System.Windows.Forms.Button button1;
@@ -257,13 +285,39 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel studentPanel;
-        private System.Windows.Forms.Button studentRemove;
-        private System.Windows.Forms.Button studentUpdate;
-        private System.Windows.Forms.Button studentAdd;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
         private System.Windows.Forms.Panel teacherPanel;
         private System.Windows.Forms.Button teacherDelete;
         private System.Windows.Forms.Button teacherUpdate;
         private System.Windows.Forms.Button teacherAdd;
+        private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
+        private System.Windows.Forms.Button StudentUpdateButton;
+        private System.Windows.Forms.Button StudentAddButton;
+        private System.Windows.Forms.TextBox numberlessonTextBox;
+        private System.Windows.Forms.TextBox gpaTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox surnameTextBox1;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label numberOfLessonAdd;
+        private System.Windows.Forms.Label gpaAdd;
+        private System.Windows.Forms.Label passwordAdd;
+        private System.Windows.Forms.Label surnameAdd;
+        private System.Windows.Forms.Label NameAdd;
+        private System.Windows.Forms.TextBox surnameRemoveTextBox;
+        private System.Windows.Forms.TextBox nameRemoveTextBox;
+        private System.Windows.Forms.Label surnameRemove;
+        private System.Windows.Forms.Label NameRemove;
+        private System.Windows.Forms.Button StudentRemoveButton;
+        private System.Windows.Forms.TextBox numberlessonUpdateTextBox;
+        private System.Windows.Forms.TextBox gpaUpdateTextBox;
+        private System.Windows.Forms.TextBox passwordUpdateTextBox;
+        private System.Windows.Forms.TextBox surnameUpdateTextBox;
+        private System.Windows.Forms.TextBox nameUpdateTextBox;
+        private System.Windows.Forms.Label numberOfLessonUpdate;
+        private System.Windows.Forms.Label gpaUpdate;
+        private System.Windows.Forms.Label passwordUpdate;
+        private System.Windows.Forms.Label surnameUpdate;
+        private System.Windows.Forms.Label NameUpdate;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
