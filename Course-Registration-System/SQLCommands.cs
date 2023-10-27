@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
 
 namespace Course_Registration_System
 {
@@ -72,7 +74,7 @@ namespace Course_Registration_System
         public void addUser(string name, string surname, string password, string type)
         {
             connection.Open();
-            string text = "insert into users (id,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
+            string text = "insert into users (sicilno,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             Random random = new Random();
             int id = random.Next(2000, 3000 + 1);
@@ -81,6 +83,21 @@ namespace Course_Registration_System
             cmd1.Parameters.AddWithValue("p3", surname);
             cmd1.Parameters.AddWithValue("p4", password);
             cmd1.Parameters.AddWithValue("p5", type);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void addStudents(string id ,string name, string surname, string gpa, string numberoflesson)
+        {
+            connection.Open();
+            string text = "insert into students (sicilno,name,surname,gpa,numberoflesson) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            float.TryParse(gpa, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float gpaValue);
+            cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
+            cmd1.Parameters.AddWithValue("p2", name);
+            cmd1.Parameters.AddWithValue("p3", surname);
+            cmd1.Parameters.AddWithValue("p4", gpaValue);
+            cmd1.Parameters.AddWithValue("p5", Convert.ToInt32(numberoflesson));
             cmd1.ExecuteNonQuery();
             connection.Close();
         }
@@ -95,16 +112,62 @@ namespace Course_Registration_System
             connection.Close();
         }
 
-        public void updateData(string table, string column, string change_value, string new_value)
+        public void updateData(string table, string column,string id ,string change_value, string new_value)
         {
             connection.Open();
-            string text = "update " + table + "set " + column + "=@p1 where " + column + "=@p2"; // "update devices set dmac=@p1 where dmac=@p2"
-            NpgsqlCommand cmd = new NpgsqlCommand("update devices set dmac=@p1 where dmac=@p2", connection);
-            cmd.Parameters.AddWithValue("p1", new_value);
-            cmd.Parameters.AddWithValue("p2", change_value);
+            string text = "update " + table + " set " + column + " = @p1 where " + id + " = @p2 "; // "update devices set dmac=@p1 where dmac=@p2"
+            NpgsqlCommand cmd = new NpgsqlCommand(text, connection);
+            if (IsNumeric(new_value)) 
+            {
+                if (int.TryParse(new_value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(new_value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", new_value);
+            if (IsNumeric(change_value))
+            {
+                if (int.TryParse(change_value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(change_value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", change_value);
             cmd.ExecuteNonQuery();
             connection.Close();
 
+        }
+        private bool IsNumeric(string input)
+        {
+            foreach (char c in input)
+            {
+                if (!Char.IsDigit(c) && !char.IsPunctuation(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void sort(string table, string sort) 
+        {
+            connection.Open();
+            string text = "SELECT * FROM " +table+ " ORDER BY "+sort;
+            NpgsqlCommand cmd = new NpgsqlCommand(text, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
         public string control(int id, string password)

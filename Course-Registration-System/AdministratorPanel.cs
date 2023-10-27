@@ -13,6 +13,8 @@ namespace Course_Registration_System
 {
     public partial class AdministratorPanel : Form
     {
+        int studentIdNo = -1 ;
+
         SQLCommands sQLCommands = new SQLCommands();
         public AdministratorPanel()
         {
@@ -116,6 +118,7 @@ namespace Course_Registration_System
             this.StudentUpdateButton.TabIndex = 22;
             this.StudentUpdateButton.Text = "Düzenleme";
             this.StudentUpdateButton.UseVisualStyleBackColor = false;
+            this.StudentUpdateButton.Click += new System.EventHandler(this.StudentUpdateButton_Click);
             // 
             // StudentAddButton
             // 
@@ -131,6 +134,7 @@ namespace Course_Registration_System
             this.StudentAddButton.TabIndex = 21;
             this.StudentAddButton.Text = "Ekle";
             this.StudentAddButton.UseVisualStyleBackColor = false;
+            this.StudentAddButton.Click += new System.EventHandler(this.StudentAddButton_Click);
             // 
             // numberlessonTextBox
             // 
@@ -383,7 +387,8 @@ namespace Course_Registration_System
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(562, 405);
             this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.DataSource = sQLCommands.showDataTable("name,surname,gpa,numberoflesson", "students");
+            this.dataGridView1.DataSource = sQLCommands.showDataTable("sicilno,name,surname,gpa,numberoflesson", "students");
+            this.dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
             this.dataGridView1.Columns["name"].HeaderText= "İSİM";
             this.dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
             this.dataGridView1.Columns["gpa"].HeaderText = "GPA";
@@ -395,6 +400,7 @@ namespace Course_Registration_System
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 
             ShowPanel(studentPanel);
+            //Student Paneli en son ekle
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -410,6 +416,7 @@ namespace Course_Registration_System
 
                 string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '"+selectedRow.Cells["name"].Value.ToString() +"' AND Surname = '"+ selectedRow.Cells["surname"].Value.ToString()+"'");
                 passwordUpdateTextBox.Text = sQLCommands.getValue("password", "public.users", "sicilno="+stringSicil);
+                studentIdNo = Convert.ToInt32(stringSicil);
 
                 surnameRemoveTextBox.Text= selectedRow.Cells["surname"].Value.ToString();
                 nameRemoveTextBox.Text = selectedRow.Cells["name"].Value.ToString();
@@ -486,6 +493,63 @@ namespace Course_Registration_System
         private void button1_Click(object sender, EventArgs e)
         {
             StudentPanelComponent();
+        }
+
+        private void StudentAddButton_Click(object sender, EventArgs e)
+        {
+            sQLCommands.addUser(nameTextBox.Text, surnameTextBox1.Text, passwordTextBox.Text, "Student");
+            string number =sQLCommands.getValue("sicilno", "public.users", "name= '" +nameTextBox.Text+"' AND surname = '"+ surnameTextBox1.Text+"' and password='"+ passwordTextBox.Text+"'");
+            sQLCommands.addStudents(number, nameTextBox.Text, surnameTextBox1.Text, gpaTextBox.Text, numberlessonTextBox.Text);
+
+            this.dataGridView1.DataSource = sQLCommands.showDataTable("sicilno,name,surname,gpa,numberoflesson", "students");
+            this.dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView1.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView1.Columns["gpa"].HeaderText = "GPA";
+            this.dataGridView1.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+
+        }
+
+        private void StudentUpdateButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                if (nameUpdateTextBox.Text!=selectedRow.Cells["name"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.students", "name", "sicilno", studentIdNo.ToString(), nameUpdateTextBox.Text);
+                }
+                if (surnameUpdateTextBox.Text != selectedRow.Cells["surname"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.students", "surname", "sicilno", studentIdNo.ToString(), surnameUpdateTextBox.Text);
+                }
+                if (gpaUpdateTextBox.Text != selectedRow.Cells["gpa"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.students", "gpa", "sicilno", studentIdNo.ToString(), gpaUpdateTextBox.Text);
+                }
+                if (numberlessonUpdateTextBox.Text != selectedRow.Cells["numberoflesson"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.students", "numberoflesson", "sicilno", studentIdNo.ToString(), numberlessonUpdateTextBox.Text);
+                }
+                string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '" + selectedRow.Cells["name"].Value.ToString() + "' AND Surname = '" + selectedRow.Cells["surname"].Value.ToString() + "'");
+                if (passwordUpdateTextBox.Text != stringSicil)
+                {
+                    sQLCommands.updateData("public.users", "password", "sicilno", studentIdNo.ToString(), passwordUpdateTextBox.Text);
+                }
+
+
+                sQLCommands.sort("public.students", "sicilno");
+
+                this.dataGridView1.DataSource = sQLCommands.showDataTable("sicilno,name,surname,gpa,numberoflesson", "students");
+                this.dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
+                this.dataGridView1.Columns["name"].HeaderText = "İSİM";
+                this.dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
+                this.dataGridView1.Columns["gpa"].HeaderText = "GPA";
+                this.dataGridView1.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
