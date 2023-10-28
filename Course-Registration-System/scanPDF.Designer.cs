@@ -147,7 +147,7 @@ namespace Course_Registration_System
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.ForeColor = System.Drawing.Color.MediumBlue;
             this.label1.Location = new System.Drawing.Point(8, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 31);
@@ -157,7 +157,7 @@ namespace Course_Registration_System
             // idNo
             // 
             this.idNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idNo.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.idNo.ForeColor = System.Drawing.Color.MediumBlue;
             this.idNo.Location = new System.Drawing.Point(8, 223);
             this.idNo.Name = "idNo";
             this.idNo.Size = new System.Drawing.Size(97, 20);
@@ -167,7 +167,7 @@ namespace Course_Registration_System
             // nameLabel
             // 
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.nameLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.nameLabel.Location = new System.Drawing.Point(8, 243);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(134, 24);
@@ -178,7 +178,7 @@ namespace Course_Registration_System
             // 
             this.surnameLabel.BackColor = System.Drawing.Color.Transparent;
             this.surnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.surnameLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.surnameLabel.Location = new System.Drawing.Point(8, 267);
             this.surnameLabel.Name = "surnameLabel";
             this.surnameLabel.Size = new System.Drawing.Size(130, 25);
