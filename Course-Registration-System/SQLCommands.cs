@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
 
 namespace Course_Registration_System
@@ -130,6 +131,31 @@ namespace Course_Registration_System
             cmd1.Parameters.AddWithValue("p3", surname);
             cmd1.Parameters.AddWithValue("p4", gpaValue);
             cmd1.Parameters.AddWithValue("p5", Convert.ToInt32(numberoflesson));
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void addTeachers(string id, string name, string surname, string quota)
+        {
+            connection.Open();
+            string text = "insert into teachers (sicilno,name,surname,quota) values (@p1,@p2,@p3,@p4)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
+            cmd1.Parameters.AddWithValue("p2", name);
+            cmd1.Parameters.AddWithValue("p3", surname);
+            cmd1.Parameters.AddWithValue("p4", Convert.ToInt32(quota));
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+
+        }
+
+        public void addTeachersInterest(string id, string interest) 
+        {
+            connection.Open();
+            string text = "insert into teachers_interest_table (sicilno,interests) values (@p1,@p2)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
+            cmd1.Parameters.AddWithValue("p2", interest);
             cmd1.ExecuteNonQuery();
             connection.Close();
         }

@@ -20,7 +20,7 @@ namespace Course_Registration_System
         {
             InitializeComponent();
             this.studentPanel.Visible = false;
-            this.teacherPanel.Visible = false;
+            //this.teacherPanel.Visible = false;
             this.StudentListPanel.Visible = false;
         }
 
@@ -428,69 +428,13 @@ namespace Course_Registration_System
 
         void TeacherPanelComponent() 
         {
-            this.teacherDelete = new System.Windows.Forms.Button();
-            this.teacherUpdate = new System.Windows.Forms.Button();
-            this.teacherAdd = new System.Windows.Forms.Button();
-            this.teacherPanel.SuspendLayout();
-
-            // 
-            // teacherPanel
-            // 
-            this.teacherPanel.Controls.Add(this.teacherDelete);
-            this.teacherPanel.Controls.Add(this.teacherUpdate);
-            this.teacherPanel.Controls.Add(this.teacherAdd);
-            this.teacherPanel.Location = new System.Drawing.Point(206, 12);
-            this.teacherPanel.Name = "teacherPanel";
-            this.teacherPanel.Size = new System.Drawing.Size(979, 737);
-            this.teacherPanel.TabIndex = 11;
-            // 
-            // teacherDelete
-            // 
-            this.teacherDelete.BackColor = System.Drawing.Color.Transparent;
-            this.teacherDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.teacherDelete.FlatAppearance.BorderSize = 2;
-            this.teacherDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.teacherDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.teacherDelete.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherDelete.Location = new System.Drawing.Point(365, 3);
-            this.teacherDelete.Name = "teacherDelete";
-            this.teacherDelete.Size = new System.Drawing.Size(175, 50);
-            this.teacherDelete.TabIndex = 3;
-            this.teacherDelete.Text = "Hoca Sil";
-            this.teacherDelete.UseVisualStyleBackColor = false;
-            // 
-            // teacherUpdate
-            // 
-            this.teacherUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.teacherUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.teacherUpdate.FlatAppearance.BorderSize = 2;
-            this.teacherUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.teacherUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.teacherUpdate.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherUpdate.Location = new System.Drawing.Point(184, 3);
-            this.teacherUpdate.Name = "teacherUpdate";
-            this.teacherUpdate.Size = new System.Drawing.Size(175, 50);
-            this.teacherUpdate.TabIndex = 2;
-            this.teacherUpdate.Text = "Hoca Düzenle";
-            this.teacherUpdate.UseVisualStyleBackColor = false;
-            // 
-            // teacherAdd
-            // 
-            this.teacherAdd.BackColor = System.Drawing.Color.Transparent;
-            this.teacherAdd.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.teacherAdd.FlatAppearance.BorderSize = 2;
-            this.teacherAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.teacherAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.teacherAdd.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherAdd.Location = new System.Drawing.Point(3, 3);
-            this.teacherAdd.Name = "teacherAdd";
-            this.teacherAdd.Size = new System.Drawing.Size(175, 50);
-            this.teacherAdd.TabIndex = 1;
-            this.teacherAdd.Text = "Hoca Ekle";
-            this.teacherAdd.UseVisualStyleBackColor = false;
-
             ShowPanel(teacherPanel);
 
+            this.dataGridView2.DataSource = sQLCommands.showDataTable("sicilno,name,surname,quota", "teachers");
+            this.dataGridView2.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView2.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView2.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView2.Columns["quota"].HeaderText = "KONTENJAN";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -578,6 +522,20 @@ namespace Course_Registration_System
 
         }
 
+        private void TeacherAddButton_Click(object sender, EventArgs e) 
+        {
+            sQLCommands.addUser(teacherNameTextBox.Text, teacherSurnameTextBox.Text, teacherPasswordTextBox.Text, "Teacher");
+            string number = sQLCommands.getValue("sicilno", "public.users", "name= '" + teacherNameTextBox.Text + "' AND surname = '" + teacherSurnameTextBox.Text + "' and password='" + teacherPasswordTextBox.Text + "'");
+            sQLCommands.addTeachers(number, teacherNameTextBox.Text, teacherSurnameTextBox.Text, quotaTextBox.Text);
+            sQLCommands.addTeachersInterest(number, teacherInterstAddTextBox.Text);
+
+            this.dataGridView2.DataSource = sQLCommands.showDataTable("sicilno,name,surname,quota", "teachers");
+            this.dataGridView2.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView2.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView2.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView2.Columns["quota"].HeaderText = "KONTENJAN";
+
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             TeacherPanelComponent();
