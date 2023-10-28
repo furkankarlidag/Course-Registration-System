@@ -52,7 +52,6 @@
             this.surnameAdd = new System.Windows.Forms.Label();
             this.NameAdd = new System.Windows.Forms.Label();
             this.npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
-            this.teacherPanel = new System.Windows.Forms.Panel();
             this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
             this.numberlessonUpdateTextBox = new System.Windows.Forms.TextBox();
             this.gpaUpdateTextBox = new System.Windows.Forms.TextBox();
@@ -70,15 +69,46 @@
             this.NameRemove = new System.Windows.Forms.Label();
             this.StudentRemoveButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TeacherUpdateButton = new System.Windows.Forms.Button();
+            this.TeacherAddButton = new System.Windows.Forms.Button();
+            this.quotaTextBox = new System.Windows.Forms.TextBox();
+            this.teacherPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.teacherSurnameTextBox = new System.Windows.Forms.TextBox();
+            this.teacherNameTextBox = new System.Windows.Forms.TextBox();
+            this.quotaAdd = new System.Windows.Forms.Label();
+            this.teacherPasswordAdd = new System.Windows.Forms.Label();
+            this.teacherSurnameAdd = new System.Windows.Forms.Label();
+            this.teacherNameAdd = new System.Windows.Forms.Label();
+            this.teacherPanel = new System.Windows.Forms.Panel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.teacherSurnameRemoveTextBox = new System.Windows.Forms.TextBox();
+            this.teacherNameRemoveTextBox = new System.Windows.Forms.TextBox();
+            this.teacherSurnameRemove = new System.Windows.Forms.Label();
+            this.teacherNameRemove = new System.Windows.Forms.Label();
+            this.TeacherRemoveButton = new System.Windows.Forms.Button();
+            this.teacherPasswordUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.teacherSurnameUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.teacherNameUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.quotaUpdate = new System.Windows.Forms.Label();
+            this.teacherPasswordUpdate = new System.Windows.Forms.Label();
+            this.teacherSurnameUpdate = new System.Windows.Forms.Label();
+            this.teacherNameUpdate = new System.Windows.Forms.Label();
+            this.quotaUpdateTextBox = new System.Windows.Forms.TextBox();
             this.StudentListPanel = new System.Windows.Forms.Panel();
-            this.dataGridViewUsersStudentsList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewStudentsList = new System.Windows.Forms.DataGridView();
             this.dataGridViewStudentLessonList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewStudentsList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUsersStudentsList = new System.Windows.Forms.DataGridView();
+            this.teacherInterstAdd = new System.Windows.Forms.Label();
+            this.teacherInterstAddTextBox = new System.Windows.Forms.TextBox();
+            this.teacherInterstUpdate = new System.Windows.Forms.Label();
+            this.teacherInterstUpdateTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.teacherPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.StudentListPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -333,13 +363,6 @@
             this.npgsqlDataAdapter1.SelectCommand = null;
             this.npgsqlDataAdapter1.UpdateCommand = null;
             // 
-            // teacherPanel
-            // 
-            this.teacherPanel.Location = new System.Drawing.Point(0, 0);
-            this.teacherPanel.Name = "teacherPanel";
-            this.teacherPanel.Size = new System.Drawing.Size(200, 100);
-            this.teacherPanel.TabIndex = 0;
-            // 
             // npgsqlCommandBuilder1
             // 
             this.npgsqlCommandBuilder1.QuotePrefix = "\"";
@@ -457,6 +480,278 @@
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 0;
             // 
+            // TeacherUpdateButton
+            // 
+            this.TeacherUpdateButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TeacherUpdateButton.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.TeacherUpdateButton.FlatAppearance.BorderSize = 2;
+            this.TeacherUpdateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.TeacherUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TeacherUpdateButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TeacherUpdateButton.Location = new System.Drawing.Point(471, 235);
+            this.TeacherUpdateButton.Name = "TeacherUpdateButton";
+            this.TeacherUpdateButton.Size = new System.Drawing.Size(175, 50);
+            this.TeacherUpdateButton.TabIndex = 22;
+            this.TeacherUpdateButton.Text = "Düzenleme";
+            this.TeacherUpdateButton.UseVisualStyleBackColor = false;
+            this.TeacherUpdateButton.Click += new System.EventHandler(this.StudentUpdateButton_Click);
+            // 
+            // TeacherAddButton
+            // 
+            this.TeacherAddButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TeacherAddButton.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.TeacherAddButton.FlatAppearance.BorderSize = 2;
+            this.TeacherAddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.TeacherAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TeacherAddButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TeacherAddButton.Location = new System.Drawing.Point(145, 235);
+            this.TeacherAddButton.Name = "TeacherAddButton";
+            this.TeacherAddButton.Size = new System.Drawing.Size(175, 50);
+            this.TeacherAddButton.TabIndex = 21;
+            this.TeacherAddButton.Text = "Ekle";
+            this.TeacherAddButton.UseVisualStyleBackColor = false;
+            this.TeacherAddButton.Click += new System.EventHandler(this.TeacherAddButton_Click);
+            // 
+            // quotaTextBox
+            // 
+            this.quotaTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.quotaTextBox.Location = new System.Drawing.Point(145, 144);
+            this.quotaTextBox.Name = "quotaTextBox";
+            this.quotaTextBox.Size = new System.Drawing.Size(174, 33);
+            this.quotaTextBox.TabIndex = 20;
+            // 
+            // teacherPasswordTextBox
+            // 
+            this.teacherPasswordTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherPasswordTextBox.Location = new System.Drawing.Point(145, 105);
+            this.teacherPasswordTextBox.Name = "teacherPasswordTextBox";
+            this.teacherPasswordTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherPasswordTextBox.TabIndex = 18;
+            // 
+            // teacherSurnameTextBox
+            // 
+            this.teacherSurnameTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameTextBox.Location = new System.Drawing.Point(145, 61);
+            this.teacherSurnameTextBox.Name = "teacherSurnameTextBox";
+            this.teacherSurnameTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherSurnameTextBox.TabIndex = 17;
+            // 
+            // teacherNameTextBox
+            // 
+            this.teacherNameTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameTextBox.Location = new System.Drawing.Point(145, 14);
+            this.teacherNameTextBox.Name = "teacherNameTextBox";
+            this.teacherNameTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherNameTextBox.TabIndex = 16;
+            // 
+            // quotaAdd
+            // 
+            this.quotaAdd.AutoSize = true;
+            this.quotaAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.quotaAdd.Location = new System.Drawing.Point(4, 143);
+            this.quotaAdd.Name = "quotaAdd";
+            this.quotaAdd.Size = new System.Drawing.Size(130, 29);
+            this.quotaAdd.TabIndex = 15;
+            this.quotaAdd.Text = "Kontenjan:";
+            // 
+            // teacherPasswordAdd
+            // 
+            this.teacherPasswordAdd.AutoSize = true;
+            this.teacherPasswordAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherPasswordAdd.Location = new System.Drawing.Point(70, 105);
+            this.teacherPasswordAdd.Name = "teacherPasswordAdd";
+            this.teacherPasswordAdd.Size = new System.Drawing.Size(69, 29);
+            this.teacherPasswordAdd.TabIndex = 13;
+            this.teacherPasswordAdd.Text = "Şifre:";
+            // 
+            // teacherSurnameAdd
+            // 
+            this.teacherSurnameAdd.AutoSize = true;
+            this.teacherSurnameAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameAdd.Location = new System.Drawing.Point(37, 61);
+            this.teacherSurnameAdd.Name = "teacherSurnameAdd";
+            this.teacherSurnameAdd.Size = new System.Drawing.Size(102, 29);
+            this.teacherSurnameAdd.TabIndex = 12;
+            this.teacherSurnameAdd.Text = "Soyisim:";
+            // 
+            // teacherNameAdd
+            // 
+            this.teacherNameAdd.AutoSize = true;
+            this.teacherNameAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameAdd.Location = new System.Drawing.Point(75, 17);
+            this.teacherNameAdd.Name = "teacherNameAdd";
+            this.teacherNameAdd.Size = new System.Drawing.Size(64, 29);
+            this.teacherNameAdd.TabIndex = 11;
+            this.teacherNameAdd.Text = "İsim:";
+            // 
+            // teacherPanel
+            // 
+            this.teacherPanel.Controls.Add(this.teacherInterstUpdate);
+            this.teacherPanel.Controls.Add(this.teacherInterstUpdateTextBox);
+            this.teacherPanel.Controls.Add(this.teacherInterstAdd);
+            this.teacherPanel.Controls.Add(this.teacherInterstAddTextBox);
+            this.teacherPanel.Controls.Add(this.dataGridView2);
+            this.teacherPanel.Controls.Add(this.teacherSurnameRemoveTextBox);
+            this.teacherPanel.Controls.Add(this.teacherNameRemoveTextBox);
+            this.teacherPanel.Controls.Add(this.teacherSurnameRemove);
+            this.teacherPanel.Controls.Add(this.teacherNameRemove);
+            this.teacherPanel.Controls.Add(this.TeacherRemoveButton);
+            this.teacherPanel.Controls.Add(this.teacherPasswordUpdateTextBox);
+            this.teacherPanel.Controls.Add(this.teacherSurnameUpdateTextBox);
+            this.teacherPanel.Controls.Add(this.teacherNameUpdateTextBox);
+            this.teacherPanel.Controls.Add(this.quotaUpdate);
+            this.teacherPanel.Controls.Add(this.teacherPasswordUpdate);
+            this.teacherPanel.Controls.Add(this.teacherSurnameUpdate);
+            this.teacherPanel.Controls.Add(this.teacherNameUpdate);
+            this.teacherPanel.Controls.Add(this.TeacherUpdateButton);
+            this.teacherPanel.Controls.Add(this.TeacherAddButton);
+            this.teacherPanel.Controls.Add(this.quotaTextBox);
+            this.teacherPanel.Controls.Add(this.teacherPasswordTextBox);
+            this.teacherPanel.Controls.Add(this.teacherSurnameTextBox);
+            this.teacherPanel.Controls.Add(this.teacherNameTextBox);
+            this.teacherPanel.Controls.Add(this.quotaAdd);
+            this.teacherPanel.Controls.Add(this.teacherPasswordAdd);
+            this.teacherPanel.Controls.Add(this.teacherSurnameAdd);
+            this.teacherPanel.Controls.Add(this.teacherNameAdd);
+            this.teacherPanel.Controls.Add(this.quotaUpdateTextBox);
+            this.teacherPanel.Location = new System.Drawing.Point(193, 12);
+            this.teacherPanel.Name = "teacherPanel";
+            this.teacherPanel.Size = new System.Drawing.Size(979, 737);
+            this.teacherPanel.TabIndex = 10;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(9, 312);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(568, 405);
+            this.dataGridView2.TabIndex = 41;
+            // 
+            // teacherSurnameRemoveTextBox
+            // 
+            this.teacherSurnameRemoveTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameRemoveTextBox.Location = new System.Drawing.Point(793, 59);
+            this.teacherSurnameRemoveTextBox.Name = "teacherSurnameRemoveTextBox";
+            this.teacherSurnameRemoveTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherSurnameRemoveTextBox.TabIndex = 40;
+            // 
+            // teacherNameRemoveTextBox
+            // 
+            this.teacherNameRemoveTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameRemoveTextBox.Location = new System.Drawing.Point(793, 12);
+            this.teacherNameRemoveTextBox.Name = "teacherNameRemoveTextBox";
+            this.teacherNameRemoveTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherNameRemoveTextBox.TabIndex = 39;
+            // 
+            // teacherSurnameRemove
+            // 
+            this.teacherSurnameRemove.AutoSize = true;
+            this.teacherSurnameRemove.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameRemove.Location = new System.Drawing.Point(685, 59);
+            this.teacherSurnameRemove.Name = "teacherSurnameRemove";
+            this.teacherSurnameRemove.Size = new System.Drawing.Size(102, 29);
+            this.teacherSurnameRemove.TabIndex = 35;
+            this.teacherSurnameRemove.Text = "Soyisim:";
+            // 
+            // teacherNameRemove
+            // 
+            this.teacherNameRemove.AutoSize = true;
+            this.teacherNameRemove.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameRemove.Location = new System.Drawing.Point(723, 15);
+            this.teacherNameRemove.Name = "teacherNameRemove";
+            this.teacherNameRemove.Size = new System.Drawing.Size(64, 29);
+            this.teacherNameRemove.TabIndex = 34;
+            this.teacherNameRemove.Text = "İsim:";
+            // 
+            // TeacherRemoveButton
+            // 
+            this.TeacherRemoveButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TeacherRemoveButton.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.TeacherRemoveButton.FlatAppearance.BorderSize = 2;
+            this.TeacherRemoveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.TeacherRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TeacherRemoveButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TeacherRemoveButton.Location = new System.Drawing.Point(792, 98);
+            this.TeacherRemoveButton.Name = "TeacherRemoveButton";
+            this.TeacherRemoveButton.Size = new System.Drawing.Size(175, 50);
+            this.TeacherRemoveButton.TabIndex = 33;
+            this.TeacherRemoveButton.Text = "Sil";
+            this.TeacherRemoveButton.UseVisualStyleBackColor = false;
+            this.TeacherRemoveButton.Click += new System.EventHandler(this.StudentRemoveButton_Click);
+            // 
+            // teacherPasswordUpdateTextBox
+            // 
+            this.teacherPasswordUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherPasswordUpdateTextBox.Location = new System.Drawing.Point(471, 104);
+            this.teacherPasswordUpdateTextBox.Name = "teacherPasswordUpdateTextBox";
+            this.teacherPasswordUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherPasswordUpdateTextBox.TabIndex = 30;
+            // 
+            // teacherSurnameUpdateTextBox
+            // 
+            this.teacherSurnameUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameUpdateTextBox.Location = new System.Drawing.Point(471, 60);
+            this.teacherSurnameUpdateTextBox.Name = "teacherSurnameUpdateTextBox";
+            this.teacherSurnameUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherSurnameUpdateTextBox.TabIndex = 29;
+            // 
+            // teacherNameUpdateTextBox
+            // 
+            this.teacherNameUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameUpdateTextBox.Location = new System.Drawing.Point(471, 13);
+            this.teacherNameUpdateTextBox.Name = "teacherNameUpdateTextBox";
+            this.teacherNameUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherNameUpdateTextBox.TabIndex = 28;
+            // 
+            // quotaUpdate
+            // 
+            this.quotaUpdate.AutoSize = true;
+            this.quotaUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.quotaUpdate.Location = new System.Drawing.Point(330, 147);
+            this.quotaUpdate.Name = "quotaUpdate";
+            this.quotaUpdate.Size = new System.Drawing.Size(130, 29);
+            this.quotaUpdate.TabIndex = 27;
+            this.quotaUpdate.Text = "Kontenjan:";
+            // 
+            // teacherPasswordUpdate
+            // 
+            this.teacherPasswordUpdate.AutoSize = true;
+            this.teacherPasswordUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherPasswordUpdate.Location = new System.Drawing.Point(396, 104);
+            this.teacherPasswordUpdate.Name = "teacherPasswordUpdate";
+            this.teacherPasswordUpdate.Size = new System.Drawing.Size(69, 29);
+            this.teacherPasswordUpdate.TabIndex = 25;
+            this.teacherPasswordUpdate.Text = "Şifre:";
+            // 
+            // teacherSurnameUpdate
+            // 
+            this.teacherSurnameUpdate.AutoSize = true;
+            this.teacherSurnameUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherSurnameUpdate.Location = new System.Drawing.Point(363, 60);
+            this.teacherSurnameUpdate.Name = "teacherSurnameUpdate";
+            this.teacherSurnameUpdate.Size = new System.Drawing.Size(102, 29);
+            this.teacherSurnameUpdate.TabIndex = 24;
+            this.teacherSurnameUpdate.Text = "Soyisim:";
+            // 
+            // teacherNameUpdate
+            // 
+            this.teacherNameUpdate.AutoSize = true;
+            this.teacherNameUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherNameUpdate.Location = new System.Drawing.Point(401, 16);
+            this.teacherNameUpdate.Name = "teacherNameUpdate";
+            this.teacherNameUpdate.Size = new System.Drawing.Size(64, 29);
+            this.teacherNameUpdate.TabIndex = 23;
+            this.teacherNameUpdate.Text = "İsim:";
+            // 
+            // quotaUpdateTextBox
+            // 
+            this.quotaUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.quotaUpdateTextBox.Location = new System.Drawing.Point(471, 143);
+            this.quotaUpdateTextBox.Name = "quotaUpdateTextBox";
+            this.quotaUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.quotaUpdateTextBox.TabIndex = 32;
+            // 
             // StudentListPanel
             // 
             this.StudentListPanel.Controls.Add(this.dataGridViewStudentLessonList);
@@ -467,14 +762,14 @@
             this.StudentListPanel.Size = new System.Drawing.Size(979, 742);
             this.StudentListPanel.TabIndex = 10;
             // 
-            // dataGridViewUsersStudentsList
+            // dataGridViewStudentLessonList
             // 
-            this.dataGridViewUsersStudentsList.BackgroundColor = System.Drawing.Color.Lime;
-            this.dataGridViewUsersStudentsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsersStudentsList.Location = new System.Drawing.Point(14, 24);
-            this.dataGridViewUsersStudentsList.Name = "dataGridViewUsersStudentsList";
-            this.dataGridViewUsersStudentsList.Size = new System.Drawing.Size(936, 220);
-            this.dataGridViewUsersStudentsList.TabIndex = 0;
+            this.dataGridViewStudentLessonList.BackgroundColor = System.Drawing.Color.Lime;
+            this.dataGridViewStudentLessonList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudentLessonList.Location = new System.Drawing.Point(14, 476);
+            this.dataGridViewStudentLessonList.Name = "dataGridViewStudentLessonList";
+            this.dataGridViewStudentLessonList.Size = new System.Drawing.Size(936, 220);
+            this.dataGridViewStudentLessonList.TabIndex = 2;
             // 
             // dataGridViewStudentsList
             // 
@@ -485,14 +780,50 @@
             this.dataGridViewStudentsList.Size = new System.Drawing.Size(936, 220);
             this.dataGridViewStudentsList.TabIndex = 1;
             // 
-            // dataGridViewStudentLessonList
+            // dataGridViewUsersStudentsList
             // 
-            this.dataGridViewStudentLessonList.BackgroundColor = System.Drawing.Color.Lime;
-            this.dataGridViewStudentLessonList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStudentLessonList.Location = new System.Drawing.Point(14, 476);
-            this.dataGridViewStudentLessonList.Name = "dataGridViewStudentLessonList";
-            this.dataGridViewStudentLessonList.Size = new System.Drawing.Size(936, 220);
-            this.dataGridViewStudentLessonList.TabIndex = 2;
+            this.dataGridViewUsersStudentsList.BackgroundColor = System.Drawing.Color.Lime;
+            this.dataGridViewUsersStudentsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsersStudentsList.Location = new System.Drawing.Point(14, 24);
+            this.dataGridViewUsersStudentsList.Name = "dataGridViewUsersStudentsList";
+            this.dataGridViewUsersStudentsList.Size = new System.Drawing.Size(936, 220);
+            this.dataGridViewUsersStudentsList.TabIndex = 0;
+            // 
+            // teacherInterstAdd
+            // 
+            this.teacherInterstAdd.AutoSize = true;
+            this.teacherInterstAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAdd.Location = new System.Drawing.Point(4, 184);
+            this.teacherInterstAdd.Name = "teacherInterstAdd";
+            this.teacherInterstAdd.Size = new System.Drawing.Size(141, 29);
+            this.teacherInterstAdd.TabIndex = 42;
+            this.teacherInterstAdd.Text = "İlgi Alanları:";
+            // 
+            // teacherInterstAddTextBox
+            // 
+            this.teacherInterstAddTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAddTextBox.Location = new System.Drawing.Point(145, 184);
+            this.teacherInterstAddTextBox.Name = "teacherInterstAddTextBox";
+            this.teacherInterstAddTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherInterstAddTextBox.TabIndex = 43;
+            // 
+            // teacherInterstUpdate
+            // 
+            this.teacherInterstUpdate.AutoSize = true;
+            this.teacherInterstUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstUpdate.Location = new System.Drawing.Point(330, 188);
+            this.teacherInterstUpdate.Name = "teacherInterstUpdate";
+            this.teacherInterstUpdate.Size = new System.Drawing.Size(141, 29);
+            this.teacherInterstUpdate.TabIndex = 44;
+            this.teacherInterstUpdate.Text = "İlgi Alanları:";
+            // 
+            // teacherInterstUpdateTextBox
+            // 
+            this.teacherInterstUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstUpdateTextBox.Location = new System.Drawing.Point(471, 184);
+            this.teacherInterstUpdateTextBox.Name = "teacherInterstUpdateTextBox";
+            this.teacherInterstUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherInterstUpdateTextBox.TabIndex = 45;
             // 
             // AdministratorPanel
             // 
@@ -501,7 +832,7 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.StudentListPanel);
+            this.Controls.Add(this.teacherPanel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -515,10 +846,13 @@
             this.Name = "AdministratorPanel";
             this.Text = "AdministratorPanel";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.teacherPanel.ResumeLayout(false);
+            this.teacherPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.StudentListPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,6 +860,7 @@
         //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
         //this.Controls.Add(this.studentPanel);
         //this.Controls.Add(this.teacherPanel);
+        //this.Controls.Add(this.StudentListPanel);
         #endregion
 
         private System.Windows.Forms.Button button1;
@@ -541,9 +876,6 @@
         private System.Windows.Forms.Panel studentPanel;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
         private System.Windows.Forms.Panel teacherPanel;
-        private System.Windows.Forms.Button teacherDelete;
-        private System.Windows.Forms.Button teacherUpdate;
-        private System.Windows.Forms.Button teacherAdd;
         private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
         private System.Windows.Forms.Button StudentUpdateButton;
         private System.Windows.Forms.Button StudentAddButton;
@@ -577,5 +909,33 @@
         private System.Windows.Forms.DataGridView dataGridViewStudentLessonList;
         private System.Windows.Forms.DataGridView dataGridViewStudentsList;
         private System.Windows.Forms.DataGridView dataGridViewUsersStudentsList;
+        private System.Windows.Forms.Button TeacherUpdateButton;
+        private System.Windows.Forms.Button TeacherAddButton;
+        private System.Windows.Forms.TextBox quotaTextBox;
+        private System.Windows.Forms.TextBox teacherPasswordTextBox;
+        private System.Windows.Forms.TextBox teacherSurnameTextBox;
+        private System.Windows.Forms.TextBox teacherNameTextBox;
+        private System.Windows.Forms.Label quotaAdd;
+        private System.Windows.Forms.Label teacherPasswordAdd;
+        private System.Windows.Forms.Label teacherSurnameAdd;
+        private System.Windows.Forms.Label teacherNameAdd;
+        private System.Windows.Forms.TextBox teacherSurnameRemoveTextBox;
+        private System.Windows.Forms.TextBox teacherNameRemoveTextBox;
+        private System.Windows.Forms.Label teacherSurnameRemove;
+        private System.Windows.Forms.Label teacherNameRemove;
+        private System.Windows.Forms.Button TeacherRemoveButton;
+        private System.Windows.Forms.TextBox quotaUpdateTextBox;
+        private System.Windows.Forms.TextBox teacherPasswordUpdateTextBox;
+        private System.Windows.Forms.TextBox teacherSurnameUpdateTextBox;
+        private System.Windows.Forms.TextBox teacherNameUpdateTextBox;
+        private System.Windows.Forms.Label quotaUpdate;
+        private System.Windows.Forms.Label teacherPasswordUpdate;
+        private System.Windows.Forms.Label teacherSurnameUpdate;
+        private System.Windows.Forms.Label teacherNameUpdate;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label teacherInterstUpdate;
+        private System.Windows.Forms.TextBox teacherInterstUpdateTextBox;
+        private System.Windows.Forms.Label teacherInterstAdd;
+        private System.Windows.Forms.TextBox teacherInterstAddTextBox;
     }
 }
