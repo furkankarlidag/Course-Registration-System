@@ -170,6 +170,79 @@ namespace Course_Registration_System
             connection.Close();
         }
 
+        public List<string> getInfoAboutStudent(int id)
+        {
+            connection.Open();
+            List<string> studentInfo = new List<string>();
+            string query = "SELECT name,surname FROM students WHERE sicilno=@p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@p1", id);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string name = reader.GetString(0); // İlk sütun "name"
+                string surname = reader.GetString(1); // İkinci sütun "surname"
+                studentInfo.Add(name);
+                studentInfo.Add(surname);
+            }
+            connection.Close();
+            return studentInfo;
+        }
+
+        public void insertLessonFromPDF(string lessonID,string lessonName,int credit)
+        {
+            connection.Open();
+            string checkQuery = "SELECT lessonname FROM lesson WHERE lessonid = @p1";
+            NpgsqlCommand checkCmd = new NpgsqlCommand(checkQuery, connection);
+            checkCmd.Parameters.AddWithValue("p1", lessonID);
+            NpgsqlDataReader reader = checkCmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string name = reader.GetString(0); // İlk sütun "name"
+                reader.Close(); 
+            }
+            else
+            {
+                reader.Close();
+                string text = "INSERT INTO lesson (lessonid, lessonname, credit) VALUES (@p1, @p2, @p3)";
+                NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+                cmd1.Parameters.AddWithValue("p1", lessonID);
+                cmd1.Parameters.AddWithValue("p2", lessonName.Substring(0, lessonName.Length - 1));
+                cmd1.Parameters.AddWithValue("p3", credit);
+                cmd1.ExecuteNonQuery();
+            }
+            connection.Close();
+        }
+
+        public void insertToLessonsAndStudents(int sicilNo,string lessonID,string point)
+        {
+            connection.Open();
+
+            string checkQuery = "SELECT * FROM students_and_lessons WHERE lessonid = @p1 AND sicilno = @p2";
+            NpgsqlCommand checkCmd = new NpgsqlCommand(checkQuery, connection);
+            checkCmd.Parameters.AddWithValue("p1", lessonID);
+            checkCmd.Parameters.AddWithValue("p2", sicilNo);
+            NpgsqlDataReader reader = checkCmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int intValue = reader.GetInt32(0); 
+                string stringValue = intValue.ToString(); // İlk sütun "name"
+                reader.Close();
+            }
+            else
+            {
+                reader.Close();
+                string text = "INSERT INTO students_and_lessons (lessonid, sicilno, lessonletterpoint) VALUES (@p1, @p2, @p3)";
+                NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+                cmd1.Parameters.AddWithValue("p1", lessonID);
+                cmd1.Parameters.AddWithValue("p2", sicilNo);
+                cmd1.Parameters.AddWithValue("p3", point);
+                cmd1.ExecuteNonQuery();
+            }
+            connection.Close();
+
+        }
+
         public string control(int id, string password)
         {
             connection.Open();
