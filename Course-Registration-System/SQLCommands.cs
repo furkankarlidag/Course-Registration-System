@@ -17,7 +17,7 @@ namespace Course_Registration_System
         NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345");
         public List<String> showCloumn(string column, string table)
         {
-            List<String> data = new List<String>();
+            List<string> data = new List<string>();
             connection.Open();
             string query = "select " + column + " from " + table;
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
@@ -30,11 +30,18 @@ namespace Course_Registration_System
             {
                 foreach (var item in row.ItemArray)
                 {
-                    data.Add(item + "");
+                    string cleanedItem = item.ToString().Trim(); // Boşlukları temizle
+                    if (!string.IsNullOrEmpty(cleanedItem)) // Boş olanları filtrele
+                    {
+                        data.Add(cleanedItem);
+                        Console.WriteLine(cleanedItem);
+                    }
                 }
             }
+
             connection.Close();
             return data;
+
         }
         public string getValue(string column, string table, string where)
         {
@@ -300,6 +307,30 @@ namespace Course_Registration_System
             }
             connection.Close();
 
+        }
+
+        public bool lessonsControl(int id)
+        {
+            connection.Open();
+
+            string checkQuery = "SELECT * FROM students_and_lessons WHERE sicilno = @p1" ;
+            NpgsqlCommand checkCmd = new NpgsqlCommand(checkQuery, connection);
+            checkCmd.Parameters.AddWithValue("p1", id);
+            NpgsqlDataReader reader = checkCmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int intValue = reader.GetInt32(0);
+                string stringValue = intValue.ToString(); // İlk sütun "name"
+                reader.Close();
+                return true;
+            }
+            else
+            {
+                reader.Close();
+                connection.Close();
+                return false;
+            }
+            
         }
 
         public string control(int id, string password)

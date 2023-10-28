@@ -28,7 +28,11 @@ namespace Course_Registration_System
             List<string> studentInfo = sQLCommands.getInfoAboutStudent(sicilNo);
             nameLabel.Text = studentInfo[0];
             surnameLabel.Text = studentInfo[1];
-
+            if (sQLCommands.lessonsControl(sicilNo))
+            {
+                transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
+                transkriptBilgi.ForeColor = Color.White;
+            }
 
         }
         
@@ -76,8 +80,12 @@ namespace Course_Registration_System
                     }
                 }
             }
-            transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
-            transkriptBilgi.ForeColor = Color.White;
+            if (SQLCommands.lessonsControl(sicilNo))
+            {
+                transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
+                transkriptBilgi.ForeColor = Color.White;
+            }
+            
         }
 
        
