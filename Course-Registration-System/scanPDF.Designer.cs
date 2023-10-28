@@ -44,6 +44,7 @@ namespace Course_Registration_System
             this.idNo = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.surnameLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -138,9 +139,9 @@ namespace Course_Registration_System
             // 
             this.transkriptBilgi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transkriptBilgi.ForeColor = System.Drawing.Color.Black;
-            this.transkriptBilgi.Location = new System.Drawing.Point(8, 307);
+            this.transkriptBilgi.Location = new System.Drawing.Point(212, 311);
             this.transkriptBilgi.Name = "transkriptBilgi";
-            this.transkriptBilgi.Size = new System.Drawing.Size(462, 34);
+            this.transkriptBilgi.Size = new System.Drawing.Size(356, 34);
             this.transkriptBilgi.TabIndex = 9;
             this.transkriptBilgi.Text = "Lutfen Transkriptinizi sisteme yukleyiniz.";
             // 
@@ -185,12 +186,23 @@ namespace Course_Registration_System
             this.surnameLabel.TabIndex = 13;
             this.surnameLabel.Text = "surname";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 311);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(208, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "TRANSKRIPT DURUMU:";
+            // 
             // scanPDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(659, 413);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.idNo);
@@ -209,6 +221,7 @@ namespace Course_Registration_System
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,5 +240,6 @@ namespace Course_Registration_System
         private System.Windows.Forms.Label idNo;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label surnameLabel;
+        private System.Windows.Forms.Label label2;
     }
 }
