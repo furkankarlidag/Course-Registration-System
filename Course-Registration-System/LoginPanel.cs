@@ -20,13 +20,14 @@ namespace Course_Registration_System
         {
             string password = this.passwordTextBox.Text;
             int sicilID = int.Parse(this.usernameTextBox.Text);
-            studentForm studentPanel = new studentForm(sicilID);
+           
             AdministratorPanel adminPanel = new AdministratorPanel();
-            //teacherpanel teacherPanel = new teacherpanel();
+           
             SQLCommands sQLCommands = new SQLCommands();
             if (sQLCommands.control(sicilID, password) == "student")
             {
-                studentPanel.Visible = true;
+                studentForm studentForm = new studentForm(sicilID);
+                 studentForm.Visible = true;
 
             }
 
