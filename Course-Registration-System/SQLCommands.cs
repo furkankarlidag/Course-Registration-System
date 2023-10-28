@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -71,6 +72,37 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+        public DataTable showQueryDataTable(string column, string table , string where, string value)
+        {
+            connection.Open();
+            string query = "select " + column + " from " + table + " where "+where+" = @p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
+
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd);
+            
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            connection.Close();
+            return dataTable;
+        }
+
         public void addUser(string name, string surname, string password, string type)
         {
             connection.Open();
@@ -107,7 +139,8 @@ namespace Course_Registration_System
             connection.Open();
             string text = "delete from " + table + " where " + column + "=@p1"; // column hangi sutunun hangi degere esit oldugunu bulacak 
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
-            cmd1.Parameters.AddWithValue("p1", value);
+            int.TryParse(value, out int result);
+            cmd1.Parameters.AddWithValue("p1", result);
             cmd1.ExecuteNonQuery();
             connection.Close();
         }

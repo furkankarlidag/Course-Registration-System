@@ -70,7 +70,15 @@
             this.NameRemove = new System.Windows.Forms.Label();
             this.StudentRemoveButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentPanel.SuspendLayout();
+            this.StudentListPanel = new System.Windows.Forms.Panel();
+            this.dataGridViewUsersStudentsList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewStudentsList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewStudentLessonList = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.StudentListPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -104,6 +112,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Öğrenci Listeleme";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -226,6 +235,97 @@
             this.button10.Text = "Ayarlar";
             this.button10.UseVisualStyleBackColor = false;
             // 
+            // studentPanel
+            // 
+            this.studentPanel.Location = new System.Drawing.Point(0, 0);
+            this.studentPanel.Name = "studentPanel";
+            this.studentPanel.Size = new System.Drawing.Size(200, 100);
+            this.studentPanel.TabIndex = 0;
+            // 
+            // StudentUpdateButton
+            // 
+            this.StudentUpdateButton.Location = new System.Drawing.Point(0, 0);
+            this.StudentUpdateButton.Name = "StudentUpdateButton";
+            this.StudentUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.StudentUpdateButton.TabIndex = 0;
+            // 
+            // StudentAddButton
+            // 
+            this.StudentAddButton.Location = new System.Drawing.Point(0, 0);
+            this.StudentAddButton.Name = "StudentAddButton";
+            this.StudentAddButton.Size = new System.Drawing.Size(75, 23);
+            this.StudentAddButton.TabIndex = 0;
+            // 
+            // numberlessonTextBox
+            // 
+            this.numberlessonTextBox.Location = new System.Drawing.Point(0, 0);
+            this.numberlessonTextBox.Name = "numberlessonTextBox";
+            this.numberlessonTextBox.Size = new System.Drawing.Size(100, 20);
+            this.numberlessonTextBox.TabIndex = 0;
+            // 
+            // gpaTextBox
+            // 
+            this.gpaTextBox.Location = new System.Drawing.Point(0, 0);
+            this.gpaTextBox.Name = "gpaTextBox";
+            this.gpaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.gpaTextBox.TabIndex = 0;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(0, 0);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordTextBox.TabIndex = 0;
+            // 
+            // surnameTextBox1
+            // 
+            this.surnameTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.surnameTextBox1.Name = "surnameTextBox1";
+            this.surnameTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.surnameTextBox1.TabIndex = 0;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(0, 0);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameTextBox.TabIndex = 0;
+            // 
+            // numberOfLessonAdd
+            // 
+            this.numberOfLessonAdd.Location = new System.Drawing.Point(0, 0);
+            this.numberOfLessonAdd.Name = "numberOfLessonAdd";
+            this.numberOfLessonAdd.Size = new System.Drawing.Size(100, 23);
+            this.numberOfLessonAdd.TabIndex = 0;
+            // 
+            // gpaAdd
+            // 
+            this.gpaAdd.Location = new System.Drawing.Point(0, 0);
+            this.gpaAdd.Name = "gpaAdd";
+            this.gpaAdd.Size = new System.Drawing.Size(100, 23);
+            this.gpaAdd.TabIndex = 0;
+            // 
+            // passwordAdd
+            // 
+            this.passwordAdd.Location = new System.Drawing.Point(0, 0);
+            this.passwordAdd.Name = "passwordAdd";
+            this.passwordAdd.Size = new System.Drawing.Size(100, 23);
+            this.passwordAdd.TabIndex = 0;
+            // 
+            // surnameAdd
+            // 
+            this.surnameAdd.Location = new System.Drawing.Point(0, 0);
+            this.surnameAdd.Name = "surnameAdd";
+            this.surnameAdd.Size = new System.Drawing.Size(100, 23);
+            this.surnameAdd.TabIndex = 0;
+            // 
+            // NameAdd
+            // 
+            this.NameAdd.Location = new System.Drawing.Point(0, 0);
+            this.NameAdd.Name = "NameAdd";
+            this.NameAdd.Size = new System.Drawing.Size(100, 23);
+            this.NameAdd.TabIndex = 0;
+            // 
             // npgsqlDataAdapter1
             // 
             this.npgsqlDataAdapter1.DeleteCommand = null;
@@ -245,6 +345,155 @@
             this.npgsqlCommandBuilder1.QuotePrefix = "\"";
             this.npgsqlCommandBuilder1.QuoteSuffix = "\"";
             // 
+            // numberlessonUpdateTextBox
+            // 
+            this.numberlessonUpdateTextBox.Location = new System.Drawing.Point(0, 0);
+            this.numberlessonUpdateTextBox.Name = "numberlessonUpdateTextBox";
+            this.numberlessonUpdateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.numberlessonUpdateTextBox.TabIndex = 0;
+            // 
+            // gpaUpdateTextBox
+            // 
+            this.gpaUpdateTextBox.Location = new System.Drawing.Point(0, 0);
+            this.gpaUpdateTextBox.Name = "gpaUpdateTextBox";
+            this.gpaUpdateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.gpaUpdateTextBox.TabIndex = 0;
+            // 
+            // passwordUpdateTextBox
+            // 
+            this.passwordUpdateTextBox.Location = new System.Drawing.Point(0, 0);
+            this.passwordUpdateTextBox.Name = "passwordUpdateTextBox";
+            this.passwordUpdateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordUpdateTextBox.TabIndex = 0;
+            // 
+            // surnameUpdateTextBox
+            // 
+            this.surnameUpdateTextBox.Location = new System.Drawing.Point(0, 0);
+            this.surnameUpdateTextBox.Name = "surnameUpdateTextBox";
+            this.surnameUpdateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.surnameUpdateTextBox.TabIndex = 0;
+            // 
+            // nameUpdateTextBox
+            // 
+            this.nameUpdateTextBox.Location = new System.Drawing.Point(0, 0);
+            this.nameUpdateTextBox.Name = "nameUpdateTextBox";
+            this.nameUpdateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameUpdateTextBox.TabIndex = 0;
+            // 
+            // numberOfLessonUpdate
+            // 
+            this.numberOfLessonUpdate.Location = new System.Drawing.Point(0, 0);
+            this.numberOfLessonUpdate.Name = "numberOfLessonUpdate";
+            this.numberOfLessonUpdate.Size = new System.Drawing.Size(100, 23);
+            this.numberOfLessonUpdate.TabIndex = 0;
+            // 
+            // gpaUpdate
+            // 
+            this.gpaUpdate.Location = new System.Drawing.Point(0, 0);
+            this.gpaUpdate.Name = "gpaUpdate";
+            this.gpaUpdate.Size = new System.Drawing.Size(100, 23);
+            this.gpaUpdate.TabIndex = 0;
+            // 
+            // passwordUpdate
+            // 
+            this.passwordUpdate.Location = new System.Drawing.Point(0, 0);
+            this.passwordUpdate.Name = "passwordUpdate";
+            this.passwordUpdate.Size = new System.Drawing.Size(100, 23);
+            this.passwordUpdate.TabIndex = 0;
+            // 
+            // surnameUpdate
+            // 
+            this.surnameUpdate.Location = new System.Drawing.Point(0, 0);
+            this.surnameUpdate.Name = "surnameUpdate";
+            this.surnameUpdate.Size = new System.Drawing.Size(100, 23);
+            this.surnameUpdate.TabIndex = 0;
+            // 
+            // NameUpdate
+            // 
+            this.NameUpdate.Location = new System.Drawing.Point(0, 0);
+            this.NameUpdate.Name = "NameUpdate";
+            this.NameUpdate.Size = new System.Drawing.Size(100, 23);
+            this.NameUpdate.TabIndex = 0;
+            // 
+            // surnameRemoveTextBox
+            // 
+            this.surnameRemoveTextBox.Location = new System.Drawing.Point(0, 0);
+            this.surnameRemoveTextBox.Name = "surnameRemoveTextBox";
+            this.surnameRemoveTextBox.Size = new System.Drawing.Size(100, 20);
+            this.surnameRemoveTextBox.TabIndex = 0;
+            // 
+            // nameRemoveTextBox
+            // 
+            this.nameRemoveTextBox.Location = new System.Drawing.Point(0, 0);
+            this.nameRemoveTextBox.Name = "nameRemoveTextBox";
+            this.nameRemoveTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameRemoveTextBox.TabIndex = 0;
+            // 
+            // surnameRemove
+            // 
+            this.surnameRemove.Location = new System.Drawing.Point(0, 0);
+            this.surnameRemove.Name = "surnameRemove";
+            this.surnameRemove.Size = new System.Drawing.Size(100, 23);
+            this.surnameRemove.TabIndex = 0;
+            // 
+            // NameRemove
+            // 
+            this.NameRemove.Location = new System.Drawing.Point(0, 0);
+            this.NameRemove.Name = "NameRemove";
+            this.NameRemove.Size = new System.Drawing.Size(100, 23);
+            this.NameRemove.TabIndex = 0;
+            // 
+            // StudentRemoveButton
+            // 
+            this.StudentRemoveButton.Location = new System.Drawing.Point(0, 0);
+            this.StudentRemoveButton.Name = "StudentRemoveButton";
+            this.StudentRemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.StudentRemoveButton.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // StudentListPanel
+            // 
+            this.StudentListPanel.Controls.Add(this.dataGridViewStudentLessonList);
+            this.StudentListPanel.Controls.Add(this.dataGridViewStudentsList);
+            this.StudentListPanel.Controls.Add(this.dataGridViewUsersStudentsList);
+            this.StudentListPanel.Location = new System.Drawing.Point(193, 7);
+            this.StudentListPanel.Name = "StudentListPanel";
+            this.StudentListPanel.Size = new System.Drawing.Size(979, 742);
+            this.StudentListPanel.TabIndex = 10;
+            // 
+            // dataGridViewUsersStudentsList
+            // 
+            this.dataGridViewUsersStudentsList.BackgroundColor = System.Drawing.Color.Lime;
+            this.dataGridViewUsersStudentsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsersStudentsList.Location = new System.Drawing.Point(14, 24);
+            this.dataGridViewUsersStudentsList.Name = "dataGridViewUsersStudentsList";
+            this.dataGridViewUsersStudentsList.Size = new System.Drawing.Size(936, 220);
+            this.dataGridViewUsersStudentsList.TabIndex = 0;
+            // 
+            // dataGridViewStudentsList
+            // 
+            this.dataGridViewStudentsList.BackgroundColor = System.Drawing.Color.Lime;
+            this.dataGridViewStudentsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudentsList.Location = new System.Drawing.Point(14, 250);
+            this.dataGridViewStudentsList.Name = "dataGridViewStudentsList";
+            this.dataGridViewStudentsList.Size = new System.Drawing.Size(936, 220);
+            this.dataGridViewStudentsList.TabIndex = 1;
+            // 
+            // dataGridViewStudentLessonList
+            // 
+            this.dataGridViewStudentLessonList.BackgroundColor = System.Drawing.Color.Lime;
+            this.dataGridViewStudentLessonList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudentLessonList.Location = new System.Drawing.Point(14, 476);
+            this.dataGridViewStudentLessonList.Name = "dataGridViewStudentLessonList";
+            this.dataGridViewStudentLessonList.Size = new System.Drawing.Size(936, 220);
+            this.dataGridViewStudentLessonList.TabIndex = 2;
+            // 
             // AdministratorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,7 +501,7 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.studentPanel);
+            this.Controls.Add(this.StudentListPanel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -265,13 +514,18 @@
             this.Controls.Add(this.button1);
             this.Name = "AdministratorPanel";
             this.Text = "AdministratorPanel";
-            this.studentPanel.ResumeLayout(false);
-            this.studentPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.StudentListPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).EndInit();
             this.ResumeLayout(false);
 
         }
         //BU amınakodumun windows formu yorum satırını silmiş
         //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
+        //this.Controls.Add(this.studentPanel);
+        //this.Controls.Add(this.teacherPanel);
         #endregion
 
         private System.Windows.Forms.Button button1;
@@ -319,5 +573,9 @@
         private System.Windows.Forms.Label surnameUpdate;
         private System.Windows.Forms.Label NameUpdate;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel StudentListPanel;
+        private System.Windows.Forms.DataGridView dataGridViewStudentLessonList;
+        private System.Windows.Forms.DataGridView dataGridViewStudentsList;
+        private System.Windows.Forms.DataGridView dataGridViewUsersStudentsList;
     }
 }
