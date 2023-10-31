@@ -19,6 +19,7 @@ namespace Course_Registration_System
             Application.Run(new LoginPanel());
             //SQLCommands sQLCommands = new SQLCommands();
             // murat veritabaninda elinle bir admin olustur ona giris yaparsin su an sayfa gecisleri acik
+            //denemememe
             
             
             
