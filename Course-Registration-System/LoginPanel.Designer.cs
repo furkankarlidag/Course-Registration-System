@@ -68,7 +68,6 @@ namespace Course_Registration_System
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.loginButton);
             this.panel1.Controls.Add(this.usernameTextBox);
@@ -77,7 +76,7 @@ namespace Course_Registration_System
             this.panel1.Controls.Add(this.passwordTextBox);
             this.panel1.Location = new System.Drawing.Point(1, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 561);
+            this.panel1.Size = new System.Drawing.Size(884, 530);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
