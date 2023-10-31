@@ -14,13 +14,14 @@ namespace Course_Registration_System
     public partial class AdministratorPanel : Form
     {
         int studentIdNo = -1 ;
+        int teacherIdNo = -1 ;
 
         SQLCommands sQLCommands = new SQLCommands();
         public AdministratorPanel()
         {
             InitializeComponent();
             this.studentPanel.Visible = false;
-            //this.teacherPanel.Visible = false;
+            this.teacherPanel.Visible = false;
             this.StudentListPanel.Visible = false;
         }
 
@@ -426,6 +427,26 @@ namespace Course_Registration_System
             }
         }
 
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                teacherNameUpdateTextBox.Text = selectedRow.Cells["name"].Value.ToString();
+                teacherSurnameUpdateTextBox.Text = selectedRow.Cells["surname"].Value.ToString();
+                quotaUpdateTextBox.Text = selectedRow.Cells["quota"].Value.ToString();
+
+                string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '" + selectedRow.Cells["name"].Value.ToString() + "' AND Surname = '" + selectedRow.Cells["surname"].Value.ToString() + "'");
+                teacherPasswordUpdateTextBox.Text = sQLCommands.getValue("password", "public.users", "sicilno=" + stringSicil);
+                teacherInterstUpdateTextBox.Text = sQLCommands.getValue("interests", "public.teachers_interest_table", "sicilno=" + stringSicil);
+                teacherIdNo = Convert.ToInt32(stringSicil);
+
+                teacherSurnameRemoveTextBox.Text = selectedRow.Cells["surname"].Value.ToString();
+                teacherNameRemoveTextBox.Text = selectedRow.Cells["name"].Value.ToString();
+            }
+        }
+
         void TeacherPanelComponent() 
         {
             ShowPanel(teacherPanel);
@@ -486,21 +507,54 @@ namespace Course_Registration_System
                 }
 
 
-                this.dataGridView1.DataSource = sQLCommands.showDataTable("sicilno,name,surname,gpa,numberoflesson", "students");
-                this.dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
-                this.dataGridView1.Columns["name"].HeaderText = "İSİM";
-                this.dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
-                this.dataGridView1.Columns["gpa"].HeaderText = "GPA";
-                this.dataGridView1.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+                this.dataGridView2.DataSource = sQLCommands.showDataTable("sicilno,name,surname,quota", "teachers");
+                this.dataGridView2.Columns["sicilno"].HeaderText = "SİCİLNO";
+                this.dataGridView2.Columns["name"].HeaderText = "İSİM";
+                this.dataGridView2.Columns["surname"].HeaderText = "SOYİSİM";
+                this.dataGridView2.Columns["quota"].HeaderText = "KONTENJAN";
+
+            }
+
+        }
+        private void TeacherUpdateButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                if (teacherNameUpdateTextBox.Text != selectedRow.Cells["name"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.teachers", "name", "sicilno", teacherIdNo.ToString(), teacherNameUpdateTextBox.Text);
+                }
+                if (teacherSurnameUpdateTextBox.Text != selectedRow.Cells["surname"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.teachers", "surname", "sicilno", teacherIdNo.ToString(), teacherSurnameUpdateTextBox.Text);
+                }
+                if (quotaUpdateTextBox.Text != selectedRow.Cells["quota"].Value.ToString())
+                {
+                    sQLCommands.updateData("public.teachers", "quota", "sicilno", teacherIdNo.ToString(), quotaUpdateTextBox.Text);
+                }
+                string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '" + selectedRow.Cells["name"].Value.ToString() + "' AND Surname = '" + selectedRow.Cells["surname"].Value.ToString() + "'");
+                if (teacherPasswordUpdateTextBox.Text != stringSicil)
+                {
+                    sQLCommands.updateData("public.users", "password", "sicilno", teacherIdNo.ToString(), teacherPasswordUpdateTextBox.Text);
+                }
+
+
+                this.dataGridView2.DataSource = sQLCommands.showDataTable("sicilno,name,surname,quota", "teachers");
+                this.dataGridView2.Columns["sicilno"].HeaderText = "SİCİLNO";
+                this.dataGridView2.Columns["name"].HeaderText = "İSİM";
+                this.dataGridView2.Columns["surname"].HeaderText = "SOYİSİM";
+                this.dataGridView2.Columns["quota"].HeaderText = "KONTENJAN";
 
             }
 
         }
         private void StudentRemoveButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView2.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
 
                 string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '" + selectedRow.Cells["name"].Value.ToString() + "' AND Surname = '" + selectedRow.Cells["surname"].Value.ToString() + "'");
                 if (passwordUpdateTextBox.Text != stringSicil)
@@ -508,6 +562,31 @@ namespace Course_Registration_System
                     sQLCommands.delete("public.students", "sicilno", stringSicil);
                     sQLCommands.delete("public.users","sicilno",stringSicil);
                     
+                }
+
+
+                this.dataGridView2.DataSource = sQLCommands.showDataTable("sicilno,name,surname,quota", "teachers");
+                this.dataGridView2.Columns["sicilno"].HeaderText = "SİCİLNO";
+                this.dataGridView2.Columns["name"].HeaderText = "İSİM";
+                this.dataGridView2.Columns["surname"].HeaderText = "SOYİSİM";
+                this.dataGridView2.Columns["quota"].HeaderText = "KONTENJAN";
+
+            }
+
+        }
+
+        private void TeacherRemoveButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                string stringSicil = sQLCommands.getValue("sicilno", "public.users", "Name = '" + selectedRow.Cells["name"].Value.ToString() + "' AND Surname = '" + selectedRow.Cells["surname"].Value.ToString() + "'");
+                if (passwordUpdateTextBox.Text != stringSicil)
+                {
+                    sQLCommands.delete("public.teachers", "sicilno", stringSicil);
+                    sQLCommands.delete("public.users", "sicilno", stringSicil);
+
                 }
 
 

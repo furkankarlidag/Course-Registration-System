@@ -21,7 +21,6 @@ namespace Course_Registration_System
             string password = this.passwordTextBox.Text;
             int sicilID = int.Parse(this.usernameTextBox.Text);
            
-            AdministratorPanel adminPanel = new AdministratorPanel();
            
             SQLCommands sQLCommands = new SQLCommands();
             if (sQLCommands.control(sicilID, password) == "student")
@@ -38,6 +37,7 @@ namespace Course_Registration_System
 
             else if (sQLCommands.control(sicilID, password) == "admin")
             {
+                AdministratorPanel adminPanel = new AdministratorPanel();
                 adminPanel.Visible = true;
             }
 
