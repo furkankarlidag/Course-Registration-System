@@ -21,7 +21,7 @@ namespace Course_Registration_System
         {
             InitializeComponent();
             this.studentPanel.Visible = false;
-            //this.teacherPanel.Visible = false;
+            this.teacherPanel.Visible = false;
             this.StudentListPanel.Visible = false;
         }
 

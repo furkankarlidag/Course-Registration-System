@@ -840,8 +840,10 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.panel1);
+            //this.Controls.Add(this.panel1);
             this.Controls.Add(this.button10);
+            this.Controls.Add(this.studentPanel);
+            this.Controls.Add(this.teacherPanel);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
