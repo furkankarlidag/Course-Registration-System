@@ -17,8 +17,9 @@ namespace Course_Registration_System
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginPanel());
-
+            // .netin allah belasini versin
             // murat veritabaninda elinle bir admin olustur ona giris yaparsin su an sayfa gecisleri acik
+            //denemememe
             
             
             
