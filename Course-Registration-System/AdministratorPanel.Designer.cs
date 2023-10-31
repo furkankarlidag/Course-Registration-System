@@ -80,6 +80,10 @@
             this.teacherSurnameAdd = new System.Windows.Forms.Label();
             this.teacherNameAdd = new System.Windows.Forms.Label();
             this.teacherPanel = new System.Windows.Forms.Panel();
+            this.teacherInterstUpdate = new System.Windows.Forms.Label();
+            this.teacherInterstUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.teacherInterstAdd = new System.Windows.Forms.Label();
+            this.teacherInterstAddTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.teacherSurnameRemoveTextBox = new System.Windows.Forms.TextBox();
             this.teacherNameRemoveTextBox = new System.Windows.Forms.TextBox();
@@ -98,10 +102,7 @@
             this.dataGridViewStudentLessonList = new System.Windows.Forms.DataGridView();
             this.dataGridViewStudentsList = new System.Windows.Forms.DataGridView();
             this.dataGridViewUsersStudentsList = new System.Windows.Forms.DataGridView();
-            this.teacherInterstAdd = new System.Windows.Forms.Label();
-            this.teacherInterstAddTextBox = new System.Windows.Forms.TextBox();
-            this.teacherInterstUpdate = new System.Windows.Forms.Label();
-            this.teacherInterstUpdateTextBox = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.teacherPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -494,7 +495,7 @@
             this.TeacherUpdateButton.TabIndex = 22;
             this.TeacherUpdateButton.Text = "Düzenleme";
             this.TeacherUpdateButton.UseVisualStyleBackColor = false;
-            this.TeacherUpdateButton.Click += new System.EventHandler(this.StudentUpdateButton_Click);
+            this.TeacherUpdateButton.Click += new System.EventHandler(this.TeacherUpdateButton_Click);
             // 
             // TeacherAddButton
             // 
@@ -619,6 +620,42 @@
             this.teacherPanel.Size = new System.Drawing.Size(979, 737);
             this.teacherPanel.TabIndex = 10;
             // 
+            // teacherInterstUpdate
+            // 
+            this.teacherInterstUpdate.AutoSize = true;
+            this.teacherInterstUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstUpdate.Location = new System.Drawing.Point(330, 188);
+            this.teacherInterstUpdate.Name = "teacherInterstUpdate";
+            this.teacherInterstUpdate.Size = new System.Drawing.Size(141, 29);
+            this.teacherInterstUpdate.TabIndex = 44;
+            this.teacherInterstUpdate.Text = "İlgi Alanları:";
+            // 
+            // teacherInterstUpdateTextBox
+            // 
+            this.teacherInterstUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstUpdateTextBox.Location = new System.Drawing.Point(471, 184);
+            this.teacherInterstUpdateTextBox.Name = "teacherInterstUpdateTextBox";
+            this.teacherInterstUpdateTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherInterstUpdateTextBox.TabIndex = 45;
+            // 
+            // teacherInterstAdd
+            // 
+            this.teacherInterstAdd.AutoSize = true;
+            this.teacherInterstAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAdd.Location = new System.Drawing.Point(4, 184);
+            this.teacherInterstAdd.Name = "teacherInterstAdd";
+            this.teacherInterstAdd.Size = new System.Drawing.Size(141, 29);
+            this.teacherInterstAdd.TabIndex = 42;
+            this.teacherInterstAdd.Text = "İlgi Alanları:";
+            // 
+            // teacherInterstAddTextBox
+            // 
+            this.teacherInterstAddTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAddTextBox.Location = new System.Drawing.Point(145, 184);
+            this.teacherInterstAddTextBox.Name = "teacherInterstAddTextBox";
+            this.teacherInterstAddTextBox.Size = new System.Drawing.Size(174, 33);
+            this.teacherInterstAddTextBox.TabIndex = 43;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.LightGreen;
@@ -678,7 +715,7 @@
             this.TeacherRemoveButton.TabIndex = 33;
             this.TeacherRemoveButton.Text = "Sil";
             this.TeacherRemoveButton.UseVisualStyleBackColor = false;
-            this.TeacherRemoveButton.Click += new System.EventHandler(this.StudentRemoveButton_Click);
+            this.TeacherRemoveButton.Click += new System.EventHandler(this.TeacherRemoveButton_Click);
             // 
             // teacherPasswordUpdateTextBox
             // 
@@ -789,41 +826,12 @@
             this.dataGridViewUsersStudentsList.Size = new System.Drawing.Size(936, 220);
             this.dataGridViewUsersStudentsList.TabIndex = 0;
             // 
-            // teacherInterstAdd
+            // panel1
             // 
-            this.teacherInterstAdd.AutoSize = true;
-            this.teacherInterstAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherInterstAdd.Location = new System.Drawing.Point(4, 184);
-            this.teacherInterstAdd.Name = "teacherInterstAdd";
-            this.teacherInterstAdd.Size = new System.Drawing.Size(141, 29);
-            this.teacherInterstAdd.TabIndex = 42;
-            this.teacherInterstAdd.Text = "İlgi Alanları:";
-            // 
-            // teacherInterstAddTextBox
-            // 
-            this.teacherInterstAddTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherInterstAddTextBox.Location = new System.Drawing.Point(145, 184);
-            this.teacherInterstAddTextBox.Name = "teacherInterstAddTextBox";
-            this.teacherInterstAddTextBox.Size = new System.Drawing.Size(174, 33);
-            this.teacherInterstAddTextBox.TabIndex = 43;
-            // 
-            // teacherInterstUpdate
-            // 
-            this.teacherInterstUpdate.AutoSize = true;
-            this.teacherInterstUpdate.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherInterstUpdate.Location = new System.Drawing.Point(330, 188);
-            this.teacherInterstUpdate.Name = "teacherInterstUpdate";
-            this.teacherInterstUpdate.Size = new System.Drawing.Size(141, 29);
-            this.teacherInterstUpdate.TabIndex = 44;
-            this.teacherInterstUpdate.Text = "İlgi Alanları:";
-            // 
-            // teacherInterstUpdateTextBox
-            // 
-            this.teacherInterstUpdateTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.teacherInterstUpdateTextBox.Location = new System.Drawing.Point(471, 184);
-            this.teacherInterstUpdateTextBox.Name = "teacherInterstUpdateTextBox";
-            this.teacherInterstUpdateTextBox.Size = new System.Drawing.Size(174, 33);
-            this.teacherInterstUpdateTextBox.TabIndex = 45;
+            this.panel1.Location = new System.Drawing.Point(193, 11);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(979, 738);
+            this.panel1.TabIndex = 10;
             // 
             // AdministratorPanel
             // 
@@ -832,7 +840,7 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.teacherPanel);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -937,5 +945,6 @@
         private System.Windows.Forms.TextBox teacherInterstUpdateTextBox;
         private System.Windows.Forms.Label teacherInterstAdd;
         private System.Windows.Forms.TextBox teacherInterstAddTextBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }
