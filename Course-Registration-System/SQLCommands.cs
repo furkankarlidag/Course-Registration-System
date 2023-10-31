@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using iTextSharp.text;
+using Npgsql;
 using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,55 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+        public List<int> returnTeacher()
+        {
+            connection.Open();
+            List<int> list = new List<int>();
+            string sql = "SELECT * FROM teachers";
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        
+                        int teacherId = Convert.ToInt32(row["sicilno"]);
+                        list.Add(teacherId);
+                        
+                    }
+                }
+            }
+            connection.Close();
+            return list;
+        }
+
+        public int returnMessageNum()
+        {
+            int numberofMessages = 0;
+            connection.Open();
+            
+            string sql = "SELECT * FROM messages";
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        numberofMessages++;
+                        
+                    }
+                }
+            }
+            connection.Close();
+            return numberofMessages;
+        }
+
         public DataTable showQueryDataTable(string column, string table , string where, string value)
         {
             connection.Open();
@@ -111,6 +161,56 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+
+        public void sendRequest(int senderID,int receiptID,string message,int messageNo)
+        {
+            connection.Open();
+            string query = "INSERT INTO messages (senderid,receiptid,message,messageno) values (@p1,@p2,@p3,@p4)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query,connection);
+            cmd.Parameters.AddWithValue("p1", senderID);
+            cmd.Parameters.AddWithValue("p2", receiptID);
+            cmd.Parameters.AddWithValue("p3", message);
+            cmd.Parameters.AddWithValue("p4", messageNo);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+        }
+
+        public int findUserID(string type,string nameSurname)
+        {
+            string name = string.Empty;
+            string surname = string.Empty;
+            string[] nameParts = nameSurname.Split(' ');
+
+            if (nameParts.Length == 2)
+            {
+                name = nameParts[0];
+                surname = nameParts[1];
+            }
+            int userID = 0;
+            string sql = "SELECT sicilno FROM " + type + " WHERE name=@p1 AND surname=@p2";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("p1", name);
+                command.Parameters.AddWithValue("p2", surname);
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+
+                        userID = Convert.ToInt32(row["sicilno"]);
+                        
+
+                    }
+                }
+            }
+            connection.Close();
+            return userID;
+
         public int dataCount(string column, string table, string where, string value)
         {
             int count = 0;
@@ -141,6 +241,7 @@ namespace Course_Registration_System
 
             connection.Close();
             return count;
+
 
         }
 
@@ -339,6 +440,24 @@ namespace Course_Registration_System
             }
             connection.Close();
             return userID;
+        }
+
+        public string getInfoAboutTeacher(int id)
+        {
+            connection.Open();
+            string info = string.Empty;
+            string query = "SELECT name,surname FROM teachers WHERE sicilno=@p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@p1", id);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                info = reader.GetString(0) + " " + reader.GetString(1); 
+                 
+
+            }
+            connection.Close();
+           return info;
         }
 
         public void insertLessonFromPDF(string lessonID,string lessonName,int credit)
