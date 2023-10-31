@@ -664,6 +664,8 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(568, 405);
             this.dataGridView2.TabIndex = 41;
+            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+
             // 
             // teacherSurnameRemoveTextBox
             // 
@@ -844,6 +846,7 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.studentPanel);
             this.Controls.Add(this.teacherPanel);
+            this.Controls.Add(this.StudentListPanel);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);

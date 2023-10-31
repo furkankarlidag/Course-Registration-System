@@ -23,16 +23,16 @@ namespace Course_Registration_System
            
            
             SQLCommands sQLCommands = new SQLCommands();
-            if (sQLCommands.control(sicilID, password) == "student")
+            if (sQLCommands.control(sicilID, password) == "Student")
             {
                 studentForm studentForm = new studentForm(sicilID);
                  studentForm.Visible = true;
 
             }
 
-            else if (sQLCommands.control(sicilID, password) == "teacher")
+            else if (sQLCommands.control(sicilID, password) == "Teacher")
             {
-                //teacherPanel.Visible = true;
+                teacherPanel.Visible = true;
             }
 
             else if (sQLCommands.control(sicilID, password) == "admin")
