@@ -161,6 +161,7 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+
         public void sendRequest(int senderID,int receiptID,string message,int messageNo)
         {
             connection.Open();
@@ -209,6 +210,39 @@ namespace Course_Registration_System
             }
             connection.Close();
             return userID;
+
+        public int dataCount(string column, string table, string where, string value)
+        {
+            int count = 0;
+            connection.Open();
+            string query = "select " + "Count("+column+")" + " from " + table + " where " + where + " = @p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
+
+            object num = cmd.ExecuteScalar();
+
+            if (num != null)
+            {
+                count = Convert.ToInt32(num);
+            }
+
+            connection.Close();
+            return count;
+
+
         }
 
         public void addUser(string name, string surname, string password, string type)
@@ -353,6 +387,59 @@ namespace Course_Registration_System
             }
             connection.Close();
             return studentInfo;
+        }
+        public string getInfoAboutTeacher(int id)
+        {
+            connection.Open();
+            string info = string.Empty;
+            string query = "SELECT name,surname FROM teachers WHERE sicilno=@p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@p1", id);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                info = reader.GetString(0) + " " + reader.GetString(1);
+
+
+            }
+            connection.Close();
+            return info;
+        }
+
+        public int findUserID(string type, string nameSurname)
+        {
+            string name = string.Empty;
+            string surname = string.Empty;
+            string[] nameParts = nameSurname.Split(' ');
+
+            if (nameParts.Length == 2)
+            {
+                name = nameParts[0];
+                surname = nameParts[1];
+            }
+            int userID = 0;
+            string sql = "SELECT sicilno FROM " + type + " WHERE name=@p1 AND surname=@p2";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("p1", name);
+                command.Parameters.AddWithValue("p2", surname);
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+
+                        userID = Convert.ToInt32(row["sicilno"]);
+
+
+                    }
+                }
+            }
+            connection.Close();
+            return userID;
         }
 
         public string getInfoAboutTeacher(int id)
