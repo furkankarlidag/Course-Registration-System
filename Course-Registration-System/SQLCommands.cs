@@ -161,6 +161,52 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+        public DataTable showTwoQueryDataTable(string column, string table, string where, string value, string where2, string value2)
+        {
+            connection.Open();
+            string query = "select " + column + " from " + table + " where " + where + " = @p1  and "+where2 + " = @p2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
+
+            if (IsNumeric(value2))
+            {
+                if (int.TryParse(value2, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(value2, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value2);
+
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd);
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            connection.Close();
+            return dataTable;
+        }
+
         public void sendRequest(int senderID, int receiptID, string message, int messageNo)
         {
             connection.Open();
@@ -241,8 +287,52 @@ namespace Course_Registration_System
 
             connection.Close();
             return count;
+        }
+        public int garipCount(string column, string table, string where, string value, string where2, string value2)
+        {
+            int count = 0;
+            connection.Open();
+            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and "+ where2 + " = @p2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    cmd.Parameters.AddWithValue("p1", numbbur);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
 
+            if (IsNumeric(value2))
+            {
+                if (int.TryParse(value2, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    cmd.Parameters.AddWithValue("p2", numbbur);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value);
 
+            object num = cmd.ExecuteScalar();
+
+            if (num != null)
+            {
+                count = Convert.ToInt32(num);
+            }
+
+            connection.Close();
+            return count;
         }
         public void addUser(string name, string surname, string password, string type)
         {

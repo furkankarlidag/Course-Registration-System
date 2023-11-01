@@ -25,6 +25,7 @@ namespace Course_Registration_System
         void ShowPanel(Panel panel)
         {
             teacherInterestPanel.Visible = false;
+            teacherLessonRequestPanel.Visible= false;
 
             panel.Visible = true;
         }
@@ -40,8 +41,9 @@ namespace Course_Registration_System
 
         private void teacherLessonRequestbutton_Click(object sender, EventArgs e)
         {
-            int teacherRequestCount = sQLCommands.dataCount("*", "request_table", "status", "Bekliyor");
-            DataTable dataTable= sQLCommands.showQueryDataTable("*", "request_table", "status", "Bekliyor");
+            ShowPanel(teacherLessonRequestPanel);
+            int teacherRequestCount = sQLCommands.garipCount("*", "request_table", "status", "Bekliyor", "receiptid", teacherId.ToString());
+            DataTable dataTable= sQLCommands.showTwoQueryDataTable("*", "request_table", "status", "Bekliyor","receiptid",teacherId.ToString());
             int num = 24;
             int i = 1;
 
@@ -51,30 +53,33 @@ namespace Course_Registration_System
                 {
                     string name;
                     string surname;
-                    DataTable data = sQLCommands.showQueryDataTable("name,surname", "users", "sicilno", (string)row["senderid"]);
-                    foreach(DataRow row2 in dataTable.Rows) 
-                    {
-                        
-                    }
-                    //private System.Windows.Forms.Panel panel1;
-                    //private System.Windows.Forms.Label lessonRequestStudentNameLabel;
-                    //private System.Windows.Forms.Label lessonRequestLessonNameLabel;
-                    //private System.Windows.Forms.Button lessonRequestDeclineButton;
-                    //private System.Windows.Forms.Button lessonRequestAcceptButton;
+                    string lessonName;
+                    DataTable data = sQLCommands.showQueryDataTable("name,surname", "users", "sicilno", row["senderid"].ToString());
+                    DataTable data2 = sQLCommands.showQueryDataTable("dersisim", "acilandersler", "dersid", row["dersid"].ToString());
+                    DataRow row2 = data.Rows[0];
+                    DataRow row1 = data2.Rows[0];
+                    name= row2["name"].ToString();
+                    surname = row2["surname"].ToString();
+                    lessonName = row1["dersisim"].ToString();
+                    System.Windows.Forms.Panel panel1;
+                    System.Windows.Forms.Label lessonRequestLessonNameLabel;
+                    System.Windows.Forms.Button lessonRequestDeclineButton;
+                    System.Windows.Forms.Button lessonRequestAcceptButton;
+                    System.Windows.Forms.LinkLabel lessonRequestStudentNameLabel;
                     panel1 = new System.Windows.Forms.Panel();
                     lessonRequestDeclineButton = new System.Windows.Forms.Button();
                     lessonRequestAcceptButton = new System.Windows.Forms.Button();
                     lessonRequestLessonNameLabel = new System.Windows.Forms.Label();
-                    lessonRequestStudentNameLabel = new System.Windows.Forms.Label();
+                    lessonRequestStudentNameLabel = new System.Windows.Forms.LinkLabel();
 
                     // 
                     // panel1
                     // 
                     panel1.BackColor = System.Drawing.Color.Aquamarine;
-                    panel1.Controls.Add(this.lessonRequestDeclineButton);
-                    panel1.Controls.Add(this.lessonRequestAcceptButton);
-                    panel1.Controls.Add(this.lessonRequestLessonNameLabel);
-                    panel1.Controls.Add(this.lessonRequestStudentNameLabel);
+                    panel1.Controls.Add(lessonRequestDeclineButton);
+                    panel1.Controls.Add(lessonRequestAcceptButton);
+                    panel1.Controls.Add(lessonRequestLessonNameLabel);
+                    panel1.Controls.Add(lessonRequestStudentNameLabel);
                     panel1.Cursor = System.Windows.Forms.Cursors.Default;
                     panel1.Location = new System.Drawing.Point(24, num*i);
                     panel1.Name = "panel1";
@@ -116,24 +121,25 @@ namespace Course_Registration_System
                     lessonRequestLessonNameLabel.Name = "lessonRequestLessonNameLabel";
                     lessonRequestLessonNameLabel.Size = new System.Drawing.Size(73, 29);
                     lessonRequestLessonNameLabel.TabIndex = 1;
-                    lessonRequestLessonNameLabel.Text = "label1";
+                    lessonRequestLessonNameLabel.Text = lessonName;
                     // 
                     // lessonRequestStudentNameLabel
                     // 
+                   
                     lessonRequestStudentNameLabel.AutoSize = true;
                     lessonRequestStudentNameLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+                    lessonRequestStudentNameLabel.LinkColor = System.Drawing.Color.Black;
                     lessonRequestStudentNameLabel.Location = new System.Drawing.Point(12, 17);
                     lessonRequestStudentNameLabel.Name = "lessonRequestStudentNameLabel";
-                    lessonRequestStudentNameLabel.Size = new System.Drawing.Size(73, 29);
-                    lessonRequestStudentNameLabel.TabIndex = 0;
-                    lessonRequestStudentNameLabel.Text = (string)row["Name"]+" "+;
+                    lessonRequestStudentNameLabel.Size = new System.Drawing.Size(119, 29);
+                    lessonRequestStudentNameLabel.TabIndex = 4;
+                    lessonRequestStudentNameLabel.TabStop = true;
+                    lessonRequestStudentNameLabel.Text = name + " " + surname; ;
+                    lessonRequestStudentNameLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 
                     this.teacherLessonRequestPanel.Controls.Add(panel1);
 
-                    int id = (int)row["ID"];
-                    string name = (string)row["Name"];
-
-                    
+                    i++;      
                 }
             }
 
@@ -147,6 +153,11 @@ namespace Course_Registration_System
         }
 
         private void lessonRequestDeclineButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }

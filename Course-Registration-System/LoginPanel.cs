@@ -32,6 +32,7 @@ namespace Course_Registration_System
 
             else if (sQLCommands.control(sicilID, password) == "Teacher")
             {
+                teacherPanel teacherPanel = new teacherPanel(sicilID);
                 teacherPanel.Visible = true;
             }
 
