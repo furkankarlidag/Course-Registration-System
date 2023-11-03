@@ -69,7 +69,7 @@ namespace Course_Registration_System
                 Button button68 = new Button();
 
                 panel68.BackColor = System.Drawing.Color.MediumSeaGreen;
-               // panel68.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                // panel68.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 panel68.Controls.Add(button68);
                 panel68.Controls.Add(label98);
                 panel68.Controls.Add(label88);
@@ -109,7 +109,7 @@ namespace Course_Registration_System
                 button68.Size = new System.Drawing.Size(75, 23);
                 button68.TabIndex = 2;
                 button68.Text = " SIL";
-                
+
 
                 gelenmesaj.Controls.Add(panel68);
 
@@ -120,7 +120,7 @@ namespace Course_Registration_System
 
         }
 
-        
+
 
         public void comboBoxFill()
         {
@@ -214,11 +214,11 @@ namespace Course_Registration_System
         private void button5_Click(object sender, EventArgs e)
         {
             Console.WriteLine(textBox1.Text);
-            
+
             SQLCommands sQLCommands = new SQLCommands();
-           Random random = new Random();
+            Random random = new Random();
             //Console.WriteLine(sQLCommands.findUserID("teachers", comboBox1.SelectedText));
-            sQLCommands.sendMessage(sicilNo, sQLCommands.findUserID("teachers", comboBox1.SelectedItem.ToString()), textBox1.Text, random.Next(1,100));
+            sQLCommands.sendMessage(sicilNo, sQLCommands.findUserID("teachers", comboBox1.SelectedItem.ToString()), textBox1.Text, random.Next(1, 100));
             textBox1.Text = "Mesajinizi buraya giriniz!.";
             MessageBox.Show("Mesajiniz basairiyla gonderdildi.", "Basarili Islem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadMessages();
@@ -232,7 +232,7 @@ namespace Course_Registration_System
             }
             messageSendPanel.Visible = true;
         }
-       
+
 
         public void loadMessages()
         {
@@ -262,7 +262,7 @@ namespace Course_Registration_System
                             Panel panel5 = new Panel();
                             panel5.BackColor = System.Drawing.Color.MediumSeaGreen;
                             panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-                           // panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                            // panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                             panel5.Location = new System.Drawing.Point(23, panelY + i * 130);
                             panel5.Name = "panel5";
                             panel5.Size = new System.Drawing.Size(660, 99);
@@ -301,7 +301,7 @@ namespace Course_Registration_System
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
             foreach (Panel panel1 in subPanels)
             {
                 panel1.Visible = false;
@@ -330,25 +330,25 @@ namespace Course_Registration_System
                         {
                             teacherID = reader.GetInt32(0);
                             interest = reader.GetString(1);
-                           
+
                             Label label96 = new Label();
 
                             label96.BackColor = System.Drawing.Color.Teal;
                             //label96.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                             label96.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                             label96.ForeColor = System.Drawing.SystemColors.Control;
-                            label96.Location = new System.Drawing.Point(11, sizeY + i*35);
+                            label96.Location = new System.Drawing.Point(11, sizeY + i * 35);
                             label96.Name = "label9";
                             label96.Size = new System.Drawing.Size(709, 27);
                             label96.TabIndex = 1;
-                            label96.Text = sQLCommands.getInfoAboutTeacher(teacherID) + " - " + interest + 
+                            label96.Text = sQLCommands.getInfoAboutTeacher(teacherID) + " - " + interest +
                                 "     *** Kontenjan: " + sQLCommands.numOfQuote(teacherID);
                             this.panel6.Controls.Add(label96);
-                        
+
                             i++;
 
                             comboBox2.Items.Add(sQLCommands.getInfoAboutTeacher(teacherID));
-                           
+
                         }
                     }
                 }
@@ -359,7 +359,8 @@ namespace Course_Registration_System
                 {
                     comboBox3.Items.Add(dersisimler[j]);
                 }
-                if (sQLCommands.compareLessons(sicilNo)){
+                if (sQLCommands.compareLessons(sicilNo))
+                {
                     choosingPanel.Controls.Remove(this.panel7);
                     Panel panel77 = new Panel();
                     panel77.BackColor = System.Drawing.Color.Red;
@@ -369,13 +370,13 @@ namespace Course_Registration_System
                     panel77.TabIndex = 5;
 
                     Label label = new Label();
-                    label.AutoSize  = true;
+                    label.AutoSize = true;
                     label.BackColor = System.Drawing.Color.Transparent;
                     label.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     label.ForeColor = System.Drawing.Color.White;
                     label.Text = "ACILAN TUM DERSLERI SECTINIZ!!!";
                     label.Location = new System.Drawing.Point(180, 75);
-                    
+
                     label.Size = new System.Drawing.Size(243, 26);
                     panel77.Controls.Add(label);
                     choosingPanel.Controls.Add(panel77);
@@ -391,7 +392,7 @@ namespace Course_Registration_System
             {
                 MessageBox.Show("LUTFEN TRANSKRIPTINIZI SISTEME YUKLEYINIZ!!!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 scanPDF scanpdf = new scanPDF(sicilNo);
-                scanpdf.ShowDialog();   
+                scanpdf.ShowDialog();
             }
             else
             {
@@ -445,7 +446,7 @@ namespace Course_Registration_System
 
                             Panel panel91 = new Panel();
                             panel91.BackColor = System.Drawing.Color.DarkSlateGray;
-                           // panel91.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                            // panel91.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
                             panel91.Location = new System.Drawing.Point(22, indexofY + i * 130); // 130 yerine panel yüksekliği ne ise onu kullanabilirsiniz
                             panel91.Name = "panel91";
@@ -520,7 +521,7 @@ namespace Course_Registration_System
             SQLCommands sQLCommands = new SQLCommands();
             int receiptid = 0;
             string dersid = string.Empty;
-               
+
             int i = 0;
             int sizeofY = 72;
             string connectionString = "server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345";
@@ -546,9 +547,9 @@ namespace Course_Registration_System
                             Label label173 = new Label();
                             Label label183 = new Label();
                             panel93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-                           // panel93.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                            // panel93.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                            panel93.Location = new System.Drawing.Point(23, sizeofY + i*130);
+                            panel93.Location = new System.Drawing.Point(23, sizeofY + i * 130);
                             panel93.Name = "panel9";
                             panel93.Size = new System.Drawing.Size(714, 103);
                             panel93.TabIndex = 3;
@@ -603,8 +604,69 @@ namespace Course_Registration_System
                     }
                 }
                 connection.Close();
+
+
+
                 denemePanel.Visible = true;
-                
+
+            }
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            this.panel6.Controls.Clear();
+            SQLCommands sQLCommands = new SQLCommands();
+            int sizeY = 12;
+            string interest = string.Empty;
+            int teacherID = 0;
+            int i = 0;
+
+            string connectionString = "server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345";
+            this.panel6.Controls.Clear();
+            comboBox2.Items.Clear();
+            comboBox3.Items.Clear();
+            Console.WriteLine(this.interestsComboBox.SelectedItem);
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = "SELECT sicilno, interests FROM teachers_interest_table WHERE interests=@p1 ";
+                using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("p1", this.interestsComboBox.SelectedItem.ToString());
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            teacherID = reader.GetInt32(0);
+                            interest = reader.GetString(1);
+
+                            Label label96 = new Label();
+                            //if (!this.interestsComboBox.Items.Contains(interest))
+                           // {
+                                this.interestsComboBox.Items.Add(interest);
+                           // }
+                            label96.BackColor = System.Drawing.Color.Teal;
+                            //label96.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                            label96.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                            label96.ForeColor = System.Drawing.SystemColors.Control;
+                            label96.Location = new System.Drawing.Point(11, sizeY + i * 35);
+                            label96.Name = "label9";
+                            label96.Size = new System.Drawing.Size(709, 27);
+                            label96.TabIndex = 1;
+                            label96.Text = sQLCommands.getInfoAboutTeacher(teacherID) + " - " + interest +
+                                "     *** Kontenjan: " + sQLCommands.numOfQuote(teacherID);
+                            this.panel6.Controls.Add(label96);
+
+                            i++;
+
+                            //comboBox2.Items.Add(sQLCommands.getInfoAboutTeacher(teacherID));
+
+                        }
+                    }
+                }
+                connection.Close();
+                //this.interestsComboBox.Items.Clear();
             }
         }
     }
