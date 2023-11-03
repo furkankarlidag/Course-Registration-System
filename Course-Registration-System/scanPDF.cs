@@ -26,8 +26,8 @@ namespace Course_Registration_System
             idNo.Text = sicilNo.ToString();
             SQLCommands sQLCommands = new SQLCommands();
             List<string> studentInfo = sQLCommands.getInfoAboutStudent(sicilNo);
-            nameLabel.Text = studentInfo[0];
-            surnameLabel.Text = studentInfo[1];
+            nameLabel.Text = studentInfo[0] + " " + studentInfo[1];
+            //surnameLabel.Text = studentInfo[1];
             if (sQLCommands.lessonsControl(sicilNo))
             {
                 transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
