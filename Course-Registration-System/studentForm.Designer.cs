@@ -42,6 +42,7 @@ namespace Course_Registration_System
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,7 +51,24 @@ namespace Course_Registration_System
             this.messageButton = new System.Windows.Forms.Button();
             this.acilanDerslerPanel = new System.Windows.Forms.Panel();
             this.acilanDerslerLabel = new System.Windows.Forms.Label();
-            this.messagePanel = new System.Windows.Forms.Panel();
+            this.denemePanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.requestPanel = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.choosingPanel = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.gelenmesaj = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,16 +81,19 @@ namespace Course_Registration_System
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.gelenmesaj = new System.Windows.Forms.Panel();
+            this.comingMessagePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.acilanDerslerPanel.SuspendLayout();
-            this.messagePanel.SuspendLayout();
+            this.denemePanel.SuspendLayout();
+            this.requestPanel.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.choosingPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.messageSendPanel.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.comingMessagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,9 +111,9 @@ namespace Course_Registration_System
             // 
             // surname
             // 
-            this.surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.surname.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.surname.ForeColor = System.Drawing.Color.White;
-            this.surname.Location = new System.Drawing.Point(760, 78);
+            this.surname.Location = new System.Drawing.Point(787, 78);
             this.surname.Name = "surname";
             this.surname.Size = new System.Drawing.Size(200, 23);
             this.surname.TabIndex = 4;
@@ -100,9 +121,9 @@ namespace Course_Registration_System
             // 
             // name
             // 
-            this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.ForeColor = System.Drawing.Color.White;
-            this.name.Location = new System.Drawing.Point(760, 55);
+            this.name.Location = new System.Drawing.Point(787, 53);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(215, 23);
             this.name.TabIndex = 3;
@@ -112,7 +133,7 @@ namespace Course_Registration_System
             // 
             this.sicilID.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sicilID.ForeColor = System.Drawing.Color.White;
-            this.sicilID.Location = new System.Drawing.Point(759, 21);
+            this.sicilID.Location = new System.Drawing.Point(786, 19);
             this.sicilID.Name = "sicilID";
             this.sicilID.Size = new System.Drawing.Size(201, 34);
             this.sicilID.TabIndex = 2;
@@ -149,6 +170,7 @@ namespace Course_Registration_System
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
@@ -159,6 +181,18 @@ namespace Course_Registration_System
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(195, 591);
             this.panel2.TabIndex = 1;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.LimeGreen;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(23, 435);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(158, 39);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "ALINAN DERSLER";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button2
             // 
@@ -180,8 +214,9 @@ namespace Course_Registration_System
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(158, 39);
             this.button4.TabIndex = 4;
-            this.button4.Text = "ALINAN DERSLER";
+            this.button4.Text = "TALEPLER";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -193,6 +228,7 @@ namespace Course_Registration_System
             this.button3.TabIndex = 3;
             this.button3.Text = "DERS SEÇİMİ";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // acilanderslerbutton
             // 
@@ -250,16 +286,198 @@ namespace Course_Registration_System
             this.acilanDerslerLabel.TabIndex = 0;
             this.acilanDerslerLabel.Text = "AÇILAN DERSLER";
             // 
-            // messagePanel
+            // denemePanel
             // 
-            this.messagePanel.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.messagePanel.Controls.Add(this.gelenmesaj);
-            this.messagePanel.Controls.Add(this.label7);
-            this.messagePanel.Location = new System.Drawing.Point(190, 124);
-            this.messagePanel.Name = "messagePanel";
-            this.messagePanel.Size = new System.Drawing.Size(774, 591);
-            this.messagePanel.TabIndex = 3;
-            this.messagePanel.Visible = false;
+            this.denemePanel.AutoScroll = true;
+            this.denemePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.denemePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.denemePanel.Controls.Add(this.label14);
+            this.denemePanel.Location = new System.Drawing.Point(190, 124);
+            this.denemePanel.Name = "denemePanel";
+            this.denemePanel.Size = new System.Drawing.Size(774, 591);
+            this.denemePanel.TabIndex = 3;
+            this.denemePanel.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(15, 14);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(377, 45);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "ALINAN DERSLER";
+            // 
+            // requestPanel
+            // 
+            this.requestPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.requestPanel.Controls.Add(this.panel8);
+            this.requestPanel.Controls.Add(this.label13);
+            this.requestPanel.Location = new System.Drawing.Point(190, 124);
+            this.requestPanel.Name = "requestPanel";
+            this.requestPanel.Size = new System.Drawing.Size(774, 591);
+            this.requestPanel.TabIndex = 3;
+            this.requestPanel.Visible = false;
+            // 
+            // panel8
+            // 
+            this.panel8.AutoScroll = true;
+            this.panel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel8.BackColor = System.Drawing.Color.Teal;
+            this.panel8.Location = new System.Drawing.Point(19, 72);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(742, 487);
+            this.panel8.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(10, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(377, 39);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "TALEPLER";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(13, 311);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(266, 25);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "HOCA VE DERS SECIMI";
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel7.Controls.Add(this.button6);
+            this.panel7.Controls.Add(this.comboBox3);
+            this.panel7.Controls.Add(this.label12);
+            this.panel7.Controls.Add(this.comboBox2);
+            this.panel7.Controls.Add(this.label11);
+            this.panel7.Location = new System.Drawing.Point(19, 346);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(727, 177);
+            this.panel7.TabIndex = 5;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(456, 112);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(181, 52);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "DERS SECIMINI TAMAMLA";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(266, 65);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(371, 24);
+            this.comboBox3.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(17, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(243, 26);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Alacağınız Dersi Seçiniz:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(329, 22);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(308, 24);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(18, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(305, 26);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Dersi Veren Öğretim Görevlisi:\r\n";
+            // 
+            // choosingPanel
+            // 
+            this.choosingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.choosingPanel.Controls.Add(this.label9);
+            this.choosingPanel.Controls.Add(this.panel7);
+            this.choosingPanel.Controls.Add(this.label10);
+            this.choosingPanel.Controls.Add(this.panel6);
+            this.choosingPanel.Controls.Add(this.label8);
+            this.choosingPanel.Location = new System.Drawing.Point(190, 124);
+            this.choosingPanel.Name = "choosingPanel";
+            this.choosingPanel.Size = new System.Drawing.Size(774, 591);
+            this.choosingPanel.TabIndex = 3;
+            this.choosingPanel.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(247, 16);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Ders Veren Hocalar ve Ilgi Alanlari";
+            // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel6.Location = new System.Drawing.Point(17, 86);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(729, 214);
+            this.panel6.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(10, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(377, 39);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "DERS SEÇİMİ";
+            // 
+            // gelenmesaj
+            // 
+            this.gelenmesaj.AutoScroll = true;
+            this.gelenmesaj.BackColor = System.Drawing.Color.Green;
+            this.gelenmesaj.Location = new System.Drawing.Point(22, 72);
+            this.gelenmesaj.Name = "gelenmesaj";
+            this.gelenmesaj.Size = new System.Drawing.Size(724, 490);
+            this.gelenmesaj.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(12, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(228, 39);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "GELEN MESAJLAR";
             // 
             // panel5
             // 
@@ -395,24 +613,16 @@ namespace Course_Registration_System
             this.label2.TabIndex = 2;
             this.label2.Text = "MESAJ GÖNDER";
             // 
-            // label7
+            // comingMessagePanel
             // 
-            this.label7.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(12, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(228, 39);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "GELEN MESAJLAR";
-            // 
-            // gelenmesaj
-            // 
-            this.gelenmesaj.AutoScroll = true;
-            this.gelenmesaj.BackColor = System.Drawing.Color.Green;
-            this.gelenmesaj.Location = new System.Drawing.Point(22, 72);
-            this.gelenmesaj.Name = "gelenmesaj";
-            this.gelenmesaj.Size = new System.Drawing.Size(724, 490);
-            this.gelenmesaj.TabIndex = 3;
+            this.comingMessagePanel.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.comingMessagePanel.Controls.Add(this.gelenmesaj);
+            this.comingMessagePanel.Controls.Add(this.label7);
+            this.comingMessagePanel.Location = new System.Drawing.Point(190, 124);
+            this.comingMessagePanel.Name = "comingMessagePanel";
+            this.comingMessagePanel.Size = new System.Drawing.Size(774, 591);
+            this.comingMessagePanel.TabIndex = 3;
+            this.comingMessagePanel.Visible = false;
             // 
             // studentForm
             // 
@@ -420,27 +630,37 @@ namespace Course_Registration_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(963, 698);
-            this.Controls.Add(this.messagePanel);
+            this.Controls.Add(this.denemePanel);
             this.Controls.Add(this.messageSendPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.acilanDerslerPanel);
+            this.Controls.Add(this.comingMessagePanel);
+            this.Controls.Add(this.choosingPanel);
+            this.Controls.Add(this.requestPanel);
             this.MaximumSize = new System.Drawing.Size(979, 737);
             this.MinimumSize = new System.Drawing.Size(979, 737);
             this.Name = "studentForm";
-            this.Text = "studentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "KOU Ogrenci Paneli";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.acilanDerslerPanel.ResumeLayout(false);
             this.acilanDerslerPanel.PerformLayout();
-            this.messagePanel.ResumeLayout(false);
+            this.denemePanel.ResumeLayout(false);
+            this.requestPanel.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.choosingPanel.ResumeLayout(false);
+            this.choosingPanel.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.messageSendPanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.comingMessagePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -457,7 +677,10 @@ namespace Course_Registration_System
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel acilanDerslerPanel;
         private System.Windows.Forms.Button messageButton;
-        private System.Windows.Forms.Panel messagePanel;
+        private System.Windows.Forms.Panel denemePanel;
+        private System.Windows.Forms.Panel requestPanel;
+        private System.Windows.Forms.Panel choosingPanel;
+        private System.Windows.Forms.Panel comingMessagePanel;
         private System.Windows.Forms.Panel messageSendPanel;
         private Button button4;
         private Button button3;
@@ -478,5 +701,19 @@ namespace Course_Registration_System
         private Label label5;
         private Panel gelenmesaj;
         private Label label7;
+        private Label label8;
+        private Panel panel6;
+        private Label label10;
+        private Label label9;
+        private Panel panel7;
+        private Label label12;
+        private ComboBox comboBox2;
+        private Label label11;
+        private Button button6;
+        private ComboBox comboBox3;
+        private Button button7;
+        private Panel panel8;
+        private Label label13;
+        private Label label14;
     }
 }

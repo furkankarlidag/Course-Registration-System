@@ -1,9 +1,12 @@
 ﻿using iTextSharp.text;
+using iTextSharp.text.pdf.parser.clipper;
 using Npgsql;
 using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -44,6 +47,119 @@ namespace Course_Registration_System
             return data;
 
         }
+
+        public List<String> showColumnString(string column, string table, string equalColumn,int value)
+        {
+            List<string> data = new List<string>();
+            connection.Open();
+            string query = "select " + column + " from " + table + " where " + equalColumn + "=@p1";
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            dataAdapter.SelectCommand.Parameters.AddWithValue("p1", value);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                foreach (var item in row.ItemArray)
+                {
+                    string cleanedItem = item.ToString().Trim(); // Boşlukları temizle
+                    if (!string.IsNullOrEmpty(cleanedItem)) // Boş olanları filtrele
+                    {
+                        data.Add(cleanedItem);
+                        Console.WriteLine(cleanedItem);
+                    }
+                }
+            }
+
+            connection.Close();
+            return data;
+
+        }
+
+        public bool compareLessons(int id)
+        {
+            int counter = 0;
+            List<string> lessons = new List<string>();
+            List<string> lessonsSecond = new List<string>();
+
+            connection.Open();
+
+            // İlk sorgu için NpgsqlCommand ve NpgsqlDataReader
+            string query = "SELECT dersid FROM request_table WHERE senderid=@p1 AND status=@p2";
+            NpgsqlCommand command = new NpgsqlCommand(query, connection);
+            command.Parameters.AddWithValue("p1", id);
+            command.Parameters.AddWithValue("p2", "Onaylandı");
+            NpgsqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lessons.Add(reader.GetString(0));
+            }
+
+            reader.Close();
+
+            // İkinci sorgu için ayrı NpgsqlCommand ve NpgsqlDataReader
+            string querySecond = "SELECT dersid FROM acilandersler";
+            NpgsqlCommand commandSecond = new NpgsqlCommand(querySecond, connection);
+            NpgsqlDataReader readerSecond = commandSecond.ExecuteReader();
+
+            while (readerSecond.Read())
+            {
+                lessonsSecond.Add(readerSecond.GetString(0));
+            }
+
+            readerSecond.Close();
+            connection.Close();
+
+            for (int i = 0; i < lessonsSecond.Count; i++)
+            {
+                for (int j = 0; j < lessons.Count; j++)
+                {
+                    if (lessons[j] == lessonsSecond[i])
+                        counter++;
+                }
+            }
+
+            if (counter == lessonsSecond.Count)
+                return true;
+            else
+                return false;
+
+        }
+        public List<int> showColumnInt(string column, string table, string equalColumn, int value)
+        {
+            List<int> data = new List<int>();
+            connection.Open();
+            string query = "SELECT " + column + " FROM " + table + " WHERE " + equalColumn + "=@p1";
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            dataAdapter.SelectCommand.Parameters.AddWithValue("p1", value);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                foreach (var item in row.ItemArray)
+                {
+                    if (item != null)
+                    {
+                        if (int.TryParse(item.ToString(), out int intValue))
+                        {
+                            data.Add(intValue);
+                        }
+                       
+                    }
+                }
+            }
+
+            connection.Close();
+            return data;
+
+        }
+
         public string getValue(string column, string table, string where)
         {
             string value = null;
@@ -161,6 +277,9 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+<<<<<<< HEAD
+        public void sendMessage(int senderID, int receiptID, string message, int messageNo)
+=======
         public DataTable showTwoQueryDataTable(string column, string table, string where, string value, string where2, string value2)
         {
             connection.Open();
@@ -208,6 +327,7 @@ namespace Course_Registration_System
         }
 
         public void sendRequest(int senderID, int receiptID, string message, int messageNo)
+>>>>>>> master
         {
             connection.Open();
             string query = "INSERT INTO messages (senderid,receiptid,message,messageno) values (@p1,@p2,@p3,@p4)";
@@ -255,6 +375,62 @@ namespace Course_Registration_System
             }
             connection.Close();
             return userID;
+        }
+
+        public string findLesson(string table,string name)
+        {
+           
+            string userID =  string.Empty;
+            string sql = "SELECT dersid FROM " + table + " WHERE dersisim=@p1";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("p1", name);
+               
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+
+                        userID = Convert.ToString(row["dersid"]);
+
+
+                    }
+                }
+            }
+            connection.Close();
+            return userID;
+        }
+
+        public string getInfoAboutLesson(string dersid)
+        {
+
+            string name = string.Empty;
+            string sql = "SELECT dersisim FROM acilandersler WHERE dersid=@p1";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("p1", dersid);
+
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+
+                        name = Convert.ToString(row["dersisim"]);
+
+
+                    }
+                }
+            }
+            connection.Close();
+            return name;
         }
 
         public int dataCount(string column, string table, string where, string value)
@@ -365,6 +541,19 @@ namespace Course_Registration_System
             connection.Close();
         }
 
+        public void createRequest(int senderID, int receiptID, string lessonID)
+        {
+            connection.Open();
+            string query = "insert into request_table (senderid,receiptid,dersid,status) values (@p1,@p2,@p3,@p4)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("p1", senderID);
+            cmd.Parameters.AddWithValue("p2", receiptID);
+            cmd.Parameters.AddWithValue("p3", lessonID);
+            cmd.Parameters.AddWithValue("p4", "Bekliyor");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public void addTeachers(string id, string name, string surname, string quota)
         {
             connection.Open();
@@ -377,6 +566,26 @@ namespace Course_Registration_System
             cmd1.ExecuteNonQuery();
             connection.Close();
 
+        }
+
+        public int numOfQuote(int sicilno)
+        {
+            connection.Open();
+            int quote = 0;
+            string sql = "SELECT quota FROM teachers WHERE sicilno=@p1 ";
+            using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("p1", sicilno);
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        quote = reader.GetInt32(0);
+                    }
+                }
+            }
+            connection.Close();
+            return quote;
         }
 
         public void addTeachersInterest(string id, string interest)
@@ -397,6 +606,18 @@ namespace Course_Registration_System
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             int.TryParse(value, out int result);
             cmd1.Parameters.AddWithValue("p1", result);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void deleteMessage(int messageNo)
+        {
+            connection.Open();
+            string text = "delete from messages where messageno=@p1  "; // column hangi sutunun hangi degere esit oldugunu bulacak 
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+           
+            cmd1.Parameters.AddWithValue("p1", messageNo);
+            
             cmd1.ExecuteNonQuery();
             connection.Close();
         }
