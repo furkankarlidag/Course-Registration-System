@@ -389,6 +389,7 @@ namespace Course_Registration_System
 
         private void teacherStudentbutton_Click(object sender, EventArgs e)
         {
+
             ShowPanel(teacherStudentPanel);
             DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
             Label sicilNoLabelDgm = new System.Windows.Forms.Label();
