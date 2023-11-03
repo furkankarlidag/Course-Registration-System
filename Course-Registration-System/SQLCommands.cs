@@ -64,13 +64,29 @@ namespace Course_Registration_System
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
-
             DataTable dataTable = dataSet.Tables[0];
 
             connection.Close();
             return dataTable;
         }
 
+        //Deneme
+        ////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme
+        /////Deneme//Deneme
         public string getValue(string column, string table, string where)
         {
             string value = null;
