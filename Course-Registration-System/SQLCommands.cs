@@ -44,6 +44,33 @@ namespace Course_Registration_System
             return data;
 
         }
+        public DataTable SpecialQuery1()
+        {
+            connection.Open();
+            string query = "SELECT * FROM students s WHERE s.SicilNo NOT IN (SELECT DISTINCT SenderID FROM request_table)";
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            connection.Close();
+            return dataTable;
+        }
+        public DataTable SpecialQuery2()
+        {
+            connection.Open();
+            string query = "SELECT * FROM students s WHERE s.NumberofLesson <> (SELECT COUNT(*) FROM acilandersler)";
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            connection.Close();
+            return dataTable;
+        }
+
         public string getValue(string column, string table, string where)
         {
             string value = null;
@@ -161,6 +188,52 @@ namespace Course_Registration_System
             return dataTable;
         }
 
+        public DataTable showTwoQueryDataTable(string column, string table, string where, string value, string where2, string value2)
+        {
+            connection.Open();
+            string query = "select " + column + " from " + table + " where " + where + " = @p1  and " + where2 + " = @p2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
+
+            if (IsNumeric(value2))
+            {
+                if (int.TryParse(value2, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(value2, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value2);
+
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(cmd);
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+
+            DataTable dataTable = dataSet.Tables[0];
+
+            connection.Close();
+            return dataTable;
+        }
+
         public void sendRequest(int senderID, int receiptID, string message, int messageNo)
         {
             connection.Open();
@@ -210,7 +283,23 @@ namespace Course_Registration_System
             connection.Close();
             return userID;
         }
+        public int onlyCount(string column, string table)
+        {
+            int count = 0;
+            connection.Open();
+            string query = "select " + "Count(" + column + ")" + " from " + table;
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
 
+            object num = cmd.ExecuteScalar();
+
+            if (num != null)
+            {
+                count = Convert.ToInt32(num);
+            }
+
+            connection.Close();
+            return count;
+        }
         public int dataCount(string column, string table, string where, string value)
         {
             int count = 0;
@@ -241,8 +330,52 @@ namespace Course_Registration_System
 
             connection.Close();
             return count;
+        }
+        public int garipCount(string column, string table, string where, string value, string where2, string value2)
+        {
+            int count = 0;
+            connection.Open();
+            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and " + where2 + " = @p2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            if (IsNumeric(value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    cmd.Parameters.AddWithValue("p1", numbbur);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", NpgsqlDbType.Varchar, value);
 
+            if (IsNumeric(value2))
+            {
+                if (int.TryParse(value2, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    cmd.Parameters.AddWithValue("p2", numbbur);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value);
 
+            object num = cmd.ExecuteScalar();
+
+            if (num != null)
+            {
+                count = Convert.ToInt32(num);
+            }
+
+            connection.Close();
+            return count;
         }
         public void addUser(string name, string surname, string password, string type)
         {
@@ -288,6 +421,19 @@ namespace Course_Registration_System
             connection.Close();
 
         }
+        public void addRequest(string senderid, string receiptid, string dersid, string status)
+        {
+            connection.Open();
+            string text = "insert into request_table (senderid,receiptid,dersid,status) values (@p1,@p2,@p3,@p4)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(senderid));
+            cmd1.Parameters.AddWithValue("p2", Convert.ToInt32(receiptid));
+            cmd1.Parameters.AddWithValue("p3", dersid);
+            cmd1.Parameters.AddWithValue("p4", status);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+
+        }
 
         public void addTeachersInterest(string id, string interest)
         {
@@ -307,6 +453,32 @@ namespace Course_Registration_System
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             int.TryParse(value, out int result);
             cmd1.Parameters.AddWithValue("p1", result);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void deleteThree(string table, string senderid, string receiptid, string dersid)
+        {
+            connection.Open();
+            string text = "delete from " + table + " where " + " senderid " + "=@p1 and" + " receiptid " + "=@p2 and" + " dersid " + "=@p3"; // column hangi sutunun hangi degere esit oldugunu bulacak 
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            int.TryParse(senderid, out int result);
+            cmd1.Parameters.AddWithValue("p1", result);
+            if (IsNumeric(receiptid))
+            {
+                if (int.TryParse(receiptid, out int result1))
+                {
+                    cmd1.Parameters.AddWithValue("p2", result1);
+                }
+                else
+                {
+                    float.TryParse(receiptid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd1.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd1.Parameters.AddWithValue("p2", receiptid);
+
+            cmd1.Parameters.AddWithValue("p3", dersid);
             cmd1.ExecuteNonQuery();
             connection.Close();
         }
@@ -348,7 +520,143 @@ namespace Course_Registration_System
             connection.Close();
 
         }
-        private bool IsNumeric(string input)
+        public void updateThreeData(string table, string column, string senderid, string receiptid, string dersid, string new_value)
+        {
+            connection.Open();
+            string text = "update " + table + " set " + column + " = @p1 where " + "senderid = @p2 and " + "receiptid = @p3 and " + "dersid = @p4"; // "update devices set dmac=@p1 where dmac=@p2"
+            NpgsqlCommand cmd = new NpgsqlCommand(text, connection);
+            if (IsNumeric(new_value))
+            {
+                if (int.TryParse(new_value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(new_value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", new_value);
+            if (IsNumeric(senderid))
+            {
+                if (int.TryParse(senderid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(senderid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", senderid);
+
+            if (IsNumeric(receiptid))
+            {
+                if (int.TryParse(receiptid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p3", result);
+                }
+                else
+                {
+                    float.TryParse(receiptid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p3", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p3", receiptid);
+
+            if (IsNumeric(dersid))
+            {
+                if (int.TryParse(dersid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p4", result);
+                }
+                else
+                {
+                    float.TryParse(receiptid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p4", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p4", dersid);
+
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+        }
+        public void updateTwoData(string table, string column, string senderid, string receiptid, string dersid, string new_value)
+        {
+            connection.Open();
+            string text = "update " + table + " set " + column + " = @p1 where " + "senderid != @p2 and " + "receiptid = @p3 and " + "dersid = @p4"; // "update devices set dmac=@p1 where dmac=@p2"
+            NpgsqlCommand cmd = new NpgsqlCommand(text, connection);
+            if (IsNumeric(new_value))
+            {
+                if (int.TryParse(new_value, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p1", result);
+                }
+                else
+                {
+                    float.TryParse(new_value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p1", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p1", new_value);
+            if (IsNumeric(senderid))
+            {
+                if (int.TryParse(senderid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p2", result);
+                }
+                else
+                {
+                    float.TryParse(senderid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p2", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p2", senderid);
+
+            if (IsNumeric(receiptid))
+            {
+                if (int.TryParse(receiptid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p3", result);
+                }
+                else
+                {
+                    float.TryParse(receiptid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p3", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p3", receiptid);
+
+            if (IsNumeric(dersid))
+            {
+                if (int.TryParse(dersid, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p4", result);
+                }
+                else
+                {
+                    float.TryParse(dersid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
+                    cmd.Parameters.AddWithValue("p4", num);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p4", dersid);
+
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+        }
+        public bool IsNumeric(string input)
         {
             foreach (char c in input)
             {
