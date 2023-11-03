@@ -43,7 +43,6 @@ namespace Course_Registration_System
             this.label1 = new System.Windows.Forms.Label();
             this.idNo = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.surnameLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,7 +97,7 @@ namespace Course_Registration_System
             this.loadPDF.BackColor = System.Drawing.Color.White;
             this.loadPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.loadPDF.ForeColor = System.Drawing.Color.DarkGreen;
-            this.loadPDF.Location = new System.Drawing.Point(384, 93);
+            this.loadPDF.Location = new System.Drawing.Point(12, 229);
             this.loadPDF.Name = "loadPDF";
             this.loadPDF.Size = new System.Drawing.Size(264, 40);
             this.loadPDF.TabIndex = 4;
@@ -139,7 +138,7 @@ namespace Course_Registration_System
             // 
             this.transkriptBilgi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transkriptBilgi.ForeColor = System.Drawing.Color.Black;
-            this.transkriptBilgi.Location = new System.Drawing.Point(212, 311);
+            this.transkriptBilgi.Location = new System.Drawing.Point(212, 291);
             this.transkriptBilgi.Name = "transkriptBilgi";
             this.transkriptBilgi.Size = new System.Drawing.Size(356, 34);
             this.transkriptBilgi.TabIndex = 9;
@@ -147,11 +146,12 @@ namespace Course_Registration_System
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label1.Location = new System.Drawing.Point(8, 192);
+            this.label1.Location = new System.Drawing.Point(408, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 31);
+            this.label1.Size = new System.Drawing.Size(166, 24);
             this.label1.TabIndex = 10;
             this.label1.Text = "Ogrenci Bilgileri:";
             // 
@@ -159,7 +159,7 @@ namespace Course_Registration_System
             // 
             this.idNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idNo.ForeColor = System.Drawing.Color.MediumBlue;
-            this.idNo.Location = new System.Drawing.Point(8, 223);
+            this.idNo.Location = new System.Drawing.Point(408, 114);
             this.idNo.Name = "idNo";
             this.idNo.Size = new System.Drawing.Size(97, 20);
             this.idNo.TabIndex = 11;
@@ -169,28 +169,17 @@ namespace Course_Registration_System
             // 
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameLabel.ForeColor = System.Drawing.Color.MediumBlue;
-            this.nameLabel.Location = new System.Drawing.Point(8, 243);
+            this.nameLabel.Location = new System.Drawing.Point(408, 134);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(134, 24);
             this.nameLabel.TabIndex = 12;
             this.nameLabel.Text = "name";
             // 
-            // surnameLabel
-            // 
-            this.surnameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.surnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameLabel.ForeColor = System.Drawing.Color.MediumBlue;
-            this.surnameLabel.Location = new System.Drawing.Point(8, 267);
-            this.surnameLabel.Name = "surnameLabel";
-            this.surnameLabel.Size = new System.Drawing.Size(130, 25);
-            this.surnameLabel.TabIndex = 13;
-            this.surnameLabel.Text = "surname";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 311);
+            this.label2.Location = new System.Drawing.Point(8, 291);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 20);
             this.label2.TabIndex = 14;
@@ -203,7 +192,6 @@ namespace Course_Registration_System
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(659, 413);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.idNo);
             this.Controls.Add(this.label1);
@@ -217,6 +205,7 @@ namespace Course_Registration_System
             this.MaximumSize = new System.Drawing.Size(675, 452);
             this.MinimumSize = new System.Drawing.Size(675, 452);
             this.Name = "scanPDF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ogrenci Transkript Yukleme";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -239,7 +228,6 @@ namespace Course_Registration_System
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label idNo;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Label surnameLabel;
         private System.Windows.Forms.Label label2;
     }
 }
