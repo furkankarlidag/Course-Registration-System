@@ -628,6 +628,7 @@ namespace Course_Registration_System
                 }
                 else
                 {
+
                     dataGridView1.DataSource = sQLCommands.SpecialQuery2();
                     dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
                     dataGridView1.Columns["name"].HeaderText = "İSİM";
