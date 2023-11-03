@@ -41,15 +41,8 @@
             this.teacherInterstAddTextBox = new System.Windows.Forms.TextBox();
             this.TeacherInterestAddButton = new System.Windows.Forms.Button();
             this.teacherLessonRequestPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lessonRequestStudentNameLabel = new System.Windows.Forms.Label();
-            this.lessonRequestLessonNameLabel = new System.Windows.Forms.Label();
-            this.lessonRequestAcceptButton = new System.Windows.Forms.Button();
-            this.lessonRequestDeclineButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.teacherInterestPanel.SuspendLayout();
-            this.teacherLessonRequestPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // teacherInterestbutton
@@ -170,71 +163,10 @@
             // teacherLessonRequestPanel
             // 
             this.teacherLessonRequestPanel.AutoScroll = true;
-            this.teacherLessonRequestPanel.Controls.Add(this.panel1);
             this.teacherLessonRequestPanel.Location = new System.Drawing.Point(200, 173);
             this.teacherLessonRequestPanel.Name = "teacherLessonRequestPanel";
             this.teacherLessonRequestPanel.Size = new System.Drawing.Size(972, 576);
             this.teacherLessonRequestPanel.TabIndex = 7;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Aquamarine;
-            this.panel1.Controls.Add(this.lessonRequestDeclineButton);
-            this.panel1.Controls.Add(this.lessonRequestAcceptButton);
-            this.panel1.Controls.Add(this.lessonRequestLessonNameLabel);
-            this.panel1.Controls.Add(this.lessonRequestStudentNameLabel);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(29, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel1.Size = new System.Drawing.Size(895, 64);
-            this.panel1.TabIndex = 0;
-            // 
-            // lessonRequestStudentNameLabel
-            // 
-            this.lessonRequestStudentNameLabel.AutoSize = true;
-            this.lessonRequestStudentNameLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lessonRequestStudentNameLabel.Location = new System.Drawing.Point(12, 17);
-            this.lessonRequestStudentNameLabel.Name = "lessonRequestStudentNameLabel";
-            this.lessonRequestStudentNameLabel.Size = new System.Drawing.Size(73, 29);
-            this.lessonRequestStudentNameLabel.TabIndex = 0;
-            this.lessonRequestStudentNameLabel.Text = "label1";
-            // 
-            // lessonRequestLessonNameLabel
-            // 
-            this.lessonRequestLessonNameLabel.AutoSize = true;
-            this.lessonRequestLessonNameLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lessonRequestLessonNameLabel.Location = new System.Drawing.Point(333, 17);
-            this.lessonRequestLessonNameLabel.Name = "lessonRequestLessonNameLabel";
-            this.lessonRequestLessonNameLabel.Size = new System.Drawing.Size(73, 29);
-            this.lessonRequestLessonNameLabel.TabIndex = 1;
-            this.lessonRequestLessonNameLabel.Text = "label1";
-            // 
-            // lessonRequestAcceptButton
-            // 
-            this.lessonRequestAcceptButton.BackColor = System.Drawing.Color.Chartreuse;
-            this.lessonRequestAcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lessonRequestAcceptButton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lessonRequestAcceptButton.Location = new System.Drawing.Point(683, 13);
-            this.lessonRequestAcceptButton.Name = "lessonRequestAcceptButton";
-            this.lessonRequestAcceptButton.Size = new System.Drawing.Size(97, 41);
-            this.lessonRequestAcceptButton.TabIndex = 2;
-            this.lessonRequestAcceptButton.Text = "Kabul Et";
-            this.lessonRequestAcceptButton.UseVisualStyleBackColor = false;
-            this.lessonRequestAcceptButton.Click += new System.EventHandler(this.lessonRequestAcceptButton_Click);
-            // 
-            // lessonRequestDeclineButton
-            // 
-            this.lessonRequestDeclineButton.BackColor = System.Drawing.Color.Red;
-            this.lessonRequestDeclineButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lessonRequestDeclineButton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lessonRequestDeclineButton.Location = new System.Drawing.Point(786, 13);
-            this.lessonRequestDeclineButton.Name = "lessonRequestDeclineButton";
-            this.lessonRequestDeclineButton.Size = new System.Drawing.Size(97, 41);
-            this.lessonRequestDeclineButton.TabIndex = 3;
-            this.lessonRequestDeclineButton.Text = "Reddet";
-            this.lessonRequestDeclineButton.UseVisualStyleBackColor = false;
-            this.lessonRequestDeclineButton.Click += new System.EventHandler(this.lessonRequestDeclineButton_Click);
             // 
             // teacherPanel
             // 
@@ -255,9 +187,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.teacherInterestPanel.ResumeLayout(false);
             this.teacherInterestPanel.PerformLayout();
-            this.teacherLessonRequestPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -277,10 +206,5 @@
         private System.Windows.Forms.TextBox teacherInterstAddTextBox;
         private System.Windows.Forms.Button TeacherInterestAddButton;
         private System.Windows.Forms.Panel teacherLessonRequestPanel;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button lessonRequestDeclineButton;
-        private System.Windows.Forms.Button lessonRequestAcceptButton;
-        private System.Windows.Forms.Label lessonRequestLessonNameLabel;
-        private System.Windows.Forms.Label lessonRequestStudentNameLabel;
     }
 }
