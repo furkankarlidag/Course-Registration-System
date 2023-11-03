@@ -86,7 +86,7 @@ namespace Course_Registration_System
 
             connection.Open();
 
-            // İlk sorgu için NpgsqlCommand ve NpgsqlDataReader
+           
             string query = "SELECT dersid FROM request_table WHERE senderid=@p1 AND status=@p2";
             NpgsqlCommand command = new NpgsqlCommand(query, connection);
             command.Parameters.AddWithValue("p1", id);
@@ -100,7 +100,7 @@ namespace Course_Registration_System
 
             reader.Close();
 
-            // İkinci sorgu için ayrı NpgsqlCommand ve NpgsqlDataReader
+          
             string querySecond = "SELECT dersid FROM acilandersler";
             NpgsqlCommand commandSecond = new NpgsqlCommand(querySecond, connection);
             NpgsqlDataReader readerSecond = commandSecond.ExecuteReader();
@@ -277,9 +277,20 @@ namespace Course_Registration_System
             return dataTable;
         }
 
-<<<<<<< HEAD
+
         public void sendMessage(int senderID, int receiptID, string message, int messageNo)
-=======
+        {
+            connection.Open();
+            string query = "INSERT INTO messages (senderid,receiptid,message,messageno) values (@p1,@p2,@p3,@p4)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("p1", senderID);
+            cmd.Parameters.AddWithValue("p2", receiptID);
+            cmd.Parameters.AddWithValue("p3", message);
+            cmd.Parameters.AddWithValue("p4", messageNo);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public DataTable showTwoQueryDataTable(string column, string table, string where, string value, string where2, string value2)
         {
             connection.Open();
@@ -327,7 +338,7 @@ namespace Course_Registration_System
         }
 
         public void sendRequest(int senderID, int receiptID, string message, int messageNo)
->>>>>>> master
+
         {
             connection.Open();
             string query = "INSERT INTO messages (senderid,receiptid,message,messageno) values (@p1,@p2,@p3,@p4)";

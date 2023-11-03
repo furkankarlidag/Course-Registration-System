@@ -301,6 +301,7 @@ namespace Course_Registration_System
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
             foreach (Panel panel1 in subPanels)
             {
                 panel1.Visible = false;
