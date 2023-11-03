@@ -640,6 +640,10 @@ namespace Course_Registration_System
                 MessageBox.Show("İşleminiz başarıyla gerçekleşti", "Başarılı İşlem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             });
 
+            // deneme
+            // deneme
+            // deneme
+
             teacherStudentPanel.ResumeLayout(false);
             teacherStudentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).EndInit();
