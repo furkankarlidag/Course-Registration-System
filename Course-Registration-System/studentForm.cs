@@ -482,7 +482,7 @@ namespace Course_Registration_System
                             label161.Size = new System.Drawing.Size(81, 23);
                             label161.TabIndex = 2;
                             label161.Text = "Durum:";
-
+                            //deneme123
                             Label label171 = new Label();
                             label171.BackColor = System.Drawing.Color.Transparent;
                             label171.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -642,10 +642,10 @@ namespace Course_Registration_System
                             interest = reader.GetString(1);
 
                             Label label96 = new Label();
-                            //if (!this.interestsComboBox.Items.Contains(interest))
-                           // {
+                            if (!this.interestsComboBox.Items.Contains(interest))
+                            {
                                 this.interestsComboBox.Items.Add(interest);
-                           // }
+                            }
                             label96.BackColor = System.Drawing.Color.Teal;
                             //label96.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                             label96.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
