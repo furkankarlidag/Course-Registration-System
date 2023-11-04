@@ -349,7 +349,7 @@ namespace Course_Registration_System
             this.label14.TabIndex = 2;
             this.label14.Text = "ALINAN DERSLER";
             // 
-            // panel6
+            // panel6 
             // 
             this.panel6.AutoScroll = true;
             this.panel6.BackColor = System.Drawing.Color.DarkSlateGray;
