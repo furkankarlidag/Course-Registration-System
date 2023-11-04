@@ -332,24 +332,7 @@ namespace Course_Registration_System
             this.teacherStudentPanel.Name = "teacherStudentPanel";
             this.teacherStudentPanel.Size = new System.Drawing.Size(972, 575);
             this.teacherStudentPanel.TabIndex = 7;
-            // 
-            // idnolabel
-            // 
-            this.idnolabel.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idnolabel.Location = new System.Drawing.Point(902, 32);
-            this.idnolabel.Name = "idnolabel";
-            this.idnolabel.Size = new System.Drawing.Size(254, 33);
-            this.idnolabel.TabIndex = 9;
-            this.idnolabel.Text = teacherId.ToString();
-            // 
-            // namelabel
-            // 
-            this.namelabel.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namelabel.Location = new System.Drawing.Point(902, 65);
-            this.namelabel.Name = "namelabel";
-            this.namelabel.Size = new System.Drawing.Size(240, 33);
-            this.namelabel.TabIndex = 11;
-            this.namelabel.Text = teacherNameSurname;
+        
             // 
             // teacherPanel
             // 
