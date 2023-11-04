@@ -332,7 +332,10 @@ namespace Course_Registration_System
                             interest = reader.GetString(1);
 
                             Label label96 = new Label();
-
+                            if (!this.interestsComboBox.Items.Contains(interest))
+                            {
+                                this.interestsComboBox.Items.Add(interest);
+                            }
                             label96.BackColor = System.Drawing.Color.Teal;
                             //label96.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                             label96.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -345,10 +348,10 @@ namespace Course_Registration_System
                                 "     *** Kontenjan: " + sQLCommands.numOfQuote(teacherID);
                             this.panel6.Controls.Add(label96);
 
-                            i++;
-
+                            
+                            string deneme = sQLCommands.getInfoAboutTeacher(teacherID);
                             comboBox2.Items.Add(sQLCommands.getInfoAboutTeacher(teacherID));
-
+                            i++;
                         }
                     }
                 }
