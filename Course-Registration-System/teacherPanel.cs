@@ -29,14 +29,15 @@ namespace Course_Registration_System
         SQLCommands sQLCommands = new SQLCommands();
         public teacherPanel(int id)
         {
-            teacherNameSurname= sQLCommands.getInfoAboutTeacher(id);
-            teacherId = id; 
+            teacherNameSurname = sQLCommands.getInfoAboutTeacher(id);
+            teacherId = id;
             InitializeComponent();
         }
 
         void ShowPanel(Panel panel)
         {
             teacherInterestPanel.Visible = false;
+
             teacherLessonRequestPanel.Visible= false;
             teacherGradingPanel.Visible = false;
             teacherStudentPanel.Visible = false;
@@ -58,15 +59,17 @@ namespace Course_Registration_System
         {
             ShowPanel(teacherLessonRequestPanel);
 
-            List<Panel> panelList= new List<Panel>();
+
+            List<Panel> panelList = new List<Panel>();
             int teacherRequestCount = sQLCommands.garipCount("*", "request_table", "status", "Bekliyor", "receiptid", teacherId.ToString());
-            DataTable dataTable= sQLCommands.showTwoQueryDataTable("*", "request_table", "status", "Bekliyor","receiptid",teacherId.ToString());
+            DataTable dataTable = sQLCommands.showTwoQueryDataTable("*", "request_table", "status", "Bekliyor", "receiptid", teacherId.ToString());
             int num = 24;
 
 
-            if(teacherRequestCount > 0)
+            if (teacherRequestCount > 0)
             {
-                for(int i= 0; i < dataTable.Rows.Count;i++)
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow row = dataTable.Rows[i];
                     string studentId;
@@ -83,8 +86,8 @@ namespace Course_Registration_System
                     surname = row2["surname"].ToString();
                     lessonName = row1["dersisim"].ToString();
                     lessonId = row1["dersid"].ToString();
-                    
-                    Panel panel1= new Panel();
+
+                    Panel panel1 = new Panel();
                     Button lessonRequestDeclineButton = new Button();
                     Button lessonRequestAcceptButton = new Button();
                     Label lessonRequestLessonNameLabel = new Label();
@@ -99,7 +102,7 @@ namespace Course_Registration_System
                     panel1.Controls.Add(lessonRequestLessonNameLabel);
                     panel1.Controls.Add(lessonRequestStudentNameLabel);
                     panel1.Cursor = System.Windows.Forms.Cursors.Default;
-                    panel1.Location = new System.Drawing.Point(24, num+(i*80));
+                    panel1.Location = new System.Drawing.Point(24, num + (i * 80));
                     panel1.Name = "panel1";
                     panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
                     panel1.Size = new System.Drawing.Size(900, 64);
@@ -121,7 +124,7 @@ namespace Course_Registration_System
                         sQLCommands.deleteThree("request_table", studentId.ToString(), teacherId.ToString(), lessonId);
                         panel1.BackColor = System.Drawing.Color.IndianRed;
                         panel1.Controls.Remove(lessonRequestAcceptButton);
-                        panel1.Controls.Remove(lessonRequestDeclineButton);   
+                        panel1.Controls.Remove(lessonRequestDeclineButton);
                     });
                     // 
                     // lessonRequestAcceptButton
@@ -138,9 +141,10 @@ namespace Course_Registration_System
 
                     lessonRequestAcceptButton.Click += new System.EventHandler((senderObj, eventArgs) =>
                     {
-                        string teacherQuota = sQLCommands.getValue("quota"," teachers ","sicilno = "+teacherId);
+
+                        string teacherQuota = sQLCommands.getValue("quota", " teachers ", "sicilno = " + teacherId);
                         int.TryParse(teacherQuota, out int teacherQuotaNum);
-                        if (teacherQuotaNum > 0) 
+                        if (teacherQuotaNum > 0)
                         {
                             string studentLesson = sQLCommands.getValue("numberoflesson", "students", "sicilno = " + studentId);
                             teacherQuotaNum--;
@@ -158,13 +162,12 @@ namespace Course_Registration_System
                             panel1.Controls.Remove(lessonRequestAcceptButton);
                             panel1.Controls.Remove(lessonRequestDeclineButton);
                         }
-                        else 
+                        else
                         {
                             MessageBox.Show("Kontenjanınız dolmuştur", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         }
 
-        
                     });
                     // 
                     // lessonRequestLessonNameLabel
@@ -179,7 +182,7 @@ namespace Course_Registration_System
                     // 
                     // lessonRequestStudentNameLabel
                     // 
-                   
+
                     lessonRequestStudentNameLabel.AutoSize = true;
                     lessonRequestStudentNameLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
                     lessonRequestStudentNameLabel.LinkColor = System.Drawing.Color.Black;
@@ -193,7 +196,6 @@ namespace Course_Registration_System
 
                     panelList.Add(panel1);
 
-                    
                     this.teacherLessonRequestPanel.Controls.Add(panel1);
 
 
@@ -215,17 +217,17 @@ namespace Course_Registration_System
             ShowPanel(teacherGradingPanel);
             DataTable dataTable = sQLCommands.showDataTable("*", "students_and_lessons");
             int count = sQLCommands.onlyCount("*", "students_and_lessons");
-            
+
             int num = 56;
             //63
 
-            if(count > 0)
+            if (count > 0)
             {
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow row = dataTable.Rows[i];
                     string lessonId = row["lessonid"].ToString();
-                    string lessonName = sQLCommands.getValue("lessonname", "lesson", "lessonid= '" + lessonId+"'");
+                    string lessonName = sQLCommands.getValue("lessonname", "lesson", "lessonid= '" + lessonId + "'");
 
                     Panel panel1 = new Panel();
                     Label label1 = new Label();
@@ -238,7 +240,7 @@ namespace Course_Registration_System
                     panel1.BackColor = System.Drawing.Color.LightYellow;
                     panel1.Controls.Add(textBox1);
                     panel1.Controls.Add(label1);
-                    panel1.Location = new System.Drawing.Point(71, num+(i*70));
+                    panel1.Location = new System.Drawing.Point(71, num + (i * 70));
                     panel1.Name = "panel1";
                     panel1.Size = new System.Drawing.Size(715, 57);
                     panel1.TabIndex = 0;
@@ -268,7 +270,6 @@ namespace Course_Registration_System
                     teacherGradingPanel.Controls.Add(panel1);
                 }
             }
-            
 
         }
 
@@ -277,7 +278,7 @@ namespace Course_Registration_System
             int i = 0;
             foreach (TextBox item in textBoxes)
             {
-                if(!(string.IsNullOrWhiteSpace(item.Text)) && sQLCommands.IsNumeric(item.Text))
+                if (!(string.IsNullOrWhiteSpace(item.Text)) && sQLCommands.IsNumeric(item.Text))
                 {
                     int.TryParse(item.Text, out int result);
                     lessonGrading.Add(lessonNames[i], result);
@@ -290,7 +291,6 @@ namespace Course_Registration_System
             }
             MessageBox.Show("Başarıyla Kaydedildi", "Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             GradingCalculator();
@@ -647,6 +647,7 @@ namespace Course_Registration_System
             ((System.ComponentModel.ISupportInitialize)(dataGridView2)).EndInit();
         }
         
+
     }
 
 }

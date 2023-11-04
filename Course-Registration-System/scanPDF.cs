@@ -18,7 +18,7 @@ namespace Course_Registration_System
     {
         string path;
         int sicilNo;
-        
+
         public scanPDF(int sicilNo)
         {
             InitializeComponent();
@@ -26,16 +26,18 @@ namespace Course_Registration_System
             idNo.Text = sicilNo.ToString();
             SQLCommands sQLCommands = new SQLCommands();
             List<string> studentInfo = sQLCommands.getInfoAboutStudent(sicilNo);
-            nameLabel.Text = studentInfo[0];
-            surnameLabel.Text = studentInfo[1];
+            nameLabel.Text = studentInfo[0] + " " + studentInfo[1];
+            //surnameLabel.Text = studentInfo[1];
             if (sQLCommands.lessonsControl(sicilNo))
             {
-                transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
+                transkriptBilgi.Text = "Transkript daha once sisteme yuklenmis.!!";
                 transkriptBilgi.ForeColor = Color.White;
+                this.chooseFileButton.Enabled = false;
+                this.loadPDF.Enabled = false;
             }
 
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -47,13 +49,13 @@ namespace Course_Registration_System
                 path = openFileDialog.FileName;
                 DOSYAYOLU.Text = path;
                 DOSYAYOLU.ForeColor = Color.White;
-                
-                
+
+
             }
         }
         private void loadPDF_Click(object sender, EventArgs e)
         {
-            SQLCommands SQLCommands = new SQLCommands();    
+            SQLCommands SQLCommands = new SQLCommands();
             List<string> dersKodlari = new List<string>();
             string patternString = @"([A-Z]{3}\d{3})\s+(.*?Z)\s+([A-Z]{1}[a-z]{1})\s+(\d)\s+(\d)\s+(\d)\s+(\d)\s+([A-Z]{2})"; // Z ye kadar okuyor harf notunu da okumaya calis
 
@@ -85,9 +87,9 @@ namespace Course_Registration_System
                 transkriptBilgi.Text = "Transkript basariyla yuklendi.!!";
                 transkriptBilgi.ForeColor = Color.White;
             }
-            
+
         }
 
-       
+
     }
 }
