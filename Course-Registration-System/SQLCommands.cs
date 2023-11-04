@@ -45,106 +45,6 @@ namespace Course_Registration_System
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public DataTable SpecialQuery1() 
         {
             connection.Open();
@@ -170,7 +70,18 @@ namespace Course_Registration_System
             connection.Close();
             return dataTable;
         }
+        public DataTable SpecialQuery3()
+        {
+            connection.Open();
+            string query = "SELECT * FROM students s WHERE s.SicilNo IN ( SELECT s.SicilNo FROM students s WHERE s.NumberofLesson <> (SELECT COUNT(*) FROM acilandersler a WHERE a.SicilNo = s.SicilNo) ) ORDER BY s.GPA DESC";
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            DataTable dataTable = dataSet.Tables[0];
 
+            connection.Close();
+            return dataTable;
+        }
 
 
 
@@ -477,12 +388,12 @@ namespace Course_Registration_System
                 }
                 else
                 {
-                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    float.TryParse(value2, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
                     cmd.Parameters.AddWithValue("p2", numbbur);
                 }
             }
             else
-                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value);
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value2);
 
             object num = cmd.ExecuteScalar();
 
@@ -494,11 +405,11 @@ namespace Course_Registration_System
             connection.Close();
             return count;
         }
-        public int ultiGaripCount(string column, string table, string where, string value, string where2, string value2,string where3, string value3)
+        public int ultiGaripCount(string column, string table, string where, string value, string where2, string value2,string where3, string value3, string where4, string value4)
         {
             int count = 0;
             connection.Open();
-            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and " + where2 + " = @p2 and "+ where3 +" = @p3";
+            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and " + where2 + " = @p2 and "+ where3 +" = @p3 and " + where4 + " = @p4";
             NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
             if (IsNumeric(value))
             {
@@ -523,12 +434,12 @@ namespace Course_Registration_System
                 }
                 else
                 {
-                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    float.TryParse(value2, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
                     cmd.Parameters.AddWithValue("p2", numbbur);
                 }
             }
             else
-                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value);
+                cmd.Parameters.AddWithValue("p2", NpgsqlDbType.Varchar, value2);
 
             if (IsNumeric(value3))
             {
@@ -538,12 +449,27 @@ namespace Course_Registration_System
                 }
                 else
                 {
-                    float.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    float.TryParse(value3, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
                     cmd.Parameters.AddWithValue("p3", numbbur);
                 }
             }
             else
-                cmd.Parameters.AddWithValue("p3", NpgsqlDbType.Varchar, value);
+                cmd.Parameters.AddWithValue("p3", NpgsqlDbType.Varchar, value3);
+
+            if (IsNumeric(value4))
+            {
+                if (int.TryParse(value4, out int result))
+                {
+                    cmd.Parameters.AddWithValue("p4", result);
+                }
+                else
+                {
+                    float.TryParse(value4, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float numbbur);
+                    cmd.Parameters.AddWithValue("p4", numbbur);
+                }
+            }
+            else
+                cmd.Parameters.AddWithValue("p4", NpgsqlDbType.Varchar, value4);
 
             object num = cmd.ExecuteScalar();
 
@@ -620,6 +546,17 @@ namespace Course_Registration_System
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
             cmd1.Parameters.AddWithValue("p2", interest);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void addAcilanDersler(string dersid, string dersisim)
+        {
+            connection.Open();
+            string text = "insert into acilandersler (dersid,dersisim) values (@p1,@p2)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            cmd1.Parameters.AddWithValue("p1", dersid);
+            cmd1.Parameters.AddWithValue("p2", dersisim);
             cmd1.ExecuteNonQuery();
             connection.Close();
         }

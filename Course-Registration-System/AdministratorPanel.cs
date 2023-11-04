@@ -23,6 +23,9 @@ namespace Course_Registration_System
             this.studentPanel.Visible = false;
             this.teacherPanel.Visible = false;
             this.StudentListPanel.Visible = false;
+            this.studentTeacherChoosePanel.Visible = false;
+            this.TeacherListPanel.Visible=false;
+            this.lessonAddPanel.Visible = false;
         }
 
         void ShowPanel(Panel panel) 
@@ -30,6 +33,9 @@ namespace Course_Registration_System
             this.studentPanel.Visible= false;
             this.teacherPanel.Visible = false;
             this.StudentListPanel.Visible = false;
+            this.studentTeacherChoosePanel.Visible = false;
+            this.TeacherListPanel.Visible = false;
+            this.lessonAddPanel.Visible = false;
 
             panel.Visible = true;
         }
@@ -658,6 +664,7 @@ namespace Course_Registration_System
 
         private void button5_Click(object sender, EventArgs e)
         {
+            ShowPanel(studentTeacherChoosePanel);
             this.dataGridView3.DataSource = sQLCommands.SpecialQuery2();
         }
 
@@ -699,7 +706,7 @@ namespace Course_Registration_System
             DataTable studentData = sQLCommands.SpecialQuery2();
             dataGridView3.DataSource = studentData;
 
-            bool staticVeri = true;
+            bool staticVeri = false;
             int tmp = 0;
 
 
@@ -712,7 +719,7 @@ namespace Course_Registration_System
                     {
                         DataRow lessonRow = lessonData.Rows[j];
                         string teacherid = teacherList[tmp];
-                        int requestCount = sQLCommands.ultiGaripCount("*", "request_table", "senderid", studentRow["sicilno"].ToString(), "receiptid", teacherid,"status","Onaylandı");
+                        int requestCount = sQLCommands.ultiGaripCount("*", "request_table", "senderid", studentRow["sicilno"].ToString(), "receiptid", teacherid, "status", "Onaylandı", "dersid", lessonRow["dersid"].ToString());
                         if (requestCount > 0)
                             continue;
                         string teacherQuota = sQLCommands.getValue("quota", "teachers", "sicilno= " + teacherid);
@@ -732,13 +739,171 @@ namespace Course_Registration_System
             }
             else
             {
+                for (int i = 0; i < studentData.Rows.Count; i++)
+                {
+                    DataRow studentRow = studentData.Rows[i];
+                    teacherList = GetTeacherList();
+                    string teacherid = teacherList[tmp];
 
+                    for (int j = 0; j < lessonData.Rows.Count; j++)
+                    {
+                        DataRow lessonRow = lessonData.Rows[j];
+                        int requestCount = sQLCommands.ultiGaripCount("*", "request_table", "senderid", studentRow["sicilno"].ToString(), "receiptid", teacherid, "status", "Onaylandı", "dersid", lessonRow["dersid"].ToString());
+                        if (requestCount > 0)
+                            continue;
+                        string teacherQuota = sQLCommands.getValue("quota", "teachers", "sicilno= " + teacherid);
+                        int.TryParse(teacherQuota, out int teacherQuotaNum);
+                        string studentLessonNum = sQLCommands.getValue("numberoflesson", "students", "sicilno= " + studentRow["sicilno"].ToString());
+                        int.TryParse(studentLessonNum, out int studentLessonNumber);
+                        studentLessonNumber++;
+                        teacherQuotaNum--;
+                        sQLCommands.addRequest(studentRow["sicilno"].ToString(), teacherList[tmp], lessonRow["dersid"].ToString(), "Onaylandı");
+                        sQLCommands.updateData("students", "numberoflesson", "sicilno", studentRow["sicilno"].ToString(), studentLessonNumber.ToString());
+                        sQLCommands.updateData("teachers", "quota", "sicilno", teacherList[tmp], teacherQuotaNum.ToString());
+                        if (teacherQuotaNum == 0) 
+                        {
+                            tmp++;
+                            tmp = (tmp >= teacherList.Count) ? 0 : tmp;
+                        }
+                    }
+                    tmp++;
+                    tmp = (tmp >= teacherList.Count) ? 0 : tmp;
+                }
             }
+            dataGridView3.DataSource = sQLCommands.SpecialQuery2();
+            dataGridView3.Columns["sicilno"].HeaderText = "SİCİLNO";
+            dataGridView3.Columns["name"].HeaderText = "İSİM";
+            dataGridView3.Columns["surname"].HeaderText = "SOYİSİM";
+            dataGridView3.Columns["gpa"].HeaderText = "GPA";
+            dataGridView3.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+
+            dataGridView4.DataSource = sQLCommands.showDataTable("*", "acilandersler");
+            dataGridView4.Columns["senderid"].HeaderText = "DERS ALAN";
+            dataGridView4.Columns["receiptid"].HeaderText = "DERS VEREN";
+            dataGridView4.Columns["dersid"].HeaderText = "DERS İD";
+            dataGridView4.Columns["status"].HeaderText = "DURUM";
         }
 
         private void gpaSortButton_Click(object sender, EventArgs e)
         {
+            this.dataGridView3.DataSource = sQLCommands.SpecialQuery3();
+            sQLCommands.delete("request_table", "status", "Bekliyor");
+            List<string> teacherList = GetTeacherList();
+            DataTable lessonData = sQLCommands.showDataTable("*", "acilandersler");
+            DataTable studentData = sQLCommands.SpecialQuery3();
+            dataGridView3.DataSource = studentData;
 
+            bool staticVeri = false;
+            int tmp = 0;
+
+
+            if (staticVeri)
+            {
+                for (int i = 0; i < studentData.Rows.Count; i++)
+                {
+                    DataRow studentRow = studentData.Rows[i];
+                    for (int j = 0; j < lessonData.Rows.Count; j++)
+                    {
+                        DataRow lessonRow = lessonData.Rows[j];
+                        string teacherid = teacherList[tmp];
+                        int requestCount = sQLCommands.ultiGaripCount("*", "request_table", "senderid", studentRow["sicilno"].ToString(), "receiptid", teacherid, "status", "Onaylandı", "dersid", lessonRow["dersid"].ToString());
+                        if (requestCount > 0)
+                            continue;
+                        string teacherQuota = sQLCommands.getValue("quota", "teachers", "sicilno= " + teacherid);
+                        int.TryParse(teacherQuota, out int teacherQuotaNum);
+                        string studentLessonNum = sQLCommands.getValue("numberoflesson", "students", "sicilno= " + studentRow["sicilno"].ToString());
+                        int.TryParse(studentLessonNum, out int studentLessonNumber);
+                        studentLessonNumber++;
+                        teacherQuotaNum--;
+                        sQLCommands.addRequest(studentRow["sicilno"].ToString(), teacherList[tmp], lessonRow["dersid"].ToString(), "Onaylandı");
+                        sQLCommands.updateData("students", "numberoflesson", "sicilno", studentRow["sicilno"].ToString(), studentLessonNumber.ToString());
+                        sQLCommands.updateData("teachers", "quota", "sicilno", teacherList[tmp], teacherQuotaNum.ToString());
+                        tmp++;
+                        tmp = (tmp >= teacherList.Count) ? 0 : tmp;
+                        teacherList = GetTeacherList();
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < studentData.Rows.Count; i++)
+                {
+                    DataRow studentRow = studentData.Rows[i];
+                    teacherList = GetTeacherList();
+                    string teacherid = teacherList[tmp];
+
+                    for (int j = 0; j < lessonData.Rows.Count; j++)
+                    {
+                        DataRow lessonRow = lessonData.Rows[j];
+                        int requestCount = sQLCommands.ultiGaripCount("*", "request_table", "senderid", studentRow["sicilno"].ToString(), "receiptid", teacherid, "status", "Onaylandı", "dersid", lessonRow["dersid"].ToString());
+                        if (requestCount > 0)
+                            continue;
+                        string teacherQuota = sQLCommands.getValue("quota", "teachers", "sicilno= " + teacherid);
+                        int.TryParse(teacherQuota, out int teacherQuotaNum);
+                        string studentLessonNum = sQLCommands.getValue("numberoflesson", "students", "sicilno= " + studentRow["sicilno"].ToString());
+                        int.TryParse(studentLessonNum, out int studentLessonNumber);
+                        studentLessonNumber++;
+                        teacherQuotaNum--;
+                        sQLCommands.addRequest(studentRow["sicilno"].ToString(), teacherList[tmp], lessonRow["dersid"].ToString(), "Onaylandı");
+                        sQLCommands.updateData("students", "numberoflesson", "sicilno", studentRow["sicilno"].ToString(), studentLessonNumber.ToString());
+                        sQLCommands.updateData("teachers", "quota", "sicilno", teacherList[tmp], teacherQuotaNum.ToString());
+                        if (teacherQuotaNum == 0)
+                        {
+                            tmp++;
+                            tmp = (tmp >= teacherList.Count) ? 0 : tmp;
+                        }
+                    }
+                    tmp++;
+                    tmp = (tmp >= teacherList.Count) ? 0 : tmp;
+                }
+            }
+            dataGridView3.DataSource = sQLCommands.SpecialQuery3();
+            dataGridView3.Columns["sicilno"].HeaderText = "SİCİLNO";
+            dataGridView3.Columns["name"].HeaderText = "İSİM";
+            dataGridView3.Columns["surname"].HeaderText = "SOYİSİM";
+            dataGridView3.Columns["gpa"].HeaderText = "GPA";
+            dataGridView3.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+
+            dataGridView4.DataSource = sQLCommands.showDataTable("*","acilandersler");
+            dataGridView4.Columns["senderid"].HeaderText = "DERS ALAN";
+            dataGridView4.Columns["receiptid"].HeaderText = "DERS VEREN";
+            dataGridView4.Columns["dersid"].HeaderText = "DERS İD";
+            dataGridView4.Columns["status"].HeaderText = "DURUM";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ShowPanel(TeacherListPanel);
+
+            dataGridView5.DataSource = sQLCommands.showDataTable("*", "teachers");
+            dataGridView5.Columns["sicilno"].HeaderText = "SİCİLNO";
+            dataGridView5.Columns["name"].HeaderText = "İSİM";
+            dataGridView5.Columns["surname"].HeaderText = "SOYİSİM";
+            dataGridView5.Columns["quota"].HeaderText = "KONTENJAN";
+
+            dataGridView6.DataSource = sQLCommands.showDataTable("*", "teachers_interest_table");
+            dataGridView6.Columns["sicilno"].HeaderText = "SİCİLNO";
+            dataGridView6.Columns["interests"].HeaderText = "İLGİ ALANLARI";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ShowPanel(lessonAddPanel);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox4.Text) && string.IsNullOrWhiteSpace(textBox5.Text))
+            {
+                MessageBox.Show("Ders Adı ve Ders İD boş bırakılamaz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                sQLCommands.addAcilanDersler(textBox5.Text, textBox4.Text);
+                dataGridView7.DataSource = sQLCommands.showDataTable("*", "acilandersler");
+                dataGridView7.Columns["dersid"].HeaderText = "DERS İD";
+                dataGridView7.Columns["dersisim"].HeaderText = "DERS İSİM";
+            }
         }
     }
 }
