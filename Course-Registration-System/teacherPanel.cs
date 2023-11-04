@@ -37,7 +37,8 @@ namespace Course_Registration_System
         void ShowPanel(Panel panel)
         {
             teacherInterestPanel.Visible = false;
-            teacherLessonRequestPanel.Visible = false;
+
+            teacherLessonRequestPanel.Visible= false;
             teacherGradingPanel.Visible = false;
             teacherStudentPanel.Visible = false;
 
@@ -58,6 +59,7 @@ namespace Course_Registration_System
         {
             ShowPanel(teacherLessonRequestPanel);
 
+
             List<Panel> panelList = new List<Panel>();
             int teacherRequestCount = sQLCommands.garipCount("*", "request_table", "status", "Bekliyor", "receiptid", teacherId.ToString());
             DataTable dataTable = sQLCommands.showTwoQueryDataTable("*", "request_table", "status", "Bekliyor", "receiptid", teacherId.ToString());
@@ -66,6 +68,7 @@ namespace Course_Registration_System
 
             if (teacherRequestCount > 0)
             {
+
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow row = dataTable.Rows[i];
@@ -138,6 +141,7 @@ namespace Course_Registration_System
 
                     lessonRequestAcceptButton.Click += new System.EventHandler((senderObj, eventArgs) =>
                     {
+
                         string teacherQuota = sQLCommands.getValue("quota", " teachers ", "sicilno = " + teacherId);
                         int.TryParse(teacherQuota, out int teacherQuotaNum);
                         if (teacherQuotaNum > 0)
@@ -163,7 +167,6 @@ namespace Course_Registration_System
                             MessageBox.Show("Kontenjanınız dolmuştur", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         }
-
 
                     });
                     // 
@@ -192,7 +195,6 @@ namespace Course_Registration_System
                     lessonRequestStudentNameLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 
                     panelList.Add(panel1);
-
 
                     this.teacherLessonRequestPanel.Controls.Add(panel1);
 
@@ -269,7 +271,6 @@ namespace Course_Registration_System
                 }
             }
 
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -290,7 +291,6 @@ namespace Course_Registration_System
             }
             MessageBox.Show("Başarıyla Kaydedildi", "Mesaj", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             GradingCalculator();
@@ -309,8 +309,8 @@ namespace Course_Registration_System
                 for (int j = 0; j < data.Rows.Count; j++)
                 {
                     DataRow dataRow = data.Rows[j];
-                    string lessonName = sQLCommands.getValue("lessonname", "lesson", "lessonid= '" + dataRow["lessonid"].ToString() + "'");
-                    string credit1 = sQLCommands.getValue("credit", "lesson", "lessonid= '" + dataRow["lessonid"].ToString() + "'");
+                    string lessonName = sQLCommands.getValue("lessonname", "lesson", "lessonid= '" + dataRow["lessonid"].ToString()+"'");
+                    string credit1 = sQLCommands.getValue("credit", "lesson", "lessonid= '"+dataRow["lessonid"].ToString()+"'");
                     int.TryParse(credit1, out int credit);
                     int lessonGrad = lessonGrading[lessonName];
                     float letterpoint = 0.0f;
@@ -340,7 +340,7 @@ namespace Course_Registration_System
                 panel1.BackColor = System.Drawing.Color.Aquamarine;
                 panel1.Controls.Add(label3);
                 panel1.Controls.Add(label1);
-                panel1.Location = new System.Drawing.Point(71, tmp + (70 * i));
+                panel1.Location = new System.Drawing.Point(71, tmp+(70*i));
                 panel1.Name = "panel1";
                 panel1.Size = new System.Drawing.Size(715, 57);
                 panel1.TabIndex = 0;
@@ -355,7 +355,7 @@ namespace Course_Registration_System
                 label1.TabIndex = 0;
                 DataTable studentName = sQLCommands.showQueryDataTable("name,surname", "users", "sicilno", row["sicilno"].ToString());
                 DataRow dataRow1 = studentName.Rows[0];
-                label1.Text = dataRow1["name"].ToString() + " " + dataRow1["surname"].ToString();
+                label1.Text = dataRow1["name"].ToString()+" "+dataRow1["surname"].ToString();
                 // 
                 // label3
                 // 
@@ -389,6 +389,7 @@ namespace Course_Registration_System
 
         private void teacherStudentbutton_Click(object sender, EventArgs e)
         {
+
             ShowPanel(teacherStudentPanel);
             DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
             Label sicilNoLabelDgm = new System.Windows.Forms.Label();
@@ -450,7 +451,7 @@ namespace Course_Registration_System
                     dersSayısıLabel.Text = selectedRow.Cells["numberoflesson"].Value.ToString();
                 }
             });
-            if (staticveri)
+            if (staticveri) 
             {
                 dataGridView1.DataSource = sQLCommands.SpecialQuery1();
                 dataGridView1.Columns["sicilno"].HeaderText = "SİCİLNO";
@@ -458,7 +459,7 @@ namespace Course_Registration_System
                 dataGridView1.Columns["surname"].HeaderText = "SOYİSİM";
                 dataGridView1.Columns["gpa"].HeaderText = "GPA";
                 dataGridView1.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
-
+                
             }
             else
             {
@@ -519,7 +520,7 @@ namespace Course_Registration_System
             teacherQuotaLabel.Name = "teacherQuotaLabel";
             teacherQuotaLabel.Size = new System.Drawing.Size(101, 37);
             teacherQuotaLabel.TabIndex = 5;
-            string hocaKotası = sQLCommands.getValue("quota", "teachers", "sicilno=" + "'" + teacherId.ToString() + "'");
+            string hocaKotası = sQLCommands.getValue("quota", "teachers", "sicilno="+"'"+ teacherId.ToString()+"'");
             teacherQuotaLabel.Text = hocaKotası;
             // 
             // dataGridView2
@@ -640,15 +641,12 @@ namespace Course_Registration_System
                 MessageBox.Show("İşleminiz başarıyla gerçekleşti", "Başarılı İşlem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             });
 
-            // deneme
-            // deneme
-            // deneme
-
             teacherStudentPanel.ResumeLayout(false);
             teacherStudentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(dataGridView2)).EndInit();
         }
+        
 
     }
 

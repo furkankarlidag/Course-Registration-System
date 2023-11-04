@@ -230,7 +230,6 @@ namespace Course_Registration_System
             this.teacherGradingPanel.ResumeLayout(false);
             this.teacherStudentPanel.ResumeLayout(false);
             this.teacherStudentPanel.PerformLayout();
-
             this.ResumeLayout(false);
 
         }
