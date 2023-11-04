@@ -12,6 +12,7 @@ namespace Course_Registration_System
 {
     public partial class LoginPanel : Form
     {
+        
         public LoginPanel()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace Course_Registration_System
         {
             string password = this.passwordTextBox.Text;
             int sicilID = int.Parse(this.usernameTextBox.Text);
+
 
 
             SQLCommands sQLCommands = new SQLCommands();
@@ -34,12 +36,16 @@ namespace Course_Registration_System
             {
                 teacherPanel teacherPanel = new teacherPanel(sicilID);
                 teacherPanel.Visible = true;
+                timer1.Interval = 1000;
+                timer1.Start();
             }
 
             else if (sQLCommands.control(sicilID, password) == "admin")
             {
                 AdministratorPanel adminPanel = new AdministratorPanel();
                 adminPanel.Visible = true;
+                timer1.Interval = 1000;
+                timer1.Start();
             }
 
             else
@@ -48,6 +54,7 @@ namespace Course_Registration_System
 
             }
         }
+        
 
         private void LoginPanel_Load(object sender, EventArgs e)
         {

@@ -4,6 +4,7 @@ using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -529,8 +530,23 @@ namespace Course_Registration_System
             string text = "insert into users (sicilno,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             Random random = new Random();
-            int id = random.Next(2000, 3000 + 1);
+            int id = random.Next(20000, 30000 + 1);
             cmd1.Parameters.AddWithValue("p1", id);
+            cmd1.Parameters.AddWithValue("p2", name);
+            cmd1.Parameters.AddWithValue("p3", surname);
+            cmd1.Parameters.AddWithValue("p4", password);
+            cmd1.Parameters.AddWithValue("p5", type);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void addUser2(string id,string name, string surname, string password, string type)
+        {
+            connection.Open();
+            string text = "insert into users (sicilno,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            Random random = new Random();
+            int.TryParse(id,out int value);
+            cmd1.Parameters.AddWithValue("p1", value);
             cmd1.Parameters.AddWithValue("p2", name);
             cmd1.Parameters.AddWithValue("p3", surname);
             cmd1.Parameters.AddWithValue("p4", password);
@@ -544,11 +560,13 @@ namespace Course_Registration_System
             connection.Open();
             string text = "insert into students (sicilno,name,surname,gpa,numberoflesson) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
-            float.TryParse(gpa, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float gpaValue);
+            gpa = gpa.Replace(",", ".");
+            float sayi = float.Parse(gpa);
+            sayi = sayi / 100f;
             cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
             cmd1.Parameters.AddWithValue("p2", name);
             cmd1.Parameters.AddWithValue("p3", surname);
-            cmd1.Parameters.AddWithValue("p4", gpaValue);
+            cmd1.Parameters.AddWithValue("p4", sayi);
             cmd1.Parameters.AddWithValue("p5", Convert.ToInt32(numberoflesson));
             cmd1.ExecuteNonQuery();
             connection.Close();
@@ -1169,5 +1187,5 @@ namespace Course_Registration_System
 
     }
 
-    
 }
+

@@ -16,6 +16,7 @@ namespace Course_Registration_System
         int studentIdNo = -1 ;
         int teacherIdNo = -1 ;
 
+
         SQLCommands sQLCommands = new SQLCommands();
         public AdministratorPanel()
         {
@@ -26,6 +27,11 @@ namespace Course_Registration_System
             this.studentTeacherChoosePanel.Visible = false;
             this.TeacherListPanel.Visible=false;
             this.lessonAddPanel.Visible = false;
+            this.usersPanel.Visible = false;
+            this.otoUsersPanel.Visible = false;
+            this.panel2.Visible = false;
+
+            
         }
 
         void ShowPanel(Panel panel) 
@@ -36,6 +42,9 @@ namespace Course_Registration_System
             this.studentTeacherChoosePanel.Visible = false;
             this.TeacherListPanel.Visible = false;
             this.lessonAddPanel.Visible = false;
+            this.usersPanel.Visible = false;
+            this.otoUsersPanel.Visible=false;
+            this.panel2.Visible = false;
 
             panel.Visible = true;
         }
@@ -706,7 +715,7 @@ namespace Course_Registration_System
             DataTable studentData = sQLCommands.SpecialQuery2();
             dataGridView3.DataSource = studentData;
 
-            bool staticVeri = false;
+            bool staticVeri = Settings.teacherStatus;
             int tmp = 0;
 
 
@@ -793,7 +802,7 @@ namespace Course_Registration_System
             DataTable studentData = sQLCommands.SpecialQuery3();
             dataGridView3.DataSource = studentData;
 
-            bool staticVeri = false;
+            bool staticVeri = Settings.teacherStatus;
             int tmp = 0;
 
 
@@ -873,8 +882,7 @@ namespace Course_Registration_System
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ShowPanel(TeacherListPanel);
-
+            
             dataGridView5.DataSource = sQLCommands.showDataTable("*", "teachers");
             dataGridView5.Columns["sicilno"].HeaderText = "SİCİLNO";
             dataGridView5.Columns["name"].HeaderText = "İSİM";
@@ -884,6 +892,9 @@ namespace Course_Registration_System
             dataGridView6.DataSource = sQLCommands.showDataTable("*", "teachers_interest_table");
             dataGridView6.Columns["sicilno"].HeaderText = "SİCİLNO";
             dataGridView6.Columns["interests"].HeaderText = "İLGİ ALANLARI";
+
+            TeacherListPanel.Visible = true;
+            ShowPanel(TeacherListPanel);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -904,6 +915,111 @@ namespace Course_Registration_System
                 dataGridView7.Columns["dersid"].HeaderText = "DERS İD";
                 dataGridView7.Columns["dersisim"].HeaderText = "DERS İSİM";
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ShowPanel(usersPanel);
+
+            dataGridView8.DataSource=sQLCommands.showDataTable("*", "users");
+            dataGridView8.Columns["sicilno"].HeaderText = "SİCİL NO";
+            dataGridView8.Columns["name"].HeaderText = "İSİM";
+            dataGridView8.Columns["surname"].HeaderText = "SOYİSİM";
+            dataGridView8.Columns["password"].HeaderText = "ŞİFRE";
+            dataGridView8.Columns["type"].HeaderText = "TÜR";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int.TryParse(textBox1.Text, out int num);
+            Random random = new Random();
+            
+
+            for (int i = 0; i < num; i++)
+            {
+                int id = random.Next(20000, 30000 + 1);
+                int tmp = sQLCommands.dataCount("*", "users", "sicilno", id.ToString());
+                while (tmp>0)
+                {
+                    id = random.Next(20000, 30000 + 1);
+                    tmp = sQLCommands.dataCount("*", "users", "sicilno", id.ToString());
+                }
+                sQLCommands.addUser2(id.ToString(),"isim"+i, "soyisim"+i, "1234", "Student");
+                string number = sQLCommands.getValue("sicilno", "public.users", "name= '" + "isim" + i + "' AND surname = '" + "soyisim" + i + "' and password='" + "1234" + "'");
+                int rastgeleTamSayi = random.Next(200, 401);
+                float gpa = (float)rastgeleTamSayi / 100.0f;
+                sQLCommands.addStudents(number, "isim" + i, "soyisim" + i, gpa.ToString(), "0");
+            }
+            this.dataGridView9.DataSource = sQLCommands.showDataTable("*", "students");
+            this.dataGridView9.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView9.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView9.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView9.Columns["gpa"].HeaderText = "GPA";
+            this.dataGridView9.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            int.TryParse(textBox2.Text, out int num);
+            Random random = new Random();
+
+            string[] ilgiAlanları = {"Bilgisayar Donanımı", "Görüntü İşleme", "Algoritmalar", "Doğal Dil İşlemesi", "Yapay Zeka",
+                                    "Kriptoloji", "Veritabanı Sistemleri", "İşletim Sistemleri", "Bilgisayar Ağları",
+                                    "Programlama Dilleri" };
+            for (int i = 0; i < num; i++)
+            {
+                int id = random.Next(20000, 30000 + 1);
+                int tmp = sQLCommands.dataCount("*", "users", "sicilno", id.ToString());
+                while (tmp > 0)
+                {
+                    id = random.Next(20000, 30000 + 1);
+                    tmp = sQLCommands.dataCount("*", "users", "sicilno", id.ToString());
+                }
+                sQLCommands.addUser2(id.ToString(),"hocaisim"+i, "hocasoyisim"+i, "hoca1234", "Teacher");
+                string number = sQLCommands.getValue("sicilno", "public.users", "name= '" + "hocaisim" + i + "' AND surname = '" + "hocasoyisim" + i + "' and password='" + "hoca1234" + "'");
+                sQLCommands.addTeachers(number, "hocaisim" + i, "hocasoyisim" + i, "40");
+                int rastgeleSayi = random.Next(0, ilgiAlanları.Length);
+                sQLCommands.addTeachersInterest(number, ilgiAlanları[rastgeleSayi]);
+            }
+            this.dataGridView10.DataSource = sQLCommands.showDataTable("*", "teachers");
+            this.dataGridView10.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView10.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView10.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView10.Columns["quota"].HeaderText = "KONTENJAN";
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ShowPanel(otoUsersPanel);
+
+            this.dataGridView10.DataSource = sQLCommands.showDataTable("*", "teachers");
+            this.dataGridView10.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView10.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView10.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView10.Columns["quota"].HeaderText = "KONTENJAN";
+
+            this.dataGridView9.DataSource = sQLCommands.showDataTable("*", "students");
+            this.dataGridView9.Columns["sicilno"].HeaderText = "SİCİLNO";
+            this.dataGridView9.Columns["name"].HeaderText = "İSİM";
+            this.dataGridView9.Columns["surname"].HeaderText = "SOYİSİM";
+            this.dataGridView9.Columns["gpa"].HeaderText = "GPA";
+            this.dataGridView9.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ShowPanel(panel2);
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Settings.teacherStatus = false;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Settings.teacherStatus = true;
         }
     }
 }

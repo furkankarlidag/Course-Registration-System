@@ -1,4 +1,6 @@
-﻿namespace Course_Registration_System
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+namespace Course_Registration_System
 {
     partial class AdministratorPanel
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -35,7 +38,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.studentPanel = new System.Windows.Forms.Panel();
@@ -112,12 +114,29 @@
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.lessonAddPanel = new System.Windows.Forms.Panel();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.button11 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.usersPanel = new System.Windows.Forms.Panel();
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.otoUsersPanel = new System.Windows.Forms.Panel();
+            this.dataGridView10 = new System.Windows.Forms.DataGridView();
+            this.dataGridView9 = new System.Windows.Forms.DataGridView();
+            this.button12 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.teacherPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -133,6 +152,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.lessonAddPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.usersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
+            this.otoUsersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -246,21 +271,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Kullanıcılar";
             this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button8.FlatAppearance.BorderSize = 2;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button8.Location = new System.Drawing.Point(12, 459);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(175, 50);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Otomatik Atamalar";
-            this.button8.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button9
             // 
@@ -270,12 +281,13 @@
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button9.Location = new System.Drawing.Point(12, 515);
+            this.button9.Location = new System.Drawing.Point(12, 459);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(175, 50);
             this.button9.TabIndex = 8;
             this.button9.Text = "Otomatik Kullanıcılar";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -285,12 +297,13 @@
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button10.Location = new System.Drawing.Point(12, 571);
+            this.button10.Location = new System.Drawing.Point(12, 515);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(175, 50);
             this.button10.TabIndex = 9;
             this.button10.Text = "Ayarlar";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // studentPanel
             // 
@@ -960,6 +973,15 @@
             this.lessonAddPanel.Size = new System.Drawing.Size(962, 682);
             this.lessonAddPanel.TabIndex = 10;
             // 
+            // dataGridView7
+            // 
+            this.dataGridView7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Location = new System.Drawing.Point(10, 171);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(372, 137);
+            this.dataGridView7.TabIndex = 53;
+            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.LightGreen;
@@ -1012,14 +1034,176 @@
             this.label5.TabIndex = 44;
             this.label5.Text = "Ders İd:";
             // 
-            // dataGridView7
+            // usersPanel
             // 
-            this.dataGridView7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(10, 171);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(372, 137);
-            this.dataGridView7.TabIndex = 53;
+            this.usersPanel.Controls.Add(this.dataGridView8);
+            this.usersPanel.Location = new System.Drawing.Point(199, 67);
+            this.usersPanel.Name = "usersPanel";
+            this.usersPanel.Size = new System.Drawing.Size(973, 554);
+            this.usersPanel.TabIndex = 10;
+            // 
+            // dataGridView8
+            // 
+            this.dataGridView8.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView8.Location = new System.Drawing.Point(12, 16);
+            this.dataGridView8.Name = "dataGridView8";
+            this.dataGridView8.Size = new System.Drawing.Size(386, 249);
+            this.dataGridView8.TabIndex = 0;
+            // 
+            // otoUsersPanel
+            // 
+            this.otoUsersPanel.Controls.Add(this.dataGridView10);
+            this.otoUsersPanel.Controls.Add(this.dataGridView9);
+            this.otoUsersPanel.Controls.Add(this.button12);
+            this.otoUsersPanel.Controls.Add(this.textBox2);
+            this.otoUsersPanel.Controls.Add(this.label2);
+            this.otoUsersPanel.Controls.Add(this.button8);
+            this.otoUsersPanel.Controls.Add(this.textBox1);
+            this.otoUsersPanel.Controls.Add(this.label1);
+            this.otoUsersPanel.Location = new System.Drawing.Point(193, 67);
+            this.otoUsersPanel.Name = "otoUsersPanel";
+            this.otoUsersPanel.Size = new System.Drawing.Size(979, 682);
+            this.otoUsersPanel.TabIndex = 10;
+            // 
+            // dataGridView10
+            // 
+            this.dataGridView10.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView10.Location = new System.Drawing.Point(485, 151);
+            this.dataGridView10.Name = "dataGridView10";
+            this.dataGridView10.Size = new System.Drawing.Size(435, 262);
+            this.dataGridView10.TabIndex = 60;
+            // 
+            // dataGridView9
+            // 
+            this.dataGridView9.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView9.Location = new System.Drawing.Point(23, 151);
+            this.dataGridView9.Name = "dataGridView9";
+            this.dataGridView9.Size = new System.Drawing.Size(435, 262);
+            this.dataGridView9.TabIndex = 59;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.LightGreen;
+            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button12.FlatAppearance.BorderSize = 2;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button12.Location = new System.Drawing.Point(627, 56);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(175, 50);
+            this.button12.TabIndex = 58;
+            this.button12.Text = "Ekle";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox2.Location = new System.Drawing.Point(627, 16);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(174, 33);
+            this.textBox2.TabIndex = 57;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(480, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 29);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Hoca Sayısı:";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.LightGreen;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button8.FlatAppearance.BorderSize = 2;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button8.Location = new System.Drawing.Point(195, 56);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(175, 50);
+            this.button8.TabIndex = 55;
+            this.button8.Text = "Ekle";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(196, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(174, 33);
+            this.textBox1.TabIndex = 54;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(18, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(172, 29);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Öğrenci Sayısı:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button14);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.button13);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(212, 69);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(960, 680);
+            this.panel2.TabIndex = 10;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button13.Location = new System.Drawing.Point(20, 61);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(194, 37);
+            this.button13.TabIndex = 2;
+            this.button13.Text = "Durum 1";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Montserrat SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(13, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(817, 37);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Bir öğrencinin dersleri yalnızca bir hocadan alma durumu";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Montserrat SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(13, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(823, 37);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Bir öğrencinin dersleri birden fazla hocadan alma durumu";
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button14.Location = new System.Drawing.Point(20, 155);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(194, 37);
+            this.button14.TabIndex = 4;
+            this.button14.Text = "Durum 2";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // AdministratorPanel
             // 
@@ -1028,10 +1212,17 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.otoUsersPanel);
             this.Controls.Add(this.studentPanel);
+            this.Controls.Add(this.teacherPanel);
+            this.Controls.Add(this.StudentListPanel);
+            this.Controls.Add(this.studentTeacherChoosePanel);
+            this.Controls.Add(this.TeacherListPanel);
+            this.Controls.Add(this.lessonAddPanel);
+            this.Controls.Add(this.usersPanel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -1058,6 +1249,14 @@
             this.lessonAddPanel.ResumeLayout(false);
             this.lessonAddPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            this.usersPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            this.otoUsersPanel.ResumeLayout(false);
+            this.otoUsersPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1065,7 +1264,7 @@
         //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
         //this.Controls.Add(this.studentPanel);
         //this.Controls.Add(this.teacherPanel);
-        //this.Controls.Add(this.StudentListPanel);
+        //this.Controls.Add(this.lessonAddPanel);
 
 
         //this.Controls.Add(this.studentPanel);
@@ -1073,6 +1272,17 @@
         //this.Controls.Add(this.StudentListPanel);
         //this.Controls.Add(this.studentTeacherChoosePanel);
         //this.Controls.Add(this.TeacherListPanel);
+        //this.Controls.Add(this.lessonAddPanel);
+        //this.Controls.Add(this.usersPanel);
+
+        //this.Controls.Add(this.otoUsersPanel);
+        //this.Controls.Add(this.studentPanel);
+        //this.Controls.Add(this.teacherPanel);
+        //this.Controls.Add(this.StudentListPanel);
+        //this.Controls.Add(this.studentTeacherChoosePanel);
+        //this.Controls.Add(this.TeacherListPanel);
+        //this.Controls.Add(this.lessonAddPanel);
+        //this.Controls.Add(this.usersPanel);
         #endregion
 
         private System.Windows.Forms.Button button1;
@@ -1082,7 +1292,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel studentPanel;
@@ -1165,5 +1374,22 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.Panel usersPanel;
+        private System.Windows.Forms.DataGridView dataGridView8;
+        private System.Windows.Forms.Panel otoUsersPanel;
+        private System.Windows.Forms.DataGridView dataGridView10;
+        private System.Windows.Forms.DataGridView dataGridView9;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label6;
     }
 }
