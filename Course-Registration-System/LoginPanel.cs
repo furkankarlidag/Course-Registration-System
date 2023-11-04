@@ -20,17 +20,17 @@ namespace Course_Registration_System
         {
             string password = this.passwordTextBox.Text;
             int sicilID = int.Parse(this.usernameTextBox.Text);
-           
-           
+
+
             SQLCommands sQLCommands = new SQLCommands();
-            if (sQLCommands.control(sicilID, password) == "Student")
+            if (sQLCommands.control(sicilID, password) == "Student" || sQLCommands.control(sicilID, password) == "student")
             {
                 studentForm studentForm = new studentForm(sicilID);
-                 studentForm.Visible = true;
+                studentForm.Visible = true;
 
             }
 
-            else if (sQLCommands.control(sicilID, password) == "Teacher")
+            else if (sQLCommands.control(sicilID, password) == "Teacher" || sQLCommands.control(sicilID, password) == "teacher")
             {
                 teacherPanel teacherPanel = new teacherPanel(sicilID);
                 teacherPanel.Visible = true;
