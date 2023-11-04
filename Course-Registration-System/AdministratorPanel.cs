@@ -701,6 +701,8 @@ namespace Course_Registration_System
 
             bool staticVeri = true;
             int tmp = 0;
+
+
             if (staticVeri) 
             {
                 for (int i = 0; i < studentData.Rows.Count; i++)
