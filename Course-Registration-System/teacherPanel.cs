@@ -17,7 +17,7 @@ namespace Course_Registration_System
         string teacherNameSurname;
         int teacherId;
         string tmpStundentId;
-
+        
         Dictionary<string, int> lessonGrading = new Dictionary<string, int>();
         List<string> lessonNames = new List<string>();
         List<TextBox> textBoxes = new List<TextBox>();
@@ -32,7 +32,10 @@ namespace Course_Registration_System
         public teacherPanel(int id)
         {
             teacherNameSurname = sQLCommands.getInfoAboutTeacher(id);
+            
+           
             teacherId = id;
+            
             InitializeComponent();
         }
 
@@ -668,7 +671,7 @@ namespace Course_Registration_System
             SQLCommands sQLCommands = new SQLCommands();
             Random random = new Random();
             //Console.WriteLine(sQLCommands.findUserID("teachers", comboBox1.SelectedText));
-            sQLCommands.sendMessage(teacherId, sQLCommands.findUserID("teachers", comboBox1.SelectedItem.ToString()), textBox1.Text, random.Next(1, 10000));
+            sQLCommands.sendMessage(teacherId, sQLCommands.findUserID("students", comboBox1.SelectedItem.ToString()), textBox1.Text, random.Next(1, 10000));
             textBox1.Text = "Mesajinizi buraya giriniz!.";
             MessageBox.Show("Mesajiniz basairiyla gonderdildi.", "Basarili Islem", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -750,6 +753,11 @@ namespace Course_Registration_System
             }
             ShowPanel(teacherMessagePanel);
             
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

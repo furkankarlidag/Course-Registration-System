@@ -46,7 +46,8 @@ namespace Course_Registration_System
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.teacherMessagePanel = new System.Windows.Forms.Panel();
-            this.teacherStudentPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,12 +55,13 @@ namespace Course_Registration_System
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.teacherStudentPanel = new System.Windows.Forms.Panel();
+            this.idnolabel = new System.Windows.Forms.Label();
+            this.namelabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.teacherInterestPanel.SuspendLayout();
             this.teacherGradingPanel.SuspendLayout();
-            this.teacherStudentPanel.SuspendLayout();
+            this.teacherMessagePanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,18 +217,7 @@ namespace Course_Registration_System
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // teacherStudentPanel
-            // 
-           /* this.teacherStudentPanel.Controls.Add(this.panel2);
-            this.teacherStudentPanel.Controls.Add(this.label4);
-            this.teacherStudentPanel.Controls.Add(this.panel1);
-            this.teacherStudentPanel.Controls.Add(this.label1);*/
-            this.teacherStudentPanel.Location = new System.Drawing.Point(200, 174);
-            this.teacherStudentPanel.Name = "teacherStudentPanel";
-            this.teacherStudentPanel.Size = new System.Drawing.Size(972, 575);
-            this.teacherStudentPanel.TabIndex = 7;
-            // 
-            // teacherStudentPanel
+            // teacherMessagePanel
             // 
             this.teacherMessagePanel.Controls.Add(this.panel2);
             this.teacherMessagePanel.Controls.Add(this.label4);
@@ -235,7 +226,27 @@ namespace Course_Registration_System
             this.teacherMessagePanel.Location = new System.Drawing.Point(200, 174);
             this.teacherMessagePanel.Name = "teacherMessagePanel";
             this.teacherMessagePanel.Size = new System.Drawing.Size(972, 575);
-            this.teacherStudentPanel.TabIndex = 7;
+            this.teacherMessagePanel.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel2.Location = new System.Drawing.Point(9, 242);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(947, 317);
+            this.panel2.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 36);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "GELEN MESAJLAR";
             // 
             // panel1
             // 
@@ -315,25 +326,30 @@ namespace Course_Registration_System
             this.label1.TabIndex = 0;
             this.label1.Text = "MESAJ GÖNDER";
             // 
-            // label4
+            // teacherStudentPanel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 192);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 36);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "GELEN MESAJLAR";
+            this.teacherStudentPanel.Location = new System.Drawing.Point(200, 174);
+            this.teacherStudentPanel.Name = "teacherStudentPanel";
+            this.teacherStudentPanel.Size = new System.Drawing.Size(972, 575);
+            this.teacherStudentPanel.TabIndex = 7;
             // 
-            // panel2
+            // idnolabel
             // 
-            this.panel2.AutoScroll = true;
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.panel2.Location = new System.Drawing.Point(9, 242);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(947, 317);
-            this.panel2.TabIndex = 3;
+            this.idnolabel.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idnolabel.Location = new System.Drawing.Point(902, 32);
+            this.idnolabel.Name = "idnolabel";
+            this.idnolabel.Size = new System.Drawing.Size(254, 33);
+            this.idnolabel.TabIndex = 9;
+            this.idnolabel.Text = teacherId.ToString();
+            // 
+            // namelabel
+            // 
+            this.namelabel.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namelabel.Location = new System.Drawing.Point(902, 65);
+            this.namelabel.Name = "namelabel";
+            this.namelabel.Size = new System.Drawing.Size(240, 33);
+            this.namelabel.TabIndex = 11;
+            this.namelabel.Text = teacherNameSurname;
             // 
             // teacherPanel
             // 
@@ -341,6 +357,8 @@ namespace Course_Registration_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.namelabel);
+            this.Controls.Add(this.idnolabel);
             this.Controls.Add(this.teacherStudentPanel);
             this.Controls.Add(this.teacherMessagesButton);
             this.Controls.Add(this.teacherStudentbutton);
@@ -358,8 +376,8 @@ namespace Course_Registration_System
             this.teacherInterestPanel.ResumeLayout(false);
             this.teacherInterestPanel.PerformLayout();
             this.teacherGradingPanel.ResumeLayout(false);
-            this.teacherStudentPanel.ResumeLayout(false);
-            this.teacherStudentPanel.PerformLayout();
+            this.teacherMessagePanel.ResumeLayout(false);
+            this.teacherMessagePanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -394,6 +412,8 @@ namespace Course_Registration_System
         private Button button3;
         private Panel panel2;
         private Label label4;
+        private Label idnolabel;
+        private Label namelabel;
         //private System.Windows.Forms.Button ekleButton;
         //private System.Windows.Forms.Label dersAdıLabel;
         //private System.Windows.Forms.Label dersSayısıLabel;
