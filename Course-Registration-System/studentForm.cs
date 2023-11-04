@@ -626,8 +626,7 @@ namespace Course_Registration_System
 
             string connectionString = "server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345";
             this.panel6.Controls.Clear();
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
+           
             Console.WriteLine(this.interestsComboBox.SelectedItem);
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
