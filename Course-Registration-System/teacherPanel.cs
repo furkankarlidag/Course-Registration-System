@@ -24,7 +24,7 @@ namespace Course_Registration_System
         List<Panel> panels = new List<Panel>();
         int last;
 
-        bool staticveri = true;
+        bool staticveri = Settings.teacherStatus;
         string dersid;
         string sicilNo;
 
@@ -197,7 +197,11 @@ namespace Course_Registration_System
                     lessonRequestStudentNameLabel.TabIndex = 4;
                     lessonRequestStudentNameLabel.TabStop = true;
                     lessonRequestStudentNameLabel.Text = name + " " + surname; ;
-                    lessonRequestStudentNameLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+                    lessonRequestStudentNameLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler((senderObj, eventArgs) =>
+                    {
+                        InfoStudent ınfoStudent = new InfoStudent(studentId);
+                        ınfoStudent.Visible= true;
+                    });
 
                     panelList.Add(panel1);
 
@@ -212,10 +216,7 @@ namespace Course_Registration_System
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
+        
 
         private void teacherGradingButton_Click(object sender, EventArgs e)
         {
