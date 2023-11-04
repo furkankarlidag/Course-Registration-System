@@ -617,7 +617,7 @@ namespace Course_Registration_System
 
         private void filterButton_Click(object sender, EventArgs e)
         {
-            this.panel6.Controls.Clear();
+            //this.panel6.Controls.Clear();
             SQLCommands sQLCommands = new SQLCommands();
             int sizeY = 12;
             string interest = string.Empty;
