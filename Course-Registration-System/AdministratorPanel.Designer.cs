@@ -80,6 +80,7 @@
             this.teacherSurnameAdd = new System.Windows.Forms.Label();
             this.teacherNameAdd = new System.Windows.Forms.Label();
             this.teacherPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.teacherInterstUpdate = new System.Windows.Forms.Label();
             this.teacherInterstUpdateTextBox = new System.Windows.Forms.TextBox();
             this.teacherInterstAdd = new System.Windows.Forms.Label();
@@ -103,6 +104,10 @@
             this.dataGridViewStudentsList = new System.Windows.Forms.DataGridView();
             this.dataGridViewUsersStudentsList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.studentTeacherChoosePanel = new System.Windows.Forms.Panel();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.gpaSortButton = new System.Windows.Forms.Button();
+            this.randomlyAssignButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.teacherPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -110,6 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).BeginInit();
+            this.studentTeacherChoosePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -190,6 +197,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Öğrenci-Hoca Seçimi";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -587,6 +595,7 @@
             // 
             // teacherPanel
             // 
+            this.teacherPanel.Controls.Add(this.panel2);
             this.teacherPanel.Controls.Add(this.teacherInterstUpdate);
             this.teacherPanel.Controls.Add(this.teacherInterstUpdateTextBox);
             this.teacherPanel.Controls.Add(this.teacherInterstAdd);
@@ -619,6 +628,13 @@
             this.teacherPanel.Name = "teacherPanel";
             this.teacherPanel.Size = new System.Drawing.Size(979, 737);
             this.teacherPanel.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(401, 312);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(979, 682);
+            this.panel2.TabIndex = 10;
             // 
             // teacherInterstUpdate
             // 
@@ -664,8 +680,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(568, 405);
             this.dataGridView2.TabIndex = 41;
-            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
-
             // 
             // teacherSurnameRemoveTextBox
             // 
@@ -835,6 +849,62 @@
             this.panel1.Size = new System.Drawing.Size(979, 738);
             this.panel1.TabIndex = 10;
             // 
+            // studentTeacherChoosePanel
+            // 
+            this.studentTeacherChoosePanel.Controls.Add(this.dataGridView3);
+            this.studentTeacherChoosePanel.Controls.Add(this.gpaSortButton);
+            this.studentTeacherChoosePanel.Controls.Add(this.randomlyAssignButton);
+            this.studentTeacherChoosePanel.Location = new System.Drawing.Point(199, 67);
+            this.studentTeacherChoosePanel.Name = "studentTeacherChoosePanel";
+            this.studentTeacherChoosePanel.Size = new System.Drawing.Size(973, 682);
+            this.studentTeacherChoosePanel.TabIndex = 10;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.PaleGreen;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(33, 72);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(424, 202);
+            this.dataGridView3.TabIndex = 0;
+            //dataGridView3.Columns["sicilno"].HeaderText = "SİCİLNO";
+            //dataGridView3.Columns["name"].HeaderText = "İSİM";
+            //dataGridView3.Columns["surname"].HeaderText = "SOYİSİM";
+            //dataGridView3.Columns["gpa"].HeaderText = "GPA";
+            //dataGridView3.Columns["numberoflesson"].HeaderText = "DERS SAYISI";
+            // 
+            // gpaSortButton
+            // 
+            this.gpaSortButton.BackColor = System.Drawing.Color.LightGreen;
+            this.gpaSortButton.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.gpaSortButton.FlatAppearance.BorderSize = 2;
+            this.gpaSortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.gpaSortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gpaSortButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gpaSortButton.Location = new System.Drawing.Point(248, 4);
+            this.gpaSortButton.Name = "gpaSortButton";
+            this.gpaSortButton.Size = new System.Drawing.Size(209, 46);
+            this.gpaSortButton.TabIndex = 23;
+            this.gpaSortButton.Text = "Nota Göre";
+            this.gpaSortButton.UseVisualStyleBackColor = false;
+            this.gpaSortButton.Click += new System.EventHandler(this.gpaSortButton_Click);
+            // 
+            // randomlyAssignButton
+            // 
+            this.randomlyAssignButton.BackColor = System.Drawing.Color.LightGreen;
+            this.randomlyAssignButton.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.randomlyAssignButton.FlatAppearance.BorderSize = 2;
+            this.randomlyAssignButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.randomlyAssignButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.randomlyAssignButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.randomlyAssignButton.Location = new System.Drawing.Point(33, 4);
+            this.randomlyAssignButton.Name = "randomlyAssignButton";
+            this.randomlyAssignButton.Size = new System.Drawing.Size(209, 46);
+            this.randomlyAssignButton.TabIndex = 22;
+            this.randomlyAssignButton.Text = "Rastgele Atama";
+            this.randomlyAssignButton.UseVisualStyleBackColor = false;
+            this.randomlyAssignButton.Click += new System.EventHandler(this.randomlyAssignButton_Click);
+            // 
             // AdministratorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -842,11 +912,8 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 761);
-            //this.Controls.Add(this.panel1);
+            this.Controls.Add(this.studentTeacherChoosePanel);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.studentPanel);
-            this.Controls.Add(this.teacherPanel);
-            this.Controls.Add(this.StudentListPanel);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -866,11 +933,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentLessonList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersStudentsList)).EndInit();
+            this.studentTeacherChoosePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
         //BU amınakodumun windows formu yorum satırını silmiş
         //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
+        //this.Controls.Add(this.studentPanel);
+        //this.Controls.Add(this.teacherPanel);
+        //this.Controls.Add(this.StudentListPanel);
+
+
         //this.Controls.Add(this.studentPanel);
         //this.Controls.Add(this.teacherPanel);
         //this.Controls.Add(this.StudentListPanel);
@@ -951,5 +1025,10 @@
         private System.Windows.Forms.Label teacherInterstAdd;
         private System.Windows.Forms.TextBox teacherInterstAddTextBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel studentTeacherChoosePanel;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button gpaSortButton;
+        private System.Windows.Forms.Button randomlyAssignButton;
     }
 }
