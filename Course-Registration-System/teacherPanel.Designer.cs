@@ -43,17 +43,29 @@ namespace Course_Registration_System
             this.TeacherInterestAddButton = new System.Windows.Forms.Button();
             this.teacherLessonRequestPanel = new System.Windows.Forms.Panel();
             this.teacherGradingPanel = new System.Windows.Forms.Panel();
-            this.teacherStudentPanel = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.teacherMessagePanel = new System.Windows.Forms.Panel();
+            this.teacherStudentPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.teacherInterestPanel.SuspendLayout();
             this.teacherGradingPanel.SuspendLayout();
+            this.teacherStudentPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // teacherInterestbutton
             // 
-            this.teacherInterestbutton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterestbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherInterestbutton.Location = new System.Drawing.Point(13, 173);
             this.teacherInterestbutton.Name = "teacherInterestbutton";
             this.teacherInterestbutton.Size = new System.Drawing.Size(181, 41);
@@ -74,7 +86,7 @@ namespace Course_Registration_System
             // 
             // teacherLessonRequestbutton
             // 
-            this.teacherLessonRequestbutton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherLessonRequestbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherLessonRequestbutton.Location = new System.Drawing.Point(13, 220);
             this.teacherLessonRequestbutton.Name = "teacherLessonRequestbutton";
             this.teacherLessonRequestbutton.Size = new System.Drawing.Size(181, 41);
@@ -85,7 +97,7 @@ namespace Course_Registration_System
             // 
             // teacherGradingButton
             // 
-            this.teacherGradingButton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherGradingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherGradingButton.Location = new System.Drawing.Point(13, 267);
             this.teacherGradingButton.Name = "teacherGradingButton";
             this.teacherGradingButton.Size = new System.Drawing.Size(181, 41);
@@ -96,7 +108,7 @@ namespace Course_Registration_System
             // 
             // teacherStudentbutton
             // 
-            this.teacherStudentbutton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherStudentbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherStudentbutton.Location = new System.Drawing.Point(13, 314);
             this.teacherStudentbutton.Name = "teacherStudentbutton";
             this.teacherStudentbutton.Size = new System.Drawing.Size(181, 41);
@@ -107,13 +119,14 @@ namespace Course_Registration_System
             // 
             // teacherMessagesButton
             // 
-            this.teacherMessagesButton.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherMessagesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherMessagesButton.Location = new System.Drawing.Point(12, 361);
             this.teacherMessagesButton.Name = "teacherMessagesButton";
             this.teacherMessagesButton.Size = new System.Drawing.Size(181, 41);
             this.teacherMessagesButton.TabIndex = 6;
             this.teacherMessagesButton.Text = "Mesajlaşma";
             this.teacherMessagesButton.UseVisualStyleBackColor = true;
+            this.teacherMessagesButton.Click += new System.EventHandler(this.teacherMessagesButton_Click);
             // 
             // teacherInterestPanel
             // 
@@ -129,19 +142,19 @@ namespace Course_Registration_System
             // teacherInterstAdd
             // 
             this.teacherInterstAdd.AutoSize = true;
-            this.teacherInterstAdd.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherInterstAdd.Location = new System.Drawing.Point(395, 29);
             this.teacherInterstAdd.Name = "teacherInterstAdd";
-            this.teacherInterstAdd.Size = new System.Drawing.Size(136, 29);
+            this.teacherInterstAdd.Size = new System.Drawing.Size(130, 25);
             this.teacherInterstAdd.TabIndex = 53;
             this.teacherInterstAdd.Text = "İlgi Alanları";
             // 
             // teacherInterstAddTextBox
             // 
-            this.teacherInterstAddTextBox.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.teacherInterstAddTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.teacherInterstAddTextBox.Location = new System.Drawing.Point(377, 79);
             this.teacherInterstAddTextBox.Name = "teacherInterstAddTextBox";
-            this.teacherInterstAddTextBox.Size = new System.Drawing.Size(175, 33);
+            this.teacherInterstAddTextBox.Size = new System.Drawing.Size(175, 31);
             this.teacherInterstAddTextBox.TabIndex = 54;
             // 
             // TeacherInterestAddButton
@@ -151,7 +164,7 @@ namespace Course_Registration_System
             this.TeacherInterestAddButton.FlatAppearance.BorderSize = 2;
             this.TeacherInterestAddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
             this.TeacherInterestAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TeacherInterestAddButton.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TeacherInterestAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.TeacherInterestAddButton.Location = new System.Drawing.Point(377, 132);
             this.TeacherInterestAddButton.Name = "TeacherInterestAddButton";
             this.TeacherInterestAddButton.Size = new System.Drawing.Size(175, 50);
@@ -182,7 +195,7 @@ namespace Course_Registration_System
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button2.Location = new System.Drawing.Point(254, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 47);
@@ -193,7 +206,7 @@ namespace Course_Registration_System
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button1.Location = new System.Drawing.Point(71, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 47);
@@ -201,16 +214,129 @@ namespace Course_Registration_System
             this.button1.Text = "Kaydet";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-
-            teacherStudentPanel.Location = new System.Drawing.Point(200, 174);
-            teacherStudentPanel.Name = "teacherStudentPanel";
-            teacherStudentPanel.Size = new System.Drawing.Size(972, 575);
-            teacherStudentPanel.TabIndex = 7;
+            // 
+            // teacherStudentPanel
+            // 
+           /* this.teacherStudentPanel.Controls.Add(this.panel2);
+            this.teacherStudentPanel.Controls.Add(this.label4);
+            this.teacherStudentPanel.Controls.Add(this.panel1);
+            this.teacherStudentPanel.Controls.Add(this.label1);*/
+            this.teacherStudentPanel.Location = new System.Drawing.Point(200, 174);
+            this.teacherStudentPanel.Name = "teacherStudentPanel";
+            this.teacherStudentPanel.Size = new System.Drawing.Size(972, 575);
+            this.teacherStudentPanel.TabIndex = 7;
+            // 
+            // teacherStudentPanel
+            // 
+            this.teacherMessagePanel.Controls.Add(this.panel2);
+            this.teacherMessagePanel.Controls.Add(this.label4);
+            this.teacherMessagePanel.Controls.Add(this.panel1);
+            this.teacherMessagePanel.Controls.Add(this.label1);
+            this.teacherMessagePanel.Location = new System.Drawing.Point(200, 174);
+            this.teacherMessagePanel.Name = "teacherMessagePanel";
+            this.teacherMessagePanel.Size = new System.Drawing.Size(972, 575);
+            this.teacherStudentPanel.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(9, 46);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(947, 135);
+            this.panel1.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(723, 77);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(131, 41);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "GÖNDER";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(601, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 22);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "ALICI:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(664, 35);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(246, 24);
+            this.comboBox1.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(21, 35);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(560, 83);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Tag = "";
+            this.textBox1.Text = "Mesajinizi buraya giriniz!.";
+            this.textBox1.GotFocus += new System.EventHandler(this.textBox1_GotFocus);
+            this.textBox1.LostFocus += new System.EventHandler(this.textBox1_LostFocus);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(17, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 22);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "MESAJ:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "MESAJ GÖNDER";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 36);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "GELEN MESAJLAR";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel2.Location = new System.Drawing.Point(9, 242);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(947, 317);
+            this.panel2.TabIndex = 3;
             // 
             // teacherPanel
             // 
-
-
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
@@ -222,6 +348,10 @@ namespace Course_Registration_System
             this.Controls.Add(this.teacherLessonRequestbutton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.teacherInterestbutton);
+            this.Controls.Add(this.teacherMessagePanel);
+            this.Controls.Add(this.teacherInterestPanel);
+            this.Controls.Add(this.teacherLessonRequestPanel);
+            this.Controls.Add(this.teacherGradingPanel);
             this.Name = "teacherPanel";
             this.Text = "teacherPanel";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -230,12 +360,12 @@ namespace Course_Registration_System
             this.teacherGradingPanel.ResumeLayout(false);
             this.teacherStudentPanel.ResumeLayout(false);
             this.teacherStudentPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
-        //this.Controls.Add(this.teacherInterestPanel);
-        //this.Controls.Add(this.teacherLessonRequestPanel);
-        //this.Controls.Add(this.teacherGradingPanel);
+        
 
         #endregion
 
@@ -254,6 +384,16 @@ namespace Course_Registration_System
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel teacherStudentPanel;
+        private System.Windows.Forms.Panel teacherMessagePanel;
+        private Label label1;
+        private Panel panel1;
+        private Label label2;
+        private TextBox textBox1;
+        private Label label3;
+        private ComboBox comboBox1;
+        private Button button3;
+        private Panel panel2;
+        private Label label4;
         //private System.Windows.Forms.Button ekleButton;
         //private System.Windows.Forms.Label dersAdıLabel;
         //private System.Windows.Forms.Label dersSayısıLabel;
