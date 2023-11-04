@@ -4,6 +4,7 @@ using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -108,9 +109,9 @@ namespace Course_Registration_System
             dataAdapter.Fill(dataSet);
             DataTable dataTable = dataSet.Tables[0];
 
+            return dataTable;
 
-
-
+        }
         public string getValue(string column, string table, string where)
         {
             string value = null;
@@ -151,7 +152,7 @@ namespace Course_Registration_System
         public DataTable showDataTableWhere(string column, string table, string where)
         {
             connection.Open();
-            string query = "select " + column + " from " + table + " where " +where+" >0";
+            string query = "select " + column + " from " + table + " where " + where + " >0";
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
@@ -447,11 +448,11 @@ namespace Course_Registration_System
             connection.Close();
             return count;
         }
-        public int ultiGaripCount(string column, string table, string where, string value, string where2, string value2,string where3, string value3, string where4, string value4)
+        public int ultiGaripCount(string column, string table, string where, string value, string where2, string value2, string where3, string value3, string where4, string value4)
         {
             int count = 0;
             connection.Open();
-            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and " + where2 + " = @p2 and "+ where3 +" = @p3 and " + where4 + " = @p4";
+            string query = "select " + "Count(" + column + ")" + " from " + table + " where " + where + " = @p1 and " + where2 + " = @p2 and " + where3 + " = @p3 and " + where4 + " = @p4";
             NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
             if (IsNumeric(value))
             {
@@ -529,8 +530,23 @@ namespace Course_Registration_System
             string text = "insert into users (sicilno,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
             Random random = new Random();
-            int id = random.Next(2000, 3000 + 1);
+            int id = random.Next(20000, 30000 + 1);
             cmd1.Parameters.AddWithValue("p1", id);
+            cmd1.Parameters.AddWithValue("p2", name);
+            cmd1.Parameters.AddWithValue("p3", surname);
+            cmd1.Parameters.AddWithValue("p4", password);
+            cmd1.Parameters.AddWithValue("p5", type);
+            cmd1.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void addUser2(string id,string name, string surname, string password, string type)
+        {
+            connection.Open();
+            string text = "insert into users (sicilno,name,surname,password,type) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
+            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
+            Random random = new Random();
+            int.TryParse(id,out int value);
+            cmd1.Parameters.AddWithValue("p1", value);
             cmd1.Parameters.AddWithValue("p2", name);
             cmd1.Parameters.AddWithValue("p3", surname);
             cmd1.Parameters.AddWithValue("p4", password);
@@ -544,11 +560,13 @@ namespace Course_Registration_System
             connection.Open();
             string text = "insert into students (sicilno,name,surname,gpa,numberoflesson) values (@p1,@p2,@p3,@p4,@p5)"; //"insert into devices (dmac) values (@p1)"
             NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
-            float.TryParse(gpa, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float gpaValue);
+            gpa = gpa.Replace(",", ".");
+            float sayi = float.Parse(gpa);
+            sayi = sayi / 100f;
             cmd1.Parameters.AddWithValue("p1", Convert.ToInt32(id));
             cmd1.Parameters.AddWithValue("p2", name);
             cmd1.Parameters.AddWithValue("p3", surname);
-            cmd1.Parameters.AddWithValue("p4", gpaValue);
+            cmd1.Parameters.AddWithValue("p4", sayi);
             cmd1.Parameters.AddWithValue("p5", Convert.ToInt32(numberoflesson));
             cmd1.ExecuteNonQuery();
             connection.Close();
@@ -625,32 +643,7 @@ namespace Course_Registration_System
             cmd1.ExecuteNonQuery();
             connection.Close();
         }
-        public void deleteThree(string table, string senderid, string receiptid, string dersid)
-        {
-            connection.Open();
-            string text = "delete from " + table + " where " + " senderid " + "=@p1 and" + " receiptid " + "=@p2 and" + " dersid " + "=@p3"; // column hangi sutunun hangi degere esit oldugunu bulacak 
-            NpgsqlCommand cmd1 = new NpgsqlCommand(text, connection);
-            int.TryParse(senderid, out int result);
-            cmd1.Parameters.AddWithValue("p1", result);
-            if (IsNumeric(receiptid))
-            {
-                if (int.TryParse(receiptid, out int result1))
-                {
-                    cmd1.Parameters.AddWithValue("p2", result1);
-                }
-                else
-                {
-                    float.TryParse(receiptid, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out float num);
-                    cmd1.Parameters.AddWithValue("p2", num);
-                }
-            }
-            else
-                cmd1.Parameters.AddWithValue("p2", receiptid);
 
-            cmd1.Parameters.AddWithValue("p3", dersid);
-            cmd1.ExecuteNonQuery();
-            connection.Close();
-        }
         public void deleteThree(string table, string senderid, string receiptid, string dersid)
         {
             connection.Open();
@@ -718,7 +711,7 @@ namespace Course_Registration_System
         public void updateThreeData(string table, string column, string senderid, string receiptid, string dersid, string new_value)
         {
             connection.Open();
-            string text = "update " + table + " set " + column + " = @p1 where " +"senderid = @p2 and "+ "receiptid = @p3 and "+ "dersid = @p4"; // "update devices set dmac=@p1 where dmac=@p2"
+            string text = "update " + table + " set " + column + " = @p1 where " + "senderid = @p2 and " + "receiptid = @p3 and " + "dersid = @p4"; // "update devices set dmac=@p1 where dmac=@p2"
 
             NpgsqlCommand cmd = new NpgsqlCommand(text, connection);
             if (IsNumeric(new_value))
