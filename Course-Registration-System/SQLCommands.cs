@@ -1167,21 +1167,25 @@ namespace Course_Registration_System
             connection.Close();
             return quote;
         }
-        public void printAll(string column, string table)
+        public string printAll(int id)
         {
-            List<String> data = new List<String>();
             connection.Open();
-            string query = "select " + column + " from " + table;
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(query, connection);
-            DataSet dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
-
-            DataTable dataTable = dataSet.Tables[0];
-
-            foreach (DataRow row in dataTable.Rows)
+            string info = string.Empty;
+            string query = "SELECT name,surname FROM students WHERE sicilno=@p1";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@p1", id);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
             {
-            }
+                info = reader.GetString(0) + " " + reader.GetString(1);
 
+
+            }
+            connection.Close();
+            return info;
         }
+
     }
+
 }
+

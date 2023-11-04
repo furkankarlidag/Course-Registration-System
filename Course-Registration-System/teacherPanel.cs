@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,7 +39,7 @@ namespace Course_Registration_System
         void ShowPanel(Panel panel)
         {
             teacherInterestPanel.Visible = false;
-
+            teacherMessagePanel.Visible = false;
             teacherLessonRequestPanel.Visible= false;
             teacherGradingPanel.Visible = false;
             teacherStudentPanel.Visible = false;
@@ -384,7 +386,7 @@ namespace Course_Registration_System
 
         private void ekleButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void teacherStudentbutton_Click(object sender, EventArgs e)
@@ -646,8 +648,109 @@ namespace Course_Registration_System
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(dataGridView2)).EndInit();
         }
-        
+        private void textBox1_GotFocus(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Mesajinizi buraya giriniz!.")
+            {
+                textBox1.Text = "";
+            }
+        }
+        private void textBox1_LostFocus(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                textBox1.Text = "Mesajinizi buraya giriniz!.";
+            }
 
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SQLCommands sQLCommands = new SQLCommands();
+            Random random = new Random();
+            //Console.WriteLine(sQLCommands.findUserID("teachers", comboBox1.SelectedText));
+            sQLCommands.sendMessage(teacherId, sQLCommands.findUserID("teachers", comboBox1.SelectedItem.ToString()), textBox1.Text, random.Next(1, 10000));
+            textBox1.Text = "Mesajinizi buraya giriniz!.";
+            MessageBox.Show("Mesajiniz basairiyla gonderdildi.", "Basarili Islem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void teacherMessagesButton_Click(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            SQLCommands sQLCommands = new SQLCommands();
+            List<string> teacherIDList = sQLCommands.showCloumn("sicilno","students");
+            for (int j = 0; j < teacherIDList.Count; j++)
+            {
+                this.comboBox1.Items.Add(sQLCommands.printAll(int.Parse(teacherIDList[j])));
+            }
+
+            this.panel2.Controls.Clear();
+            
+            int panelY = 16;
+            string message = string.Empty;
+            int senderid = 0;
+            int i = 0;
+            string connectionString = "server=localHost; port=5432; Database=yazlab; user ID=postgres; password=12345";
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = "SELECT senderid, message FROM messages where receiptid=@p1";
+                using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("p1", teacherId);
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                           
+                            senderid = reader.GetInt32(0);
+                            message = reader.GetString(1);
+                           
+                            // 
+                            // panel3
+                            // 
+                            Panel panel33 = new Panel();
+                            Label label53 = new Label();
+                            Label label63 = new Label();
+                            panel33.BackColor = System.Drawing.Color.Teal;
+                            panel33.Location = new System.Drawing.Point(21, panelY + i*120);
+                            panel33.Name = "panel3";
+                            panel33.Size = new System.Drawing.Size(889, 100);
+                            panel33.TabIndex = 0;
+                            // 
+                            // label5
+                            // 
+                           
+                            label53.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                            label53.Location = new System.Drawing.Point(9, 9);
+                            label53.Name = "label5";
+                            label53.Size = new System.Drawing.Size(370, 22);
+                            label53.TabIndex = 4;
+                            
+                            label53.Text = "GONDEREN: " + sQLCommands.printAll(senderid);
+                            // 
+                            // label6
+                            // 
+                            label63.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                            label63.ForeColor = System.Drawing.SystemColors.Control;
+                            label63.Location = new System.Drawing.Point(9, 31);
+                            label63.Name = "label6";
+                            label63.Size = new System.Drawing.Size(865, 55);
+                            label63.TabIndex = 5;
+                            label63.Text = "MESAJ: " + message;
+                            panel33.Controls.Add(label63);
+                            panel33.Controls.Add(label53);
+                            panel2.Controls.Add(panel33);
+                            i++;
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            ShowPanel(teacherMessagePanel);
+            
+        }
     }
 
 }
