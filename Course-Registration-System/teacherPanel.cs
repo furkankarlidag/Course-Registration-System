@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -281,6 +282,10 @@ namespace Course_Registration_System
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (lessonGrading.Count > 0)
+            {
+                lessonGrading.Clear();
+            }
             int i = 0;
             foreach (TextBox item in textBoxes)
             {
