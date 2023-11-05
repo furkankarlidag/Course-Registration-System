@@ -44,8 +44,6 @@ namespace Course_Registration_System
             {
                 AdministratorPanel adminPanel = new AdministratorPanel();
                 adminPanel.Visible = true;
-                timer1.Interval = 1000;
-                timer1.Start();
             }
 
             else
