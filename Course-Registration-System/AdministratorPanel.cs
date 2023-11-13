@@ -643,6 +643,15 @@ namespace Course_Registration_System
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            this.studentPanel.Visible = false;
+            //this.teacherPanel.Visible = false;
+            this.StudentListPanel.Visible = false;
+            this.studentTeacherChoosePanel.Visible = false;
+            this.TeacherListPanel.Visible = false;
+            this.lessonAddPanel.Visible = false;
+            this.usersPanel.Visible = false;
+            this.otoUsersPanel.Visible = false;
+            this.panel2.Visible = false;
             TeacherPanelComponent();
         }
 
