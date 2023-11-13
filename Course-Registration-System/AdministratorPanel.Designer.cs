@@ -1260,8 +1260,8 @@ namespace Course_Registration_System
             this.ResumeLayout(false);
 
         }
-        //BU amınakodumun windows formu yorum satırını silmiş
-        //this.Controls.Add(this.teacherPanel); eklemeyi unutma buda silinirse ta amk
+       
+        //this.Controls.Add(this.teacherPanel); 
         //this.Controls.Add(this.studentPanel);
         //this.Controls.Add(this.teacherPanel);
         //this.Controls.Add(this.lessonAddPanel);
